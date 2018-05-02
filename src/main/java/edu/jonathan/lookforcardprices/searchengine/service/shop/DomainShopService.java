@@ -1,0 +1,68 @@
+package edu.jonathan.lookforcardprices.searchengine.service.shop;
+
+import edu.jonathan.lookforcardprices.comom.Util;
+import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
+import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Element;
+
+//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
+public class DomainShopService extends SearchService{
+
+	private int resultsPerPage = 12;
+
+    @Override
+    protected boolean isProductAvaliable(Element productContainer) {
+        return !productContainer.select(".estoque").text().trim().isEmpty();
+    }
+
+    @Override
+	protected String getSearchPattern() {
+		return "Ajax_Funcoes.asp?" +
+				"IsNovoCfg=true" +
+				"&Pagina=1" +
+				"&OrganizarPor=3" +
+				"&Funcao=BuscaAvancada" +
+				"&ResultadoPorPagina=" + resultsPerPage  +
+				"&busca=" + URL_SEARCH_SAMPLE;
+	}
+
+	@Override
+	protected void setMaxResultsPerPage() {
+		resultsPerPage = 21;
+	}
+
+	@Override
+	protected String prepareUrl(String searchPattern, String productName) {
+		return Util.prepareUrlMode1( searchPattern, productName );
+	}
+
+	@Override
+	protected ResultNameFilter getResultNameFilter() {
+		return ResultNameFilter.noFilter();
+	}
+
+	@Override
+	protected ResultPageSelectors getResultPageSelects() {
+		return new ResultPageSelectors() {
+			@Override
+			public String singleProduct() {
+				return "#ListadeProdutosAvancada li";
+			}
+
+			@Override
+			public String productName() {
+				return ".card_name .portugues a";
+			}
+
+			@Override
+			public String productImageURL() {
+				return "img:eq(0)";
+			}
+
+			@Override
+			public String productPrice() {
+				return ".vista";
+			}
+		};
+	}
+}

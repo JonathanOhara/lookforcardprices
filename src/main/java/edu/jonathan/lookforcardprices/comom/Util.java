@@ -87,8 +87,7 @@ public class Util {
 					.timeout(20000)
 					.get();
 		}catch(Exception e){
-			e.printStackTrace();
-			System.out.println("Tentando conectar Na Url de outro modo");
+			System.out.println(e.getCause() + "Try to connect by another way..");
 			doc = parseDocument( readUrl(url, null) );
 		}
 		return doc;
@@ -237,20 +236,20 @@ public class Util {
 			return null;
 		}
 		replacedString = replacedString.toLowerCase();
-		replacedString = replacedString.replaceAll("[ãáàâäª]", "a");
-		replacedString = replacedString.replaceAll("[ãáàâä]".toUpperCase(), "a".toUpperCase());
-		replacedString = replacedString.replaceAll("[éèêë]", "e");
-		replacedString = replacedString.replaceAll("[éèêë]".toUpperCase(), "e".toUpperCase());
-		replacedString = replacedString.replaceAll("[íìîï]", "i");
-		replacedString = replacedString.replaceAll("[íìîï]".toUpperCase(), "i".toUpperCase());
-		replacedString = replacedString.replaceAll("[õóòôöº]", "o");
-		replacedString = replacedString.replaceAll("[õóòôö]".toUpperCase(), "o".toUpperCase());
-		replacedString = replacedString.replaceAll("[úùûü]", "u");
-		replacedString = replacedString.replaceAll("[úùûü]".toUpperCase(), "u".toUpperCase());
-		replacedString = replacedString.replaceAll("[ç]", "c");
-		replacedString = replacedString.replaceAll("[ç]".toUpperCase(), "c".toUpperCase());
-		replacedString = replacedString.replaceAll("[ñ]", "n");
-		replacedString = replacedString.replaceAll("[ñ]".toUpperCase(), "n".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½ï¿½]", "a");
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½ï¿½]".toUpperCase(), "a".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½]", "e");
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½]".toUpperCase(), "e".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½]", "i");
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½]".toUpperCase(), "i".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]", "o");
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½ï¿½]".toUpperCase(), "o".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½]", "u");
+		replacedString = replacedString.replaceAll("[ï¿½ï¿½ï¿½ï¿½]".toUpperCase(), "u".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½]", "c");
+		replacedString = replacedString.replaceAll("[ï¿½]".toUpperCase(), "c".toUpperCase());
+		replacedString = replacedString.replaceAll("[ï¿½]", "n");
+		replacedString = replacedString.replaceAll("[ï¿½]".toUpperCase(), "n".toUpperCase());
 		replacedString = replacedString.replaceAll("[&]", "");
 
 		return replacedString;

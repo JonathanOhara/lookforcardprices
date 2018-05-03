@@ -5,30 +5,26 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Element;
 
-//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
-public class DomainShopService extends SearchService{
+//https://mypcards.com/produto/index?ProdutoSearch%5Bquery%5D=Tuf%C3%A3o
+public class MypDominionShopService extends SearchService{
 
-	private int resultsPerPage = 12;
+	private int resultsPerPage = 20;
 
     @Override
     protected boolean isProductAvaliable(Element productContainer) {
-        return !productContainer.select(".estoque").text().trim().isEmpty();
+        return !productContainer.select(".card-estatistica > b:eq(0)").text().isEmpty();
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "Ajax_Funcoes.asp?" +
-				"IsNovoCfg=true" +
-				"&Pagina=1" +
-				"&OrganizarPor=3" +
-				"&Funcao=BuscaAvancada" +
-				"&ResultadoPorPagina=" + resultsPerPage  +
-				"&busca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "produto/index?" +
+				//"&results=" + resultsPerPage  +
+				"&ProdutoSearch%5Bquery%5D=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 21;
+		resultsPerPage = 50;
 	}
 
 	@Override
@@ -46,22 +42,22 @@ public class DomainShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#ListadeProdutosAvancada li";
+				return ".stream-list li";
 			}
 
 			@Override
 			public String productName() {
-				return ".card_name .portugues a";
+				return ".card-name div:eq(0)";
 			}
 
 			@Override
 			public String productImageURL() {
 				return "img:eq(0)";
-			}
+			} //BackgroundImage
 
 			@Override
 			public String productPrice() {
-				return ".vista";
+				return ".card-estatistica > b:eq(1)";
 			}
 		};
 	}

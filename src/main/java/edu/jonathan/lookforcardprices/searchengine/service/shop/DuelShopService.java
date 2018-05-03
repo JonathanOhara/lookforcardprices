@@ -16,8 +16,8 @@ public class DuelShopService extends SearchService{
     }
 
     @Override
-	protected String getSearchPattern() {
-		return "procurar?" +
+	protected String getSearchUrlSample(String mainUrl) {
+		return mainUrl + "procurar?" +
 				"controller=search" +
 				"&orderby=position" +
 				"&orderway=desc" +
@@ -31,8 +31,8 @@ public class DuelShopService extends SearchService{
 	}
 
 	@Override
-	protected String prepareUrl(String searchPattern, String productName) {
-		return Util.prepareUrlMode1( searchPattern, productName );
+	protected String replaceUrlWithEncodedProductName(String url, String productName) {
+		return Util.prepareUrlMode1( url, productName );
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class DuelShopService extends SearchService{
 	}
 
 	@Override
-	protected ResultPageSelectors getResultPageSelects() {
+	protected ResultPageSelectors getResultPageSelectors() {
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {

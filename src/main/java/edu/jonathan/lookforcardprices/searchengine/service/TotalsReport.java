@@ -25,15 +25,15 @@ public class TotalsReport {
 	public TotalsReport() {}
 
 	public void generateHeaders(){
-		totalsPerProductContent.append("\"Loja\"").append(Keys.CSV_SEPARATOR).
+		totalsPerProductContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
 				append("\"Name Searched\"").append(Keys.CSV_SEPARATOR).
 				append("\"Name Found\"").append(Keys.CSV_SEPARATOR).
 				append("\"Price\"").append(Keys.CSV_SEPARATOR).
 				append("\"Price Float\"").append(Keys.CSV_SEPARATOR).
 				append("\"URL\"\n");
 		
-		totalsPerShopContent.append("\"Loja\"").append(Keys.CSV_SEPARATOR).
-					  append("\"Quantidade\"\n");
+		totalsPerShopContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
+					  append("\"Quantity\"\n");
 	}
 	
 	public void generateContent(Map<Shop, List<Product>> productsByShop, String nameToSearch){

@@ -3,9 +3,7 @@ package edu.jonathan.lookforcardprices.searchengine.service;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
-import edu.jonathan.lookforcardprices.searchengine.service.shop.DomainShopService;
-import edu.jonathan.lookforcardprices.searchengine.service.shop.DuelShopService;
-import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.*;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.spi.CDI;
@@ -20,26 +18,27 @@ public class SearchEngine {
     private List<String> searchList;
 
     public SearchEngine() {
-        shopsService = new HashMap<>();
+        shopsService = new LinkedHashMap<>();
         searchList = new ArrayList<>();
     }
 
     public void registerBrazilianShops(){
-        register(new Shop("Domain", "http://www.domaingames.com.br/"), CDI.current().select(DomainShopService.class).get() );
-        register(new Shop("DuelShop", "https://www.duelshop.com.br/"), CDI.current().select(DuelShopService.class).get() );
-        //https://www.prrjcards.com.br/
-        //https://www.solosagrado.com.br/
-        //https://www.lojadotoguro.com.br/
-        //http://www.mtgcards.com.br/
-        //https://www.legioncg.com.br/
-        //https://www.fenixhousetcg.com.br/
-        //https://mypcards.com/Dominion
-        //https://www.coolstuffinc.com/
-        //https://www.mercadolivre.com.br/
+        //register(new Shop("Domain", "http://www.domaingames.com.br/"), CDI.current().select(DomainShopService.class).get() );
+        //register(new Shop("Duel Shop", "https://www.duelshop.com.br/"), CDI.current().select(DuelShopService.class).get() );
+        //register(new Shop("PrRj", "https://www.prrjcards.com.br/"), CDI.current().select(PrRjShopService.class).get() );
+        //register(new Shop("Solo Sagrado", "https://www.solosagrado.com.br/"), CDI.current().select(SoloSagradoShopService.class).get() );
+        //register(new Shop("Toguro", "https://www.solosagrado.com.br/"), CDI.current().select(ToguroFenixShopService.class).get() );
+        //register(new Shop("MTG Cards", "https://www.mtgcards.com.br/"), CDI.current().select(MTGCardGamesShopService.class).get() );
+        //register(new Shop("Legion CG", "https://www.legioncg.com.br/"), CDI.current().select(LegionCGShopService.class).get() );
+        //register(new Shop("Fenix House TCG", "https://www.fenixhousetcg.com.br/"), CDI.current().select(ToguroFenixShopService.class).get() );
+        //register(new Shop("Myp Cards", "https://mypcards.com/"), CDI.current().select(MypDominionShopService.class).get() );
+        //register(new Shop("DMG", "http://www.dmgcardshop.com/"), CDI.current().select(DmgShopService.class).get() );
+        //register(new Shop("Mercado Livre", "https://www.mercadolivre.com.br/"), CDI.current().select(MercadoLivreShopService.class).get() );
+
     }
 
     public void registerUSAShops(){
-
+        register(new Shop("Cool And Stuff", "https://www.coolstuffinc.com/"), CDI.current().select(CoolAndStuffShopService.class).get() );
     }
 
     public void register(Shop shop, SearchService shopImplementation){

@@ -5,30 +5,28 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Element;
 
-//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
-public class DomainShopService extends SearchService{
+//https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=mirror+force
+public class CoolAndStuffShopService extends SearchService{
 
-	private int resultsPerPage = 12;
+	private int resultsPerPage = 25;
 
     @Override
     protected boolean isProductAvaliable(Element productContainer) {
-        return !productContainer.select(".estoque").text().trim().isEmpty();
+        return !"Out of Stock".equals( productContainer.select(".pPrice").text() );
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "Ajax_Funcoes.asp?" +
-				"IsNovoCfg=true" +
-				"&Pagina=1" +
-				"&OrganizarPor=3" +
-				"&Funcao=BuscaAvancada" +
-				"&ResultadoPorPagina=" + resultsPerPage  +
-				"&busca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "main_search.php?" +
+				"&pa=searchOnName" +
+				"&page=1" +
+				"&resultsPerPage=" + resultsPerPage  +
+				"&q=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 21;
+		resultsPerPage = 50;
 	}
 
 	@Override
@@ -46,12 +44,12 @@ public class DomainShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#ListadeProdutosAvancada li";
+				return "#searchResults > tbody > tr";
 			}
 
 			@Override
 			public String productName() {
-				return ".card_name .portugues a";
+				return "h3 a";
 			}
 
 			@Override
@@ -61,7 +59,7 @@ public class DomainShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".vista";
+				return ".pPrice span";
 			}
 		};
 	}

@@ -42,7 +42,7 @@ public abstract class SearchService {
 			setMaxResultsPerPage();
 		}
 
-		URL resultsURL = new URL( shop.getMainUrl() + prepareUrl(getSearchPattern(), productName) );
+		URL resultsURL = new URL( replaceUrlWithEncodedProductName( getSearchUrlSample(shop.getMainUrl()), productName ) );
 
 		return resultsURL;
 	}
@@ -52,7 +52,7 @@ public abstract class SearchService {
 	}
 
 	protected List<Product> readProductsAt(Document resultsPage, Shop shop, String productName){
-		ResultPageSelectors selectors = getResultPageSelects();
+		ResultPageSelectors selectors = getResultPageSelectors();
 
 		Elements els = resultsPage.select( selectors.singleProduct() );
 		System.out.println("\t\tResults Elements: "+els.size());
@@ -65,7 +65,7 @@ public abstract class SearchService {
 
 		String previewName, previewImageURL;
 		String individualUrl, formattedPrice;
-		boolean avaliable;
+		boolean available;
 		Element productContainer;
 
 		ResultNameFilter resultNameFilter = getResultNameFilter();
@@ -85,11 +85,11 @@ public abstract class SearchService {
 
 				formattedPrice = productContainer.select( selectors.productPrice() ).text();
 
-				avaliable = isProductAvaliable( productContainer );
+				available = isProductAvaliable( productContainer );
 
-				products.add( new Product(previewName, avaliable, shop, previewImageURL, individualUrl, productContainer, formattedPrice ) );
+				products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, productContainer, formattedPrice ) );
 			}else{
-				System.out.println("\t\tRemoved by filter Name...");
+				System.out.println("\t\tRemoved by name filter...");
 			}
 		}
 
@@ -98,14 +98,14 @@ public abstract class SearchService {
 
 	protected abstract boolean isProductAvaliable(Element productContainer);
 
-	protected abstract String getSearchPattern();
+	protected abstract String getSearchUrlSample(String mainUrl);
 
 	protected abstract void setMaxResultsPerPage();
 
-	protected abstract String prepareUrl(String searchPattern, String productName);
+	protected abstract String replaceUrlWithEncodedProductName(String url, String productName);
 
 	protected abstract ResultNameFilter getResultNameFilter();
 
-	protected abstract ResultPageSelectors getResultPageSelects();
+	protected abstract ResultPageSelectors getResultPageSelectors();
 
 }

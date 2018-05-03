@@ -5,30 +5,31 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Element;
 
-//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
-public class DomainShopService extends SearchService{
+//Result Page:
+//https://www.lojadotoguro.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Mirror+Force
+//Direct to Product
+//https://www.fenixhousetcg.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Invoked+Raidjin
+public class ToguroFenixShopService extends SearchService{
 
 	private int resultsPerPage = 12;
 
-    @Override
-    protected boolean isProductAvaliable(Element productContainer) {
-        return !productContainer.select(".estoque").text().trim().isEmpty();
-    }
+	@Override
+	protected boolean isProductAvaliable(Element productContainer) {
+		return !"Indisponível".equals(productContainer.select(".produto-qtd").text());
+	}
 
-    @Override
+	@Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "Ajax_Funcoes.asp?" +
-				"IsNovoCfg=true" +
-				"&Pagina=1" +
-				"&OrganizarPor=3" +
-				"&Funcao=BuscaAvancada" +
-				"&ResultadoPorPagina=" + resultsPerPage  +
-				"&busca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "busca?" +
+                "pg=15" +
+				"&categoria=" +
+				"&qtdview=" + resultsPerPage  +
+				"&pesq=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 21;
+		resultsPerPage = 24;
 	}
 
 	@Override
@@ -46,12 +47,12 @@ public class DomainShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#ListadeProdutosAvancada li";
+				return ".products_container .product_item";
 			}
 
 			@Override
 			public String productName() {
-				return ".card_name .portugues a";
+				return "figcaption h5 a:eq(0)";
 			}
 
 			@Override
@@ -61,7 +62,7 @@ public class DomainShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".vista";
+				return ".scheme_color > span:last-child";
 			}
 		};
 	}

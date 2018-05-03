@@ -36,11 +36,11 @@ public class GamesReport {
 		
 		htmlFinal.append("\t<section class='wrapper' >\n");
 		htmlFinal.append("\t\t<h1>").append(nameToSearch).append("</h1>\n");
-		htmlFinal.append("\t\t<h2>Navegue pelas abas para outras visualizações do resultado</h2>\n");
+		htmlFinal.append("\t\t<h2>Check other tabs to more information</h2>\n");
 		htmlFinal.append("\t\t<ul class='tabs'>\n");
-		htmlFinal.append("\t\t\t<li><a href='#tab1'>Relatório</a></li>\n");
-		htmlFinal.append("\t\t\t\t<li><a href='#tab2'>Outros Buscadores</a></li>\n");
-		htmlFinal.append("\t\t\t<li><a href='#tab3'>Meta Dados</a></li>\n");
+		htmlFinal.append("\t\t\t<li><a href='#tab1'>Result</a></li>\n");
+		htmlFinal.append("\t\t\t\t<li><a href='#tab2'>Search Engines</a></li>\n");
+		htmlFinal.append("\t\t\t<li><a href='#tab3'>Meta Data</a></li>\n");
 		htmlFinal.append("\t\t\t<li><a href='#tab4'>Log</a></li>\n");
 		htmlFinal.append("\t\t</ul>\n");
 		htmlFinal.append("\t\t<div class='clr'></div>\n");
@@ -55,7 +55,7 @@ public class GamesReport {
 		htmlReport.append("\t\t<thead>\n");
 		htmlReport.append("\t\t\t<tr>\n");
 		htmlReport.append("\t\t\t<th colspan=2>\n");
-		htmlReport.append("\t\t\t\tLoja: ").append(shop.getName()).append("\n");
+		htmlReport.append("\t\t\t\tStore: ").append(shop.getName()).append("\n");
 		htmlReport.append("\t\t\t</th>\n");
 		htmlReport.append("\t\t\t\t</tr>\n");	
 		htmlReport.append("\t\t</thead>\n");
@@ -176,7 +176,7 @@ public class GamesReport {
 		htmlSeekers.append("\t<thead>\n");
 		htmlSeekers.append("\t\t<tr>\n");
 		htmlSeekers.append("\t\t\t<th colspan=2>\n");
-		htmlSeekers.append("\t\t\t\t<b>Outros Buscadores</b>\n");
+		htmlSeekers.append("\t\t\t\t<b>Other search engines</b>\n");
 		htmlSeekers.append("\t\t\t</th>\n");
 		htmlSeekers.append("\t\t</tr>\n");	
 		htmlSeekers.append("\t</thead>\n");
@@ -185,10 +185,10 @@ public class GamesReport {
 
 		htmlSeekers.append("\t\t<tr>\n");
 		htmlSeekers.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlSeekers.append("\t\t\t\tBuscapé\n");
+		htmlSeekers.append("\t\t\t\tBuscape\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t\t<td width=50%>\n");
-		htmlSeekers.append("\t\t\t\t<a href='http://www.buscape.com.br/cprocura?produto="+Util.stringToUrl(nameToSearch)+"&fromSearchBox=true'> Clique Aqui </a>\n");
+		htmlSeekers.append("\t\t\t\t<a href='http://www.buscape.com.br/cprocura?produto=" ).append( Util.stringToUrl(nameToSearch) ).append( "&fromSearchBox=true'> Click here </a>\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t</tr>\n");
 		
@@ -197,7 +197,7 @@ public class GamesReport {
 		htmlSeekers.append("\t\t\t\tBondFaro\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t\t<td width=50%>\n");
-		htmlSeekers.append("\t\t\t\t<a href='http://www.bondfaro.com.br/cprocura?produto="+Util.stringToUrl(nameToSearch)+"&fromSearchBox=true'> Clique Aqui </a>\n");
+		htmlSeekers.append("\t\t\t\t<a href='http://www.bondfaro.com.br/cprocura?produto=" ).append( Util.stringToUrl(nameToSearch) ).append( "&fromSearchBox=true'> Click here </a>\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t</tr>\n");
 		
@@ -206,7 +206,7 @@ public class GamesReport {
 		htmlSeekers.append("\t\t\t\tShopping UOL\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t\t<td width=50%>\n");
-		htmlSeekers.append("\t\t\t\t<a href='http://shopping.uol.com.br/busca.html?natural=sim&q="+Util.stringToUrl(nameToSearch)+"'> Clique Aqui </a>\n");
+		htmlSeekers.append("\t\t\t\t<a href='http://shopping.uol.com.br/busca.html?natural=sim&q=" ).append( Util.stringToUrl(nameToSearch) ).append( "'> Click here </a>\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t</tr>\n");
 		
@@ -215,7 +215,7 @@ public class GamesReport {
 		htmlSeekers.append("\t\t\t\tGoogle Shopping\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t\t<td width=50%>\n");
-		htmlSeekers.append("\t\t\t\t<a href='https://www.google.com.br/search?q=google&oq=google&aqs=chrome..69i57j69i60l3j69i65l2.679j0j7&sourceid=chrome&es_sm=93&ie=UTF-8#q="+Util.stringToUrl(nameToSearch)+"&tbm=shop'> Clique Aqui </a>\n");
+		htmlSeekers.append("\t\t\t\t<a href='https://www.google.com.br/search?q=google&oq=google&aqs=chrome..69i57j69i60l3j69i65l2.679j0j7&sourceid=chrome&es_sm=93&ie=UTF-8#q=" ).append( Util.stringToUrl(nameToSearch) ).append( "&tbm=shop'> Click here </a>\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t</tr>\n");
 		
@@ -224,16 +224,16 @@ public class GamesReport {
 		htmlSeekers.append("\t\t\t\tZOOM\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t\t<td width=50%>\n");
-		htmlSeekers.append("\t\t\t\t<a href='http://www.zoom.com.br/search?q="+Util.stringToUrl(nameToSearch)+"'> Clique Aqui </a>\n");
+		htmlSeekers.append("\t\t\t\t<a href='http://www.zoom.com.br/search?q=" ).append( Util.stringToUrl(nameToSearch) ).append( "'> Click here </a>\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t</tr>\n");
 		
 		htmlSeekers.append("\t\t<tr>\n");
 		htmlSeekers.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlSeekers.append("\t\t\t\tJá cotei\n");
+		htmlSeekers.append("\t\t\t\tJa cotei\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t\t<td width=50%>\n");
-		htmlSeekers.append("\t\t\t\t<a href='http://www.jacotei.com.br/busca/?texto="+Util.stringToUrl(nameToSearch)+"'> Clique Aqui </a>\n");
+		htmlSeekers.append("\t\t\t\t<a href='http://www.jacotei.com.br/busca/?texto=" ).append( Util.stringToUrl(nameToSearch) ).append( "'> Click here </a>\n");
 		htmlSeekers.append("\t\t\t</td>\n");
 		htmlSeekers.append("\t\t</tr>\n");
 
@@ -243,13 +243,13 @@ public class GamesReport {
 		htmlSeekers.append("<br>\n");
 	}
 
-	public void addMetaData(String nameToSearch, long l, String data, String hora) {
+	public void addMetaData(String nameToSearch, long time, String date, String hora) {
 		htmlMeta = new StringBuilder();
 		htmlMeta.append("<table style='width=100%;'>\n");
 		htmlMeta.append("\t<thead>\n");
 		htmlMeta.append("\t\t<tr>\n");
 		htmlMeta.append("\t\t\t<th colspan=2>\n");
-		htmlMeta.append("\t\t\t\t<b>Meta Dados</b>\n");
+		htmlMeta.append("\t\t\t\t<b>Meta Data</b>\n");
 		htmlMeta.append("\t\t\t</th>\n");
 		htmlMeta.append("\t\t</tr>\n");	
 		htmlMeta.append("\t</thead>\n");
@@ -258,7 +258,7 @@ public class GamesReport {
 
 		htmlMeta.append("\t\t<tr>\n");
 		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlMeta.append("\t\t\t\tTermo Buscado\n");
+		htmlMeta.append("\t\t\t\tSearched term\n");
 		htmlMeta.append("\t\t\t</td>\n");
 		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
 		htmlMeta.append(nameToSearch);
@@ -267,25 +267,25 @@ public class GamesReport {
 		
 		htmlMeta.append("\t\t<tr>\n");
 		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlMeta.append("\t\t\t\tTempo Para buscar\n");
+		htmlMeta.append("\t\t\t\tTime to search\n");
 		htmlMeta.append("\t\t\t</td>\n");
 		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlMeta.append(l);
-		htmlMeta.append("\t\t\t</td>\n");
-		htmlMeta.append("\t\t</tr>\n");
-		
-		htmlMeta.append("\t\t<tr>\n");
-		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlMeta.append("\t\t\t\tData\n");
-		htmlMeta.append("\t\t\t</td>\n");
-		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlMeta.append(data);
+		htmlMeta.append(time);
 		htmlMeta.append("\t\t\t</td>\n");
 		htmlMeta.append("\t\t</tr>\n");
 		
 		htmlMeta.append("\t\t<tr>\n");
 		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
-		htmlMeta.append("\t\t\t\tHora\n");
+		htmlMeta.append("\t\t\t\tDate\n");
+		htmlMeta.append("\t\t\t</td>\n");
+		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
+		htmlMeta.append(date);
+		htmlMeta.append("\t\t\t</td>\n");
+		htmlMeta.append("\t\t</tr>\n");
+		
+		htmlMeta.append("\t\t<tr>\n");
+		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
+		htmlMeta.append("\t\t\t\tTime\n");
 		htmlMeta.append("\t\t\t</td>\n");
 		htmlMeta.append("\t\t\t<td style='width: 50%;'>\n");
 		htmlMeta.append(hora);

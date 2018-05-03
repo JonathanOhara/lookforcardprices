@@ -5,30 +5,26 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Element;
 
-//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
-public class DomainShopService extends SearchService{
+//http://www.mtgcards.com.br/index.php?route=product/search&search=covil%20das%20trevas
+public class MTGCardGamesShopService extends SearchService{
 
-	private int resultsPerPage = 12;
+	private int resultsPerPage = 15;
 
     @Override
     protected boolean isProductAvaliable(Element productContainer) {
-        return !productContainer.select(".estoque").text().trim().isEmpty();
-    }
+		return "0 unid".equals( productContainer.select(":nth-child(2) td:eq(1)").text() );
+	}
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "Ajax_Funcoes.asp?" +
-				"IsNovoCfg=true" +
-				"&Pagina=1" +
-				"&OrganizarPor=3" +
-				"&Funcao=BuscaAvancada" +
-				"&ResultadoPorPagina=" + resultsPerPage  +
-				"&busca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "index.php?route=product/search" +
+				"&limit=" + resultsPerPage +
+				"&search=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 21;
+		resultsPerPage = 100;
 	}
 
 	@Override
@@ -46,12 +42,12 @@ public class DomainShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#ListadeProdutosAvancada li";
+				return ".product-list > div";
 			}
 
 			@Override
 			public String productName() {
-				return ".card_name .portugues a";
+				return ".name";
 			}
 
 			@Override
@@ -61,7 +57,7 @@ public class DomainShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".vista";
+				return ".price";
 			}
 		};
 	}

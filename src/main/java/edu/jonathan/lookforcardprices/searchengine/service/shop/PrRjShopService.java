@@ -5,30 +5,26 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Element;
 
-//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
-public class DomainShopService extends SearchService{
+//https://www.prrjcards.com.br/catalogsearch/result/index/?limit=36&q=monster+reborn
+public class PrRjShopService extends SearchService{
 
 	private int resultsPerPage = 12;
 
     @Override
     protected boolean isProductAvaliable(Element productContainer) {
-        return !productContainer.select(".estoque").text().trim().isEmpty();
+        return productContainer.select(".out-of-stock").size() == 0;
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "Ajax_Funcoes.asp?" +
-				"IsNovoCfg=true" +
-				"&Pagina=1" +
-				"&OrganizarPor=3" +
-				"&Funcao=BuscaAvancada" +
-				"&ResultadoPorPagina=" + resultsPerPage  +
-				"&busca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "catalogsearch/result/index/?" +
+				"&limit=" + resultsPerPage  +
+				"&q=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 21;
+		resultsPerPage = 36;
 	}
 
 	@Override
@@ -46,12 +42,12 @@ public class DomainShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#ListadeProdutosAvancada li";
+				return ".products-grid .item";
 			}
 
 			@Override
 			public String productName() {
-				return ".card_name .portugues a";
+				return ".product-name";
 			}
 
 			@Override
@@ -61,7 +57,7 @@ public class DomainShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".vista";
+				return ".price-box > p:last-child .price";
 			}
 		};
 	}

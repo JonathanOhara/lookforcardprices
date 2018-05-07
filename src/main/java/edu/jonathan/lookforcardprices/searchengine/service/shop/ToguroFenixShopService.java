@@ -51,7 +51,7 @@ public class ToguroFenixShopService extends SearchService{
 		return mainUrl + "?" +
 				"view=ecom%2Fitens" +
                 "&id=71080" +
-                "&searchExactMatch=" +
+                "&searchExactMatch=true" +
 				"&busca=" + URL_SEARCH_SAMPLE;
 	}
 

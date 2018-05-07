@@ -3,11 +3,14 @@ package edu.jonathan.lookforcardprices.searchengine.domain;
 import edu.jonathan.lookforcardprices.comom.Keys;
 import org.jsoup.nodes.Node;
 
+import java.net.URL;
+
 
 public class Product {
 	private String name;
 	private String imageUrl;
 	private String url;
+	private URL searchedURL;
 	private String formattedPrice;
 	private boolean avaliable;
 
@@ -16,13 +19,14 @@ public class Product {
 	
 	public Product() {}
 
-	public Product(String name, boolean avaliable, Shop shopFounded, String imageUrl, String url, Node productContainer, String formattedPrice) {
+	public Product(String name, boolean avaliable, Shop shopFounded, String imageUrl, String url, URL searchedURL, Node productContainer, String formattedPrice) {
 		super();
 		this.name = name;
 		this.avaliable = avaliable;
 		this.shopFounded = shopFounded;
 		this.imageUrl = imageUrl;
 		this.url = url;
+		this.searchedURL = searchedURL;
 		this.formattedPrice = formattedPrice;
 		this.productContainer = productContainer;
 	}
@@ -128,15 +132,33 @@ public class Product {
 		product.setFormattedPrice("1,000.01");
 		System.out.println( product.getFloatValue() );
 
-		product.setFormattedPrice("Indisponível");
+		product.setFormattedPrice("Indisponï¿½vel");
 		System.out.println( product.getFloatValue() );
 	}
 	*/
+
+	public URL getSearchedURL() {
+		return searchedURL;
+	}
+
+	public void setSearchedURL(URL searchedURL) {
+		this.searchedURL = searchedURL;
+	}
+
 	public String getFormattedPrice() {
 		return formattedPrice;
 	}
+
 	public void setFormattedPrice(String formattedPrice) {
 		this.formattedPrice = formattedPrice;
+	}
+
+	public boolean isAvaliable() {
+		return avaliable;
+	}
+
+	public void setAvaliable(boolean avaliable) {
+		this.avaliable = avaliable;
 	}
 
 	public Node getProductContainer() {
@@ -145,23 +167,5 @@ public class Product {
 
 	public void setProductContainer(Node productContainer) {
 		this.productContainer = productContainer;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Product [" + (name != null ? "name=" + name + "| " : "")
-				+ (imageUrl != null ? "imageUrl=" + imageUrl + "| " : "")
-				+ (url != null ? "url=" + url + "| " : "")
-				+ (formattedPrice != null ? "formattedPrice=" + formattedPrice : "") + "]";
-	}
-
-
-	public boolean isAvaliable() {
-		return avaliable;
-	}
-
-	public void setAvaliable(boolean avaliable) {
-		this.avaliable = avaliable;
 	}
 }

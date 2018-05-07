@@ -52,16 +52,20 @@ public class GamesReport {
 	public void addReport( Shop shop, List<Product> products){
 		htmlReport.append("\t<table style='width: 100%;'>\n");
 
-		htmlReport.append("\t\t<thead>\n");
-		htmlReport.append("\t\t\t<tr>\n");
-		htmlReport.append("\t\t\t<th colspan=2>\n");
-		htmlReport.append("\t\t\t\tStore: ").append(shop.getName()).append("\n");
-		htmlReport.append("\t\t\t</th>\n");
-		htmlReport.append("\t\t\t\t</tr>\n");	
-		htmlReport.append("\t\t</thead>\n");
-		
-		htmlReport.append("\t\t<tbody>");
 		if( products != null && products.size() > 0 ){
+
+			htmlReport.append("\t\t<thead>\n");
+			htmlReport.append("\t\t\t<tr>\n");
+			htmlReport.append("\t\t\t<th colspan=2>\n");
+			htmlReport.append("\t\t\t\t<a href='").append( products.get(0).getSearchedURL() ).append("'>\n");
+			htmlReport.append("\t\t\t\t\tStore: ").append(shop.getName()).append("\n");
+			htmlReport.append("\t\t\t\t</a>\n");
+			htmlReport.append("\t\t\t</th>\n");
+			htmlReport.append("\t\t\t\t</tr>\n");
+			htmlReport.append("\t\t</thead>\n");
+
+			htmlReport.append("\t\t<tbody>");
+
 			for( Product product: products){
 				htmlReport.append("\t\t\t<tr>\n");
 				htmlReport.append("\t\t\t\t<td style='width: 80%;'>\n");

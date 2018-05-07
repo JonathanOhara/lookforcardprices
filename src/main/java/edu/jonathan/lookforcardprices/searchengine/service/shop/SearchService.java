@@ -33,7 +33,7 @@ public abstract class SearchService {
 
 		afterResultListener(resultsPage);
 
-		List<Product> products = readProductsAt(resultsPage, shop, productName);
+		List<Product> products = readProductsAt(resultsPage, shop, productName, resultsPageURL);
 		System.out.println("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
 
 		System.out.println("\t\tProducts size: "+products.size());
@@ -54,16 +54,16 @@ public abstract class SearchService {
 		return Util.readUrlDocument( resultsPageURL.toString() );
 	}
 
-	protected List<Product> readProductsAt(Document resultsPage, Shop shop, String productName){
+	protected List<Product> readProductsAt(Document resultsPage, Shop shop, String productName, URL resultsPageURL){
 		ResultPageSelectors selectors = getResultPageSelectors();
 
 		Elements els = resultsPage.select( selectors.singleProduct() );
 		System.out.println("\t\tResults Elements: "+els.size());
 
-		return readProductsData(els, selectors, shop, productName);
+		return readProductsData(els, selectors, shop, productName, resultsPageURL);
 	}
 
-	private List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName) {
+	private List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL) {
 		List<Product> products = new ArrayList<>(els.size());
 
 		String previewName, previewImageURL;
@@ -99,7 +99,7 @@ public abstract class SearchService {
 
 					available = isProductAvailable( productContainer );
 
-					products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, productContainer, formattedPrice ) );
+					products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, formattedPrice ) );
 				}
 			}else{
 				System.out.println("\t\tRemoved by name filter...");

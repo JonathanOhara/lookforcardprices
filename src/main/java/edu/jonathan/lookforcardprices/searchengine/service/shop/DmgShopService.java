@@ -3,6 +3,7 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //http://www.dmgcardshop.com/pesquisa?controller=search&orderby=position&orderway=desc&search_query=Prepara%C3%A7%C3%A3o+de+Ritos
@@ -11,7 +12,7 @@ public class DmgShopService extends SearchService{
 	private int resultsPerPage = 20;
 
     @Override
-    protected boolean isProductAvaliable(Element productContainer) {
+    protected boolean isProductAvailable(Element productContainer) {
         return !productContainer.select(".price").text().isEmpty();
     }
 

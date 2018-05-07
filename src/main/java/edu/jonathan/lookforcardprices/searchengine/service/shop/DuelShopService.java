@@ -3,6 +3,7 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //https://www.duelshop.com.br/procurar?controller=search&orderby=position&orderway=desc&search_query=Mirror+Force
@@ -11,7 +12,7 @@ public class DuelShopService extends SearchService{
 	private int resultsPerPage = 16;
 
     @Override
-    protected boolean isProductAvaliable(Element productContainer) {
+    protected boolean isProductAvailable(Element productContainer) {
         return productContainer.select(".produto-indisponivel").size() == 0;
     }
 

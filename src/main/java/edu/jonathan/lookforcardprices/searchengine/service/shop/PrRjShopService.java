@@ -3,6 +3,7 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //https://www.prrjcards.com.br/catalogsearch/result/index/?limit=36&q=monster+reborn
@@ -11,7 +12,7 @@ public class PrRjShopService extends SearchService{
 	private int resultsPerPage = 12;
 
     @Override
-    protected boolean isProductAvaliable(Element productContainer) {
+    protected boolean isProductAvailable(Element productContainer) {
         return productContainer.select(".out-of-stock").size() == 0;
     }
 
@@ -57,7 +58,7 @@ public class PrRjShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".price-box > p:last-child .price";
+				return ".price-box > p:last-child";
 			}
 		};
 	}

@@ -3,6 +3,7 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //https://mypcards.com/produto/index?ProdutoSearch%5Bquery%5D=Tuf%C3%A3o
@@ -11,7 +12,7 @@ public class MypDominionShopService extends SearchService{
 	private int resultsPerPage = 20;
 
     @Override
-    protected boolean isProductAvaliable(Element productContainer) {
+    protected boolean isProductAvailable(Element productContainer) {
         return !productContainer.select(".card-estatistica > b:eq(0)").text().isEmpty();
     }
 

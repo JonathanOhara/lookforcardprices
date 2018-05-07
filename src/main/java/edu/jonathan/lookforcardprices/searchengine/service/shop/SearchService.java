@@ -14,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public abstract class SearchService {
@@ -27,8 +28,10 @@ public abstract class SearchService {
 		URL resultsPageURL = prepareResultsPageURL(shop, productName, maxResultsPerPage);
 		System.out.println("\tTime to Prepare URL: "+(System.currentTimeMillis() - time));
 
-		Document resultsPage = readResults(resultsPageURL);
+		Document resultsPage = readResultsDocument(resultsPageURL);
 		System.out.println("\tTime to Reach URL: "+(System.currentTimeMillis() - time));
+
+		afterResultListener(resultsPage);
 
 		List<Product> products = readProductsAt(resultsPage, shop, productName);
 		System.out.println("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
@@ -47,7 +50,7 @@ public abstract class SearchService {
 		return resultsURL;
 	}
 
-	private Document readResults(URL resultsPageURL) throws IOException {
+	private Document readResultsDocument(URL resultsPageURL) throws IOException {
 		return Util.readUrlDocument( resultsPageURL.toString() );
 	}
 
@@ -66,28 +69,38 @@ public abstract class SearchService {
 		String previewName, previewImageURL;
 		String individualUrl, formattedPrice;
 		boolean available;
-		Element productContainer;
 
 		ResultNameFilter resultNameFilter = getResultNameFilter();
-		for( Element element : els ){
-			productContainer = element;
 
-			previewName = productContainer.select(selectors.productName()).text();
+		if(els.size() > 0 && isFirstResultTitle()){
+			els.remove(0);
+		}
+
+		for( Element element : els ){
+			Element productContainer = element;
+
+			previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 
 			System.out.println("\t\tPreview name: "+previewName);
 
 			if( resultNameFilter.isValid(previewName, productName) ){
 				previewImageURL = Util.completeURL( shop.getMainUrl(), productContainer.select( selectors.productImageURL() ).attr("src") );
 
-				individualUrl = productContainer.select("a").first().attr("href");
+				individualUrl = getItemUrl(productContainer);
 
 				individualUrl = Util.completeURL( shop.getMainUrl(), individualUrl );
 
-				formattedPrice = productContainer.select( selectors.productPrice() ).text();
+				Elements priceElements = productContainer.select( selectors.productPrice() );
 
-				available = isProductAvaliable( productContainer );
+				for (Element priceElement : priceElements){
+					formattedPrice = priceElement.text().trim();
 
-				products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, productContainer, formattedPrice ) );
+					formattedPrice = formattedPrice.isEmpty() ? "Unable to get price" : formattedPrice;
+
+					available = isProductAvailable( productContainer );
+
+					products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, productContainer, formattedPrice ) );
+				}
 			}else{
 				System.out.println("\t\tRemoved by name filter...");
 			}
@@ -96,7 +109,15 @@ public abstract class SearchService {
 		return products;
 	}
 
-	protected abstract boolean isProductAvaliable(Element productContainer);
+	protected String getItemUrl(Element productContainer) {
+		return productContainer.select("a").first().attr("href");
+	}
+
+	protected void afterResultListener(Document resultsPage){}
+
+	protected boolean isFirstResultTitle(){ return false; }
+
+	protected abstract boolean isProductAvailable(Element productContainer);
 
 	protected abstract String getSearchUrlSample(String mainUrl);
 

@@ -3,6 +3,7 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=mirror+force
@@ -10,8 +11,8 @@ public class CoolAndStuffShopService extends SearchService{
 
 	private int resultsPerPage = 25;
 
-    @Override
-    protected boolean isProductAvaliable(Element productContainer) {
+	@Override
+    protected boolean isProductAvailable(Element productContainer) {
         return !"Out of Stock".equals( productContainer.select(".pPrice").text() );
     }
 

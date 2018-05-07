@@ -3,28 +3,56 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 //Result Page:
 //https://www.lojadotoguro.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Mirror+Force
-//Direct to Product
+//Direct to Product:
 //https://www.fenixhousetcg.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Invoked+Raidjin
 public class ToguroFenixShopService extends SearchService{
 
 	private int resultsPerPage = 12;
 
+	private ResultMode resultMode = ResultMode.SEARCH_PAGE;
+
 	@Override
-	protected boolean isProductAvaliable(Element productContainer) {
-		return !"Indisponível".equals(productContainer.select(".produto-qtd").text());
+	protected boolean isProductAvailable(Element productContainer) {
+		switch (resultMode){
+			case PRODUCT_PAGE:
+				return !"0 unid.".equals(productContainer.select("td:nth-child(5)").text().trim());
+			case SEARCH_PAGE:
+			default:
+				Elements quantityColumn = productContainer.select(".pQtyP");
+				if( quantityColumn.size() > 0 && "0 unid.".equals(quantityColumn.text()) ){
+					return false;
+				}
+
+				Elements divsForPrice = productContainer.select("table > tbody > tr > td:nth-child(1) > div:nth-child(1) div");
+				boolean unavailable = divsForPrice.size() == 1 && divsForPrice.hasClass("vBsOa");
+				return !unavailable;
+		}
+	}
+
+	@Override
+	protected String getItemUrl(Element productContainer) {
+		switch (resultMode){
+			case PRODUCT_PAGE:
+				return productContainer.ownerDocument().location();
+			case SEARCH_PAGE:
+			default:
+				return super.getItemUrl(productContainer);
+		}
 	}
 
 	@Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "busca?" +
-                "pg=15" +
-				"&categoria=" +
-				"&qtdview=" + resultsPerPage  +
-				"&pesq=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "?" +
+				"view=ecom%2Fitens" +
+                "&id=71080" +
+                "&searchExactMatch=" +
+				"&busca=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
@@ -47,12 +75,25 @@ public class ToguroFenixShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".products_container .product_item";
+				switch (resultMode){
+					case PRODUCT_PAGE:
+						return "div.itemMain > table > tbody > tr > td:nth-child(2) > div:nth-child(3) > table > tbody > tr";
+					case SEARCH_PAGE:
+					default:
+						return ".pProdItens";
+				}
 			}
 
 			@Override
 			public String productName() {
-				return "figcaption h5 a:eq(0)";
+				switch (resultMode){
+					case PRODUCT_PAGE:
+					    //body > table > tbody > tr:nth-child(2) > td > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(2) > table > tbody > tr > td:nth-child(2) > div.itemMain > table > tbody > tr > td:nth-child(2) > table > tbody > tr > td:nth-child(1) > div > b
+						return null;
+					case SEARCH_PAGE:
+					default:
+						return ".xtitleP";
+				}
 			}
 
 			@Override
@@ -62,8 +103,42 @@ public class ToguroFenixShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".scheme_color > span:last-child";
+				switch (resultMode){
+					case PRODUCT_PAGE:
+						return ".itemPreco";
+					case SEARCH_PAGE:
+					default:
+						return ".pPrecoP";
+				}
 			}
 		};
+	}
+
+	@Override
+	protected boolean isFirstResultTitle() {
+		switch (resultMode){
+			case PRODUCT_PAGE:
+				return true;
+			case SEARCH_PAGE:
+			default:
+				return false;
+		}
+	}
+
+	@Override
+	protected void afterResultListener(Document resultsPage) {
+
+		String title = resultsPage.title();
+
+		if(!title.contains("Busca por")){
+			resultMode = ResultMode.PRODUCT_PAGE;
+		}
+
+		System.out.println("RESULT MODE: "+resultMode);
+	}
+
+	private enum ResultMode{
+		SEARCH_PAGE,
+		PRODUCT_PAGE
 	}
 }

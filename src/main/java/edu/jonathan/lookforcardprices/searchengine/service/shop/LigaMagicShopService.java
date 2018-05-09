@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 //https://www.lojadotoguro.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Mirror+Force
 //Direct to Product:
 //https://www.fenixhousetcg.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Invoked+Raidjin
-public class ToguroFenixShopService extends SearchService{
+public class LigaMagicShopService extends SearchService{
 
 	private int resultsPerPage = 12;
 

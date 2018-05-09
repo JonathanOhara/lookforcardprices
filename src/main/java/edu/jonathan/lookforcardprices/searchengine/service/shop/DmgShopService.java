@@ -45,7 +45,7 @@ public class DmgShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".product_list div";
+				return ".ajax_block_product";
 			}
 
 			@Override

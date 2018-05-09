@@ -24,16 +24,17 @@ public class SearchEngine {
 
     public void registerBrazilianShops(){
         register(new Shop("Domain", "http://www.domaingames.com.br/"), CDI.current().select(DomainShopService.class).get() );
-        register(new Shop("Duel Shop", "https://www.duelshop.com.br/"), CDI.current().select(DuelShopService.class).get() ); /** TODO Verify */
+        register(new Shop("Duel Shop", "https://www.duelshop.com.br/"), CDI.current().select(DuelShopService.class).get() );
         register(new Shop("PrRj", "https://www.prrjcards.com.br/"), CDI.current().select(PrRjShopService.class).get() );
         register(new Shop("Solo Sagrado", "https://www.solosagrado.com.br/"), CDI.current().select(SoloSagradoShopService.class).get() );
         register(new Shop("Toguro", "https://www.lojadotoguro.com.br/"), CDI.current().select(ToguroFenixShopService.class).get() );
         register(new Shop("MTG Cards", "https://www.mtgcards.com.br/"), CDI.current().select(MTGCardGamesShopService.class).get() );
         register(new Shop("Legion CG", "https://www.legioncg.com.br/"), CDI.current().select(LegionCGShopService.class).get() );
         register(new Shop("Fenix House TCG", "https://www.fenixhousetcg.com.br/"), CDI.current().select(ToguroFenixShopService.class).get() );
-        register(new Shop("Myp Cards", "https://mypcards.com/"), CDI.current().select(MypDominionShopService.class).get() ); /** TODO Verify */
-        register(new Shop("DMG", "http://www.dmgcardshop.com/"), CDI.current().select(DmgShopService.class).get() ); /** TODO Verify */
-        register(new Shop("Mercado Livre", "https://www.mercadolivre.com.br/"), CDI.current().select(MercadoLivreShopService.class).get() ); /** TODO Verify */
+        register(new Shop("Central Geek", "https://www.lojacentralgeek.com.br/"), CDI.current().select(ToguroFenixShopService.class).get() );
+        register(new Shop("Myp Cards", "https://mypcards.com/"), CDI.current().select(MypDominionShopService.class).get() );
+        register(new Shop("DMG", "http://www.dmgcardshop.com/"), CDI.current().select(DmgShopService.class).get() );
+        register(new Shop("Mercado Livre", "https://www.mercadolivre.com.br/"), CDI.current().select(MercadoLivreShopService.class).get() );
 
     }
 

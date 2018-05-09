@@ -82,12 +82,13 @@ public class Util {
 		Document doc = null;
 		try{
 			doc = Jsoup.connect(url)
-					.userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
+					.userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36")
 					.referrer("http://www.google.com")
-					.timeout(20000)
+					.timeout(30000)
+					.validateTLSCertificates(false)
 					.get();
 		}catch(Exception e){
-			System.out.println(e.getCause() + "Try to connect by another way..");
+			System.out.println(e.getCause() + "\nTry to connect by another way..");
 			doc = parseDocument( readUrl(url, null) );
 		}
 		return doc;
@@ -176,7 +177,15 @@ public class Util {
 	
 	public static String completeURL(String baseUrl, String individualUrl){
 		String absoluteUrl = individualUrl;
-		
+
+		if(individualUrl.isEmpty()){
+			return "";
+		}
+
+		if(individualUrl.startsWith("http")){
+			return individualUrl;
+		}
+
 		if( !individualUrl.contains( baseUrl ) ){
 			if(individualUrl.charAt(0) == '/'){
 				absoluteUrl = baseUrl + individualUrl.substring(1);	

@@ -6,7 +6,7 @@ import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilt
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-//https://mypcards.com/produto/index?ProdutoSearch%5Bquery%5D=Tuf%C3%A3o
+//https://mypcards.com/produto/index?ProdutoSearch%5Bquery%5D=monster+reborn
 public class MypDominionShopService extends SearchService{
 
 	private int resultsPerPage = 20;
@@ -20,7 +20,7 @@ public class MypDominionShopService extends SearchService{
 	protected String getSearchUrlSample(String mainUrl) {
 		return mainUrl + "produto/index?" +
 				//"&results=" + resultsPerPage  +
-				"&ProdutoSearch%5Bquery%5D=" + URL_SEARCH_SAMPLE;
+				"ProdutoSearch%5Bquery%5D=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class MypDominionShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".stream-list li";
+				return "ul.stream-list > li.stream-item";
 			}
 
 			@Override

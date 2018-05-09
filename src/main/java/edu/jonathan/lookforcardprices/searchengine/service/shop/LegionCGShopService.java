@@ -3,7 +3,6 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //https://www.legioncg.com.br/?view=ecom%2Fitens&page=1&id=40666&comdesconto=&fOrder=1&btFiltrar=Filtrar&fShow=160&busca=mirror+force

@@ -3,7 +3,6 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 //http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada

@@ -1,6 +1,7 @@
 package edu.jonathan.lookforcardprices.comom;
 
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -83,11 +84,13 @@ public class Util {
 		try{
 			doc = Jsoup.connect(url)
 					.userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36")
-					.referrer("http://www.google.com")
 					.timeout(30000)
+					.method(Connection.Method.GET)
 					.validateTLSCertificates(false)
-					.get();
+					.execute()
+					.parse();
 		}catch(Exception e){
+			e.printStackTrace();
 			System.out.println(e.getCause() + "\nTry to connect by another way..");
 			doc = parseDocument( readUrl(url, null) );
 		}

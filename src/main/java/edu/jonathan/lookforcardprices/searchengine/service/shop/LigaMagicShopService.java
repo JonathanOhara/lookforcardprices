@@ -9,6 +9,7 @@ import org.jsoup.select.Elements;
 
 //Result Page:
 //https://www.lojadotoguro.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Mirror+Force
+//https://www.hotyugioh.com.br/?view=ecom%2Fitens&id=155440&searchExactMatch=&busca=mirror
 //Direct to Product:
 //https://www.fenixhousetcg.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Invoked+Raidjin
 public class LigaMagicShopService extends SearchService{

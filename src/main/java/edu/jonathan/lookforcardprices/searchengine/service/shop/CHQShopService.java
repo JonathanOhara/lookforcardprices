@@ -5,41 +5,35 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Element;
 
-//https://lista.mercadolivre.com.br/invoked-raidjin
-//https://lista.mercadolivre.com.br/brinquedos-hobbies/cards-card-games/card-game/yu-gi-oh/reviver-monstro#D[A:reviver-monstro,OC:MLB6901]
-public class MercadoLivreShopService extends SearchService{
+//https://www.chq.com.br/Busca.aspx?strBusca=mirror+force
+public class CHQShopService extends SearchService{
 
 	private int resultsPerPage = 12;
-	private boolean searchInYuGiOh = true;
 
-	@Override
-	protected boolean isProductAvailable(Element productContainer) {
-		return true;
-	}
+    @Override
+    protected boolean isProductAvailable(Element productContainer) {
+        return productContainer.select("input[src=Eshop.Admin/Imagens/Templates/Minimalist/btn-comprar.gif]").size() == 1;
+    }
 
-	@Override
+    @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		String urlText = "https://lista.mercadolivre.com.br/";
-		if( searchInYuGiOh ){
-			urlText += 	"brinquedos-hobbies/cards-card-games/card-game/yu-gi-oh/";
-		}
-
-		return urlText + URL_SEARCH_SAMPLE;
+		return mainUrl + "Busca.aspx?" +
+				"strBusca=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 24;
+		resultsPerPage = 36;
 	}
 
 	@Override
 	protected String replaceUrlWithEncodedProductName(String url, String productName) {
-		return Util.prepareUrlMode2( url, productName );
+		return Util.prepareUrlMode1( url, productName );
 	}
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.contains();
+		return ResultNameFilter.noFilter();
 	}
 
 	@Override
@@ -47,12 +41,12 @@ public class MercadoLivreShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#searchResults > li";
+				return ".product-card";
 			}
 
 			@Override
 			public String productName() {
-				return ".item__title";
+				return ".title-product";
 			}
 
 			@Override
@@ -62,7 +56,7 @@ public class MercadoLivreShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".item__price";
+				return ".price-product";
 			}
 		};
 	}

@@ -12,7 +12,7 @@ public class ColyseumShopService extends SearchService{
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return "Fora de Estoque".equalsIgnoreCase(productContainer.select(".button-group").text().trim());
+        return !"Fora de Estoque".equalsIgnoreCase(productContainer.select(".button-group").text().trim());
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ColyseumShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".product-layout";
+				return ".product-grid";
 			}
 
 			@Override

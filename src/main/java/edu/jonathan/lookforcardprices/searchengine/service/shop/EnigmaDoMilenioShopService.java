@@ -34,7 +34,7 @@ public class EnigmaDoMilenioShopService extends SearchService{
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.contains();
 	}
 
 	@Override

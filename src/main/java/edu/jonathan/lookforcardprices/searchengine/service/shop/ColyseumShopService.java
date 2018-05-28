@@ -42,7 +42,7 @@ public class ColyseumShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".product-grid";
+				return ".product-list";
 			}
 
 			@Override

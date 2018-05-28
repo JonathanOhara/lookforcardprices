@@ -37,7 +37,7 @@ public class SearchEngine {
         register(new Shop("Myp Cards", "https://mypcards.com/"), CDI.current().select(MypDominionShopService.class).get() );
         register(new Shop("DMG", "http://www.dmgcardshop.com/"), CDI.current().select(DmgShopService.class).get() );
         register(new Shop("Enigma do Milenio", "http://www.enigmadomilenio.com.br/"), CDI.current().select(EnigmaDoMilenioShopService.class).get() );
-        register(new Shop("colyseum", "https://www.colyseum.com/"), CDI.current().select(ColyseumShopService.class).get() );
+        register(new Shop("Colyseum", "https://www.colyseum.com/"), CDI.current().select(ColyseumShopService.class).get() );
         register(new Shop("Mercado Livre", "https://www.mercadolivre.com.br/"), CDI.current().select(MercadoLivreShopService.class).get() );
     }
 

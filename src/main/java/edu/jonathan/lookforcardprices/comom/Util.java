@@ -57,7 +57,7 @@ public class Util {
 		while (true) {
 			if (line == null) break;
 			line = buffRead.readLine();
-			if (line != null) stringList.add(line);
+			if (line != null && !line.trim().isEmpty()) stringList.add(line);
 		}
 		
 		buffRead.close();

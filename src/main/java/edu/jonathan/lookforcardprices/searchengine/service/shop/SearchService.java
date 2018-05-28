@@ -31,6 +31,7 @@ public abstract class SearchService {
 		Document resultsPage = readResultsDocument(resultsPageURL);
 		System.out.println("\tTime to Reach URL: "+(System.currentTimeMillis() - time));
 
+//		System.out.println(resultsPage);
 		afterResultListener(resultsPage);
 
 		List<Product> products = readProductsAt(resultsPage, shop, productName, resultsPageURL);

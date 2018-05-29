@@ -1,32 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//http://www.dmgcardshop.com/pesquisa?controller=search&orderby=position&orderway=desc&search_query=Prepara%C3%A7%C3%A3o+de+Ritos
-public class DmgShopService extends SearchService{
+//https://mypcards.com/produto/index?ProdutoSearch%5Bquery%5D=monster+reborn
+public class MypDominionShopService extends SearchService {
 
 	private int resultsPerPage = 20;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return !productContainer.select(".price").text().isEmpty();
+        return !productContainer.select(".card-estatistica > b:eq(0)").text().isEmpty();
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "pesquisa?" +
-				"&controller=search" +
-				"&orderby=position" +
-				"&orderway=desc" +
-				"&search_query=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "produto/index?" +
+				//"&results=" + resultsPerPage  +
+				"ProdutoSearch%5Bquery%5D=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 40;
+		resultsPerPage = 50;
 	}
 
 	@Override
@@ -44,22 +43,22 @@ public class DmgShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".ajax_block_product";
+				return "ul.stream-list > li.stream-item";
 			}
 
 			@Override
 			public String productName() {
-				return ".product-name";
+				return ".card-name div:eq(0)";
 			}
 
 			@Override
 			public String productImageURL() {
 				return "img:eq(0)";
-			}
+			} //BackgroundImage
 
 			@Override
 			public String productPrice() {
-				return ".price";
+				return ".card-estatistica > b:eq(1)";
 			}
 		};
 	}

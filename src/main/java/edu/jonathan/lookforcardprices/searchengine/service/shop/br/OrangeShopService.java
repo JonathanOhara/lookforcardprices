@@ -1,30 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://mypcards.com/produto/index?ProdutoSearch%5Bquery%5D=monster+reborn
-public class MypDominionShopService extends SearchService{
+//http://www.orangecardshop.com.br/index.php?route=product/search&filter_name=mirror&limit=100
+public class OrangeShopService extends SearchService {
 
 	private int resultsPerPage = 20;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return !productContainer.select(".card-estatistica > b:eq(0)").text().isEmpty();
+        return !"Esgotado".equalsIgnoreCase(productContainer.select(".cart").text().trim());
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "produto/index?" +
-				//"&results=" + resultsPerPage  +
-				"ProdutoSearch%5Bquery%5D=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "index.php?route=product/search" +
+				"&limit=" + resultsPerPage  +
+				"&filter_name=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 50;
+		resultsPerPage = 100;
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class MypDominionShopService extends SearchService{
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.contains();
 	}
 
 	@Override
@@ -42,22 +43,22 @@ public class MypDominionShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "ul.stream-list > li.stream-item";
+				return ".product-list  > div";
 			}
 
 			@Override
 			public String productName() {
-				return ".card-name div:eq(0)";
+				return ".name";
 			}
 
 			@Override
 			public String productImageURL() {
 				return "img:eq(0)";
-			} //BackgroundImage
+			}
 
 			@Override
 			public String productPrice() {
-				return ".card-estatistica > b:eq(1)";
+				return ".price";
 			}
 		};
 	}

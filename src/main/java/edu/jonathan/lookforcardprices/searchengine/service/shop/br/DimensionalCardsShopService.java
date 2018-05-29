@@ -1,32 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=mirror+force
-public class CoolAndStuffShopService extends SearchService{
+//https://www.dimensionalcards.com.br/search/?q=mirror
+public class DimensionalCardsShopService extends SearchService {
 
-	private int resultsPerPage = 25;
+	private int resultsPerPage = 20;
 
-	@Override
+    @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return !"Out of Stock".equals( productContainer.select(".pPrice").text() );
+        return productContainer.select(".label-no-stock").size() == 0;
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "main_search.php?" +
-				"&pa=searchOnName" +
-				"&page=1" +
-				"&resultsPerPage=" + resultsPerPage  +
-				"&q=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "search/?" +
+//				"&limit=" + resultsPerPage  +
+				"q=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 50;
+		resultsPerPage = 100;
 	}
 
 	@Override
@@ -36,7 +35,7 @@ public class CoolAndStuffShopService extends SearchService{
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.contains();
 	}
 
 	@Override
@@ -44,12 +43,12 @@ public class CoolAndStuffShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#searchResults > tbody > tr";
+				return ".item-container";
 			}
 
 			@Override
 			public String productName() {
-				return "h3 a";
+				return ".item-info-container a";
 			}
 
 			@Override
@@ -59,7 +58,7 @@ public class CoolAndStuffShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".pPrice span";
+				return ".item-price";
 			}
 		};
 	}

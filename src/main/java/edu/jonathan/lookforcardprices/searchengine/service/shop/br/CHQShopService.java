@@ -1,33 +1,30 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://www.duelshop.com.br/procurar?controller=search&orderby=position&orderway=desc&search_query=Mirror+Force
-public class DuelShopService extends SearchService{
+//https://www.chq.com.br/Busca.aspx?strBusca=mirror+force
+public class CHQShopService extends SearchService {
 
-	private int resultsPerPage = 16;
+	private int resultsPerPage = 12;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return productContainer.select(".produto-indisponivel").size() == 0;
+        return productContainer.select("input[src=Eshop.Admin/Imagens/Templates/Minimalist/btn-comprar.gif]").size() == 1;
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "procurar?" +
-				"controller=search" +
-				"&orderby=position" +
-				"&orderway=desc" +
-				"&n=" + resultsPerPage +
-				"&search_query=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "Busca.aspx?" +
+				"strBusca=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 40;
+		resultsPerPage = 36;
 	}
 
 	@Override
@@ -45,12 +42,12 @@ public class DuelShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".product_list  li";
+				return ".product-card";
 			}
 
 			@Override
 			public String productName() {
-				return "h5";
+				return ".title-product";
 			}
 
 			@Override
@@ -60,7 +57,7 @@ public class DuelShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".right-block .content_price .price";
+				return ".price-product";
 			}
 		};
 	}

@@ -1,29 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://www.chq.com.br/Busca.aspx?strBusca=mirror+force
-public class CHQShopService extends SearchService{
+//http://www.mtgcards.com.br/index.php?route=product/search&search=covil%20das%20trevas
+public class MTGCardGamesShopService extends SearchService {
 
-	private int resultsPerPage = 12;
+	private int resultsPerPage = 15;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return productContainer.select("input[src=Eshop.Admin/Imagens/Templates/Minimalist/btn-comprar.gif]").size() == 1;
-    }
+		return "0 unid".equals( productContainer.select(":nth-child(2) td:eq(1)").text() );
+	}
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "Busca.aspx?" +
-				"strBusca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "index.php?route=product/search" +
+				"&limit=" + resultsPerPage +
+				"&search=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 36;
+		resultsPerPage = 100;
 	}
 
 	@Override
@@ -41,12 +43,12 @@ public class CHQShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".product-card";
+				return ".product-list > div";
 			}
 
 			@Override
 			public String productName() {
-				return ".title-product";
+				return ".name";
 			}
 
 			@Override
@@ -56,7 +58,7 @@ public class CHQShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".price-product";
+				return ".price";
 			}
 		};
 	}

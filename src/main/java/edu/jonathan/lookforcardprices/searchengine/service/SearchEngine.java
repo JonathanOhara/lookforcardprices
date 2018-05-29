@@ -4,6 +4,9 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.*;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.br.*;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.en.CoolAndStuffShopService;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.en.TrollAndToadShopService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.spi.CDI;
@@ -31,6 +34,7 @@ public class SearchEngine {
         register(new Shop("Fenix House TCG", "https://www.fenixhousetcg.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
         register(new Shop("Central Geek", "https://www.lojacentralgeek.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
         register(new Shop("Hot yugioh", "https://www.hotyugioh.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
+        register(new Shop("Overrun", "https://www.overrun.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
         register(new Shop("CHQ", "https://www.chq.com.br/"), CDI.current().select(CHQShopService.class).get() );
         register(new Shop("MTG Cards", "https://www.mtgcards.com.br/"), CDI.current().select(MTGCardGamesShopService.class).get() );
         register(new Shop("Legion CG", "https://www.legioncg.com.br/"), CDI.current().select(LegionCGShopService.class).get() );
@@ -38,11 +42,16 @@ public class SearchEngine {
         register(new Shop("DMG", "http://www.dmgcardshop.com/"), CDI.current().select(DmgShopService.class).get() );
         register(new Shop("Enigma do Milenio", "http://www.enigmadomilenio.com.br/"), CDI.current().select(EnigmaDoMilenioShopService.class).get() );
         register(new Shop("Colyseum", "https://www.colyseum.com/"), CDI.current().select(ColyseumShopService.class).get() );
+        register(new Shop("Orange Card Shop", "http://www.orangecardshop.com.br/"), CDI.current().select(OrangeShopService.class).get() );
+        register(new Shop("Dimensional Cards", "https://www.dimensionalcards.com.br/"), CDI.current().select(DimensionalCardsShopService.class).get() );
         register(new Shop("Mercado Livre", "https://www.mercadolivre.com.br/"), CDI.current().select(MercadoLivreShopService.class).get() );
+
     }
 
     public void registerUSAShops(){
         register(new Shop("Cool And Stuff", "https://www.coolstuffinc.com/"), CDI.current().select(CoolAndStuffShopService.class).get() );
+        register(new Shop("Troll and Toad", "https://www.trollandtoad.com/"), CDI.current().select(TrollAndToadShopService.class).get() );
+        //trool and toad
     }
 
     public void register(Shop shop, SearchService shopImplementation){
@@ -80,7 +89,7 @@ public class SearchEngine {
 
                 productsFounded.addAll( searchService.run(shop, productMainName, maxResultsPerPage) );
 
-                if(otherName != null)
+                if(otherName != null && searchService.hasPortugueseOption())
                     productsFounded.addAll( searchService.run(shop, otherName, maxResultsPerPage) );
 
                 productsByName.put( productMainName, productsFounded );

@@ -1,30 +1,35 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//http://www.mtgcards.com.br/index.php?route=product/search&search=covil%20das%20trevas
-public class MTGCardGamesShopService extends SearchService{
+//http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
+public class DomainShopService extends SearchService {
 
-	private int resultsPerPage = 15;
+	private int resultsPerPage = 12;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-		return "0 unid".equals( productContainer.select(":nth-child(2) td:eq(1)").text() );
-	}
+        return !productContainer.select(".estoque").text().trim().isEmpty();
+    }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "index.php?route=product/search" +
-				"&limit=" + resultsPerPage +
-				"&search=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "Ajax_Funcoes.asp?" +
+				"IsNovoCfg=true" +
+				"&Pagina=1" +
+				"&OrganizarPor=3" +
+				"&Funcao=BuscaAvancada" +
+				"&ResultadoPorPagina=" + resultsPerPage  +
+				"&busca=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 100;
+		resultsPerPage = 21;
 	}
 
 	@Override
@@ -42,12 +47,12 @@ public class MTGCardGamesShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".product-list > div";
+				return "#ListadeProdutosAvancada li";
 			}
 
 			@Override
 			public String productName() {
-				return ".name";
+				return ".card_name .portugues a";
 			}
 
 			@Override
@@ -57,7 +62,7 @@ public class MTGCardGamesShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".price";
+				return ".vista";
 			}
 		};
 	}

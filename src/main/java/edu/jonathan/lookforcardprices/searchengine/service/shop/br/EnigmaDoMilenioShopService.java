@@ -1,30 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://www.prrjcards.com.br/catalogsearch/result/index/?limit=36&q=monster+reborn
-public class PrRjShopService extends SearchService{
+//http://www.enigmadomilenio.com.br/loja/search?search_query=nekroz&orderby=position&orderway=desc&search_query=nekroz&submit_search=&n=90
+public class EnigmaDoMilenioShopService extends SearchService {
 
-	private int resultsPerPage = 12;
+	private int resultsPerPage = 18;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return productContainer.select(".out-of-stock").size() == 0;
+        return productContainer.select(".label-danger").size() == 0;
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "catalogsearch/result/index/?" +
-				"&limit=" + resultsPerPage  +
-				"&q=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "loja/search?search_query=nekroz&orderby=position&orderway=desc" +
+				"&n=" + resultsPerPage  +
+				"&search_query=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 36;
+		resultsPerPage = 90;
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class PrRjShopService extends SearchService{
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.contains();
 	}
 
 	@Override
@@ -42,12 +43,12 @@ public class PrRjShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".products-grid .item";
+				return "#product_list > li";
 			}
 
 			@Override
 			public String productName() {
-				return ".product-name";
+				return "h5";
 			}
 
 			@Override
@@ -57,7 +58,7 @@ public class PrRjShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".price-box > p:last-child";
+				return ".product-price";
 			}
 		};
 	}

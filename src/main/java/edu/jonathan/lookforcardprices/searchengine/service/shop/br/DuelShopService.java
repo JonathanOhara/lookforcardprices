@@ -1,30 +1,34 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//http://www.enigmadomilenio.com.br/loja/search?search_query=nekroz&orderby=position&orderway=desc&search_query=nekroz&submit_search=&n=90
-public class EnigmaDoMilenioShopService extends SearchService{
+//https://www.duelshop.com.br/procurar?controller=search&orderby=position&orderway=desc&search_query=Mirror+Force
+public class DuelShopService extends SearchService {
 
-	private int resultsPerPage = 18;
+	private int resultsPerPage = 16;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return productContainer.select(".label-danger").size() == 0;
+        return productContainer.select(".produto-indisponivel").size() == 0;
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "loja/search?search_query=nekroz&orderby=position&orderway=desc" +
-				"&n=" + resultsPerPage  +
+		return mainUrl + "procurar?" +
+				"controller=search" +
+				"&orderby=position" +
+				"&orderway=desc" +
+				"&n=" + resultsPerPage +
 				"&search_query=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 90;
+		resultsPerPage = 40;
 	}
 
 	@Override
@@ -34,7 +38,7 @@ public class EnigmaDoMilenioShopService extends SearchService{
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.contains();
+		return ResultNameFilter.noFilter();
 	}
 
 	@Override
@@ -42,7 +46,7 @@ public class EnigmaDoMilenioShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return "#product_list > li";
+				return ".product_list  li";
 			}
 
 			@Override
@@ -57,7 +61,7 @@ public class EnigmaDoMilenioShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".product-price";
+				return ".right-block .content_price .price";
 			}
 		};
 	}

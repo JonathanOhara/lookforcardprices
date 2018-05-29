@@ -1,8 +1,9 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -12,7 +13,7 @@ import org.jsoup.select.Elements;
 //https://www.hotyugioh.com.br/?view=ecom%2Fitens&id=155440&searchExactMatch=&busca=mirror
 //Direct to Product:
 //https://www.fenixhousetcg.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Invoked+Raidjin
-public class LigaMagicShopService extends SearchService{
+public class LigaMagicShopService extends SearchService {
 
 	private int resultsPerPage = 12;
 
@@ -134,8 +135,6 @@ public class LigaMagicShopService extends SearchService{
 		if(!title.contains("Busca por")){
 			resultMode = ResultMode.PRODUCT_PAGE;
 		}
-
-		System.out.println("RESULT MODE: "+resultMode);
 	}
 
 	private enum ResultMode{

@@ -1,28 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-
-//https://www.solosagrado.com.br/busca?pg=15&pesq=mirror&categoria=&view=&ord=2&pagina=1&qtdview=24
-public class SoloSagradoShopService extends SearchService{
+//https://lista.mercadolivre.com.br/invoked-raidjin
+//https://lista.mercadolivre.com.br/brinquedos-hobbies/cards-card-games/card-game/yu-gi-oh/reviver-monstro#D[A:reviver-monstro,OC:MLB6901]
+public class MercadoLivreShopService extends SearchService {
 
 	private int resultsPerPage = 12;
+	private boolean searchInYuGiOh = true;
 
 	@Override
 	protected boolean isProductAvailable(Element productContainer) {
-		return !"Indisponível".equals(productContainer.select(".produto-qtd").text().trim());
+		return true;
 	}
 
 	@Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "busca?" +
-                "pg=15" +
-				"&categoria=" +
-				"&qtdview=" + resultsPerPage  +
-				"&pesq=" + URL_SEARCH_SAMPLE;
+		String urlText = "https://lista.mercadolivre.com.br/";
+		if( searchInYuGiOh ){
+			urlText += 	"brinquedos-hobbies/cards-card-games/card-game/yu-gi-oh/";
+		}
+
+		return urlText + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
@@ -32,12 +35,12 @@ public class SoloSagradoShopService extends SearchService{
 
 	@Override
 	protected String replaceUrlWithEncodedProductName(String url, String productName) {
-		return Util.prepareUrlMode1( url, productName );
+		return Util.prepareUrlMode2( url, productName );
 	}
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.contains();
 	}
 
 	@Override
@@ -45,12 +48,12 @@ public class SoloSagradoShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".products_container .product_item";
+				return "#searchResults > li";
 			}
 
 			@Override
 			public String productName() {
-				return "figcaption h5 a:eq(0)";
+				return ".item__title";
 			}
 
 			@Override
@@ -60,7 +63,7 @@ public class SoloSagradoShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".scheme_color > span:last-child";
+				return ".item__price";
 			}
 		};
 	}

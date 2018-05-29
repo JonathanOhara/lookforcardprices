@@ -137,7 +137,6 @@ public class TotalsReport {
 			productsByShop.put( product.getShopFounded(), products );
 		}
 
-		long time = System.currentTimeMillis();
 		GamesReport htmlReport = new GamesReport(productName);
 
 		String data = new SimpleDateFormat("dd/MM/yyyy").format(new Date());

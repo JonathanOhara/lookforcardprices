@@ -1,30 +1,31 @@
-package edu.jonathan.lookforcardprices.searchengine.service.shop;
+package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://www.legioncg.com.br/?view=ecom%2Fitens&page=1&id=40666&comdesconto=&fOrder=1&btFiltrar=Filtrar&fShow=160&busca=mirror+force
-public class LegionCGShopService extends SearchService{
+//https://www.colyseum.com/loja/index.php?route=product/search&search=Brionac&limit=100
+public class ColyseumShopService extends SearchService {
 
 	private int resultsPerPage = 20;
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return "0 unid.".equals(productContainer.select(".pQtyP").text());
+        return !"Fora de Estoque".equalsIgnoreCase(productContainer.select(".button-group").text().trim());
     }
 
     @Override
 	protected String getSearchUrlSample(String mainUrl) {
-		return mainUrl + "?view=ecom%2Fitens&page=1&id=40666&comdesconto=&fOrder=1&btFiltrar=Filtrar&" +
-				"&Show=" + resultsPerPage +
-				"&busca=" + URL_SEARCH_SAMPLE;
+		return mainUrl + "loja/index.php?route=product/search" +
+				"&limit=" + resultsPerPage  +
+				"&search=" + URL_SEARCH_SAMPLE;
 	}
 
 	@Override
 	protected void setMaxResultsPerPage() {
-		resultsPerPage = 160;
+		resultsPerPage = 100;
 	}
 
 	@Override
@@ -42,12 +43,12 @@ public class LegionCGShopService extends SearchService{
 		return new ResultPageSelectors() {
 			@Override
 			public String singleProduct() {
-				return ".pProdItens";
+				return ".product-list";
 			}
 
 			@Override
 			public String productName() {
-				return ".xtitleP";
+				return ".caption > h4";
 			}
 
 			@Override
@@ -57,7 +58,7 @@ public class LegionCGShopService extends SearchService{
 
 			@Override
 			public String productPrice() {
-				return ".pPrecoP";
+				return ".price";
 			}
 		};
 	}

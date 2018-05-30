@@ -1,3 +1,6 @@
+Snyffus
+Griggle
+Juragedo
 Aroma Jar|Jarra do Aromági
 Aromage Bergamot|Aromágico Bergamota
 Aromage Cananga|Aromágico Cananga
@@ -6,8 +9,6 @@ Aromage Rosemary|Aromágico Alecrim
 Chirubimé, Princess of Autumn Leaves|Chirubimé, Princesa das Folhas de Outono
 Crane Crane|Garça Guindaste
 Golden Ladybug|Joaninha Dourada
-Griggle
-Juragedo
 Lonefire Blossom|Florescer do Fogo Solitário
 Mathematician|Matemático
 Rose Lover|Amante das Rosas
@@ -18,4 +19,6 @@ Aromaseraphy Angelica|Aromági-serafim Angélica
 Copy Plant|Planta Copiadora
 Debris Dragon|Dragão do Escombro
 Glow-Up Bulb|Bulbo Brilhante
-Snyffus
+
+Aromaseraphy Jasmine
+Missus Radiant|Missis Radiante

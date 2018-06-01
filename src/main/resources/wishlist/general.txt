@@ -10,7 +10,9 @@ Breaker the Magical Warrior|Breaker, o Guerreiro Mágico
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
 Neo-Spacian Grand Mole|Grande Toupeira Neoespacial
 Spirit Reaper|Ceifeiro de Espíritos
+PSY-Frame Driver|PSÍ-Armação Condutor
 
+PSY-Framegear Gamma|PSÍ-Armação Equipamento Gama
 Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
 Ghost Ogre & Snow Rabbit|Ogro Fantasma & Coelho da Neve
 Ghost Reaper & Winter Cherries|Ceifador Fantasma & Cerejas de Inverno

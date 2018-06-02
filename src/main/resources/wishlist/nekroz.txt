@@ -1,20 +1,20 @@
-dance princess of the nekroz|Princesa da Dança de Necroz
-great sorcerer of the nekroz|Grande Feiticeiro de Necroz
+Dance princess of the nekroz|Princesa da Dança de Necroz
+Great sorcerer of the nekroz|Grande Feiticeiro de Necroz
 SHURIT, STRATEGIST OF THE NEKROZ|SHURIT, STRATEGIST OF THE NEKROZ
 
-Nekroz the decisive armor|Necroz da Armadura Decisiva
-nekroz of trishula|	Necroz de Trishula
-nekroz of valkyrus|Necroz de Valkyrus
-nekroz of gungnir|Necroz de Gungnir
-nekroz of brionac|Necroz de Brionac
-NEKROZ OF UNICORE|Necroz de Unicore
+Nekroz of brionac|Necroz de Brionac
 Nekroz of clausolas|Necroz de Clausolas
+Nekroz of decisive armor|Necroz da Armadura Decisiva
+Nekroz of gungnir|Necroz de Gungnir
+Nekroz of trishula|	Necroz de Trishula
+Nekroz of Unicore|Necroz de Unicore
+Nekroz of valkyrus|Necroz de Valkyrus
 
-nekroz mirror|Espelho Necroz
-nekroz kaleidoscope|Caleidoscópio Necroz
-nekroz cycle|Ciclo Necroz
+Nekroz cycle|Ciclo Necroz
+Nekroz kaleidoscope|Caleidoscópio Necroz
+Nekroz mirror|Espelho Necroz
 
+clear wing synchro dragon|Dragão Sincro de Asas Transparentes
+Herald of the Arc Light|Arauto do Arco de Luz
 shooting quasar dragon|Dragão da Explosão Quasar
 star eater|Comedor de Estrelas
-clear wing synchro dragon|Dragão Sincro de Asas Transparentes
-herald of the arch light|Arauto do Arco de Luz

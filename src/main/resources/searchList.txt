@@ -1,24 +1,16 @@
-Snyffus
-Griggle
-Juragedo
-Aroma Jar|Jarra do Aromági
-Aromage Bergamot|Aromágico Bergamota
-Aromage Cananga|Aromágico Cananga
-Aromage Jasmine|Aromágico Jasmim
-Aromage Rosemary|Aromágico Alecrim
-Chirubimé, Princess of Autumn Leaves|Chirubimé, Princesa das Folhas de Outono
-Crane Crane|Garça Guindaste
-Golden Ladybug|Joaninha Dourada
-Lonefire Blossom|Florescer do Fogo Solitário
-Mathematician|Matemático
-Rose Lover|Amante das Rosas
-Rose Paladin|Paladino das Rosas
-Tytannial, Princess of Camellias|Tytannial, Princesa das Camélias
-Gigaplant|Gigaplanta
-Aromaseraphy Angelica|Aromági-serafim Angélica
-Copy Plant|Planta Copiadora
-Debris Dragon|Dragão do Escombro
-Glow-Up Bulb|Bulbo Brilhante
+Barrier Statue of the Abyss|Estátua Barreira do Abismo
+Eater of Millions|Comedor de Milhões
+Grinder Golem
+Jizukiru, the Star Destroying Kaiju|Jizukiru, o Kaiju Destruidor de Estrelas
+Mystic Piper
+Predaplant Ophrys Scorpio|Predaplanta Escorpião Ophrys
+Shaddoll Dragon|Dragão Sombraneco
+Spirit Reaper|Ceifeiro de Espíritos
 
-Aromaseraphy Jasmine
-Missus Radiant|Missis Radiante
+Interrupted Kaiju Slumber|Sono Kaiju Interrompido
+Invocation|Invokação
+Pot of Avarice|Pote da Avarice
+
+Dark Renewal|Renovação Negra
+
+Akashic Magician|Mago Akáshico

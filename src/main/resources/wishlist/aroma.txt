@@ -1,24 +1,24 @@
-Snyffus
-Griggle
-Juragedo
 Aroma Jar|Jarra do Aromági
 Aromage Bergamot|Aromágico Bergamota
 Aromage Cananga|Aromágico Cananga
 Aromage Jasmine|Aromágico Jasmim
 Aromage Rosemary|Aromágico Alecrim
+Aromaseraphy Angelica|Aromági-serafim Angélica
 Chirubimé, Princess of Autumn Leaves|Chirubimé, Princesa das Folhas de Outono
 Crane Crane|Garça Guindaste
+Copy Plant|Planta Copiadora
+Debris Dragon|Dragão do Escombro
+Gigaplant|Gigaplanta
+Glow-Up Bulb|Bulbo Brilhante
+Griggle
 Golden Ladybug|Joaninha Dourada
+Juragedo
 Lonefire Blossom|Florescer do Fogo Solitário
 Mathematician|Matemático
 Rose Lover|Amante das Rosas
 Rose Paladin|Paladino das Rosas
+Snyffus
 Tytannial, Princess of Camellias|Tytannial, Princesa das Camélias
-Gigaplant|Gigaplanta
-Aromaseraphy Angelica|Aromági-serafim Angélica
-Copy Plant|Planta Copiadora
-Debris Dragon|Dragão do Escombro
-Glow-Up Bulb|Bulbo Brilhante
 
 Aromaseraphy Jasmine
 Missus Radiant|Missis Radiante

@@ -1,15 +1,15 @@
-Mystic Piper
-Grinder Golem
-Predaplant Ophrys Scorpio|Predaplanta Escorpião Ophrys
 Barrier Statue of the Abyss|Estátua Barreira do Abismo
-Jizukiru, the Star Destroying Kaiju|Jizukiru, o Kaiju Destruidor de Estrelas
 Eater of Millions|Comedor de Milhões
-Spirit Reaper|Ceifeiro de Espíritos
+Grinder Golem
+Jizukiru, the Star Destroying Kaiju|Jizukiru, o Kaiju Destruidor de Estrelas
+Mystic Piper
+Predaplant Ophrys Scorpio|Predaplanta Escorpião Ophrys
 Shaddoll Dragon|Dragão Sombraneco
+Spirit Reaper|Ceifeiro de Espíritos
 
 Interrupted Kaiju Slumber|Sono Kaiju Interrompido
-Pot of Avarice|Pote da Avarice
 Invocation|Invokação
+Pot of Avarice|Pote da Avarice
 
 Dark Renewal|Renovação Negra
 

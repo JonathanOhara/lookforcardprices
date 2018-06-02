@@ -1,24 +1,76 @@
-Snyffus
-Griggle
-Juragedo
-Aroma Jar|Jarra do Aromági
-Aromage Bergamot|Aromágico Bergamota
-Aromage Cananga|Aromágico Cananga
-Aromage Jasmine|Aromágico Jasmim
 Aromage Rosemary|Aromágico Alecrim
-Chirubimé, Princess of Autumn Leaves|Chirubimé, Princesa das Folhas de Outono
-Crane Crane|Garça Guindaste
 Golden Ladybug|Joaninha Dourada
 Lonefire Blossom|Florescer do Fogo Solitário
-Mathematician|Matemático
-Rose Lover|Amante das Rosas
-Rose Paladin|Paladino das Rosas
 Tytannial, Princess of Camellias|Tytannial, Princesa das Camélias
-Gigaplant|Gigaplanta
-Aromaseraphy Angelica|Aromági-serafim Angélica
-Copy Plant|Planta Copiadora
-Debris Dragon|Dragão do Escombro
-Glow-Up Bulb|Bulbo Brilhante
-
-Aromaseraphy Jasmine
+Aromaseraphy Angelica|Aromági-serafim Angélicao
 Missus Radiant|Missis Radiante
+
+
+
+angel 07|anjo 07
+Barrier Statue of the Heavens|Estátua Barreira dos Céus
+Alector, Sovereign of Birds|Alector, Soberano dos Pássaros
+Beatrice, Lady of the Eternal|Beatriz, a Dama Eterna
+
+
+
+senju of the thousand hands|Senju das Mil Mãos
+Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
+Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
+Denko Sekka
+Inspector Boarder|Inspetor Prancha
+Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
+Spirit Reaper|Ceifeiro de Espíritos
+Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
+raigeki
+pot of acquisitiveness|Pote da Aquisitividade
+Scapegoat|Bode Expiatório
+Infinite Impermanence
+Urgent Ritual Art|Arte Ritual Urgente
+evenly matched|Confronto Justo
+Skill Drain|Drenar Habilidades
+Anti-Spell Fragrance|Fragrância Anti-Magia
+Lost Wind|Vento Perdido
+Drowning Mirror Force|Força do Espelho do Afogamento
+tornado dragon|Dragão Tornado
+gagaga cowboy|Cowboy Gagaga
+Number 41: Bagooska the Terribly Tired Tapir|Número 41: Bagooska, a Anta Terrivelmente Cansada
+Firewall Dragon|Dragão Firewall
+Saryuja Skull Dread|Caveira Ameaçadora Saryuja
+
+
+
+Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
+Beautunaful Princess|Princesa Atraentum
+Gishki Beast|Fera Gishki
+Gishki Abyss|Abismo Gishki
+
+Evigishki Mind Augus
+Evigishki Levianima
+Evigishki Gustkraken
+Evigishki Merrowgeist
+
+Gishki Photomirror|Foto-espelho Gishki
+Forbidden Arts of the Gishki|Artes Proibidas dos Gishki
+Surface|Superfície
+Gishki Aquamirror|Gishki, Espelho D'Água
+
+
+
+Nekroz of brionac|Necroz de Brionac
+Nekroz of clausolas|Necroz de Clausolas
+Nekroz of gungnir|Necroz de Gungnir
+Nekroz of trishula|	Necroz de Trishula
+Nekroz of Unicore|Necroz de Unicore
+Nekroz of valkyrus|Necroz de Valkyrus
+
+Herald of the Arc Light|Arauto do Arco de Luz
+
+
+
+Barrier Statue of the Abyss|Estátua Barreira do Abismo
+Grinder Golem
+Mystic Piper
+Spirit Reaper|Ceifeiro de Espíritos
+
+Akashic Magician|Mago Akáshico

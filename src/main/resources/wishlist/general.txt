@@ -1,58 +1,58 @@
-senju of the thousand hands|Senju das Mil Mãos
-Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
-Thunder King Rai-Oh|Rei do Trovão Rai-Oh
-Purple Poison Magician|Mago de Veneno Púrpura
-Supreme King Dragon Darkwurm|Rei Supremo Dragão Wurmescuro
-Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
-Denko Sekka
-Inspector Boarder|Inspetor Prancha
 Breaker the Magical Warrior|Breaker, o Guerreiro Mágico
+Denko Sekka
+Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
+Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
+Inspector Boarder|Inspetor Prancha
 Neo-Spacian Grand Mole|Grande Toupeira Neoespacial
-Spirit Reaper|Ceifeiro de Espíritos
 PSY-Frame Driver|PSÍ-Armação Condutor
+Purple Poison Magician|Mago de Veneno Púrpura
+senju of the thousand hands|Senju das Mil Mãos
+Spirit Reaper|Ceifeiro de Espíritos
+Supreme King Dragon Darkwurm|Rei Supremo Dragão Wurmescuro
+Thunder King Rai-Oh|Rei do Trovão Rai-Oh
 
-PSY-Framegear Gamma|PSÍ-Armação Equipamento Gama
 Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
+Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
 Ghost Ogre & Snow Rabbit|Ogro Fantasma & Coelho da Neve
 Ghost Reaper & Winter Cherries|Ceifador Fantasma & Cerejas de Inverno
-Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
+PSY-Framegear Gamma|PSÍ-Armação Equipamento Gama
 
-raigeki
-monster reborn|Reviver Monstro
-pot of acquisitiveness|Pote da Aquisitividade
-Scapegoat|Bode Expiatório
 Called by the Grave
-My Body as a Shield|O Meu Corpo como Escudo
-Shared Ride|Carona
 Card of Demise|Despedida Final
+monster reborn|Reviver Monstro
+My Body as a Shield|O Meu Corpo como Escudo
+pot of acquisitiveness|Pote da Aquisitividade
+raigeki
+Scapegoat|Bode Expiatório
+Shared Ride|Carona
 
 Elder Entity N'tss|Entidade Anciã N'tss
 
 Ally of Justice Catastor|Catastor, Aliado da Justiça
 Black Rose Dragon|Dragão da Rosa Negra
 
+Anti-Spell Fragrance|Fragrância Anti-Magia
+Drowning Mirror Force|Força do Espelho do Afogamento
+evenly matched|Confronto Justo
+Lost Wind|Vento Perdido
+Heavy Storm Duster|Tempestade Pesada de Pó
 Infinite Impermanence
+Skill Drain|Drenar Habilidades
+Solemn Strike|Golpe Solene
 Storming mirror force|Força do Espelho Tempestuosa
+Switcheroroo|Reveseróiroo
 Trap Stun|Atordoar Armadilha
 Urgent Ritual Art|Arte Ritual Urgente
-evenly matched|Confronto Justo
-Skill Drain|Drenar Habilidades
-Anti-Spell Fragrance|Fragrância Anti-Magia
-Heavy Storm Duster|Tempestade Pesada de Pó
-Solemn Strike|Golpe Solene
-Lost Wind|Vento Perdido
-Drowning Mirror Force|Força do Espelho do Afogamento
 Waking the Dragon
-Switcheroroo|Reveseróiroo
 
-tornado dragon|Dragão Tornado
 diamond dire wolf|Lobo Voraz de Diamante
 gagaga cowboy|Cowboy Gagaga
 Number 41: Bagooska the Terribly Tired Tapir|Número 41: Bagooska, a Anta Terrivelmente Cansada
+tornado dragon|Dragão Tornado
 
-Proxy Dragon|Proxy Dragon
-topologic bomber dragon|Dragão Bomba Topológica
 Borreload Dragon|Dragão Callibregado
 Firewall Dragon|Dragão Firewall
+Proxy Dragon|Proxy Dragon
 Saryuja Skull Dread|Caveira Ameaçadora Saryuja
+topologic bomber dragon|Dragão Bomba Topológica

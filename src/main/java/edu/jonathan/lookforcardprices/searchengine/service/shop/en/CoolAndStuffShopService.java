@@ -7,7 +7,6 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
 //https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=mirror+force
 public class CoolAndStuffShopService extends SearchService {

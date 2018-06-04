@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 
-public class GamesReport {
+public class GamesReportService {
 
 	private StringBuilder htmlFinal;
 	private StringBuilder htmlReport;
@@ -21,7 +21,7 @@ public class GamesReport {
 	private StringBuilder htmlMeta;
 	private StringBuilder htmlLog;
 
-	public GamesReport(String nameToSearch) {
+	public GamesReportService(String nameToSearch) {
 		htmlFinal = new StringBuilder();
 		
 		htmlFinal.append("<!DOCTYPE html>\n");

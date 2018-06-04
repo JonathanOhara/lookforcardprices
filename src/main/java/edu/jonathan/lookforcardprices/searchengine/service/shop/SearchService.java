@@ -1,14 +1,17 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop;
 
+import edu.jonathan.lookforcardprices.comom.Keys;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
+import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,7 +22,15 @@ import java.util.Optional;
 
 public abstract class SearchService {
 
-	public static final String URL_SEARCH_SAMPLE = "<SEARCH>";
+	@Inject
+	protected UrlReaderService urlReaderService;
+
+	public static final String URL_SEARCH_SAMPLE = Keys.SEARCH_TEXT_TO_REPLACE;
+	public static final String PRODUCT_PRICE_NOT_AVAILABLE = "Unable to get price";
+
+	public List<Product> run(Shop shop, String productName) throws IOException {
+		return run(shop, productName, false);
+	}
 
 	public List<Product> run(Shop shop, String productName, boolean maxResultsPerPage) throws IOException {
 		System.out.println("Shop: "+shop.getName());
@@ -52,7 +63,7 @@ public abstract class SearchService {
 	}
 
 	private Document readResultsDocument(URL resultsPageURL) throws IOException {
-		return Util.readUrlDocument( resultsPageURL.toString() );
+		return urlReaderService.readUrlDocument( resultsPageURL.toString() );
 	}
 
 	protected List<Product> readProductsAt(Document resultsPage, Shop shop, String productName, URL resultsPageURL){
@@ -110,7 +121,7 @@ public abstract class SearchService {
 		for (Element priceElement : priceElements){
 			formattedPrice = priceElement.text().trim();
 
-			formattedPrice = formattedPrice.isEmpty() ? "Unable to get price" : formattedPrice;
+			formattedPrice = formattedPrice.isEmpty() ? PRODUCT_PRICE_NOT_AVAILABLE : formattedPrice;
 
 			available = isProductAvailable( productContainer );
 

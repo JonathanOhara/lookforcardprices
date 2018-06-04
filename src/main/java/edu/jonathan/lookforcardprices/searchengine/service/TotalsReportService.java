@@ -17,12 +17,12 @@ import java.util.*;
 import java.util.Map.Entry;
 
 
-public class TotalsReport {
+public class TotalsReportService {
 
 	private StringBuilder totalsPerProductContent = null;
 	private StringBuilder totalsPerShopContent = null;
 
-	public TotalsReport() {}
+	public TotalsReportService() {}
 
 	public void generateHeaders(){
 		totalsPerProductContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
@@ -137,7 +137,7 @@ public class TotalsReport {
 			productsByShop.put( product.getShopFounded(), products );
 		}
 
-		GamesReport htmlReport = new GamesReport(productName);
+		GamesReportService htmlReport = new GamesReportService(productName);
 
 		String data = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 

@@ -4,12 +4,15 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.controller.ReportController;
 import edu.jonathan.lookforcardprices.searchengine.controller.SearchController;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
+import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 

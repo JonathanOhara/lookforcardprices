@@ -34,18 +34,18 @@ public abstract class ShopServiceBaseTest  {
     Shop currentShop;
 
     @BeforeAll
-    void setup() {
-        currentShop = getCurrentShop();
+    static void setup() {
+
     }
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach - executes before each test method in this class");
-        currentShop = new Shop("CHQ", "https://www.chq.com.br/");
+        currentShop = getCurrentShop();
     }
 
     @Test
-    public void testAvaliableProducts() throws IOException {
+    public void testAvailableProducts() throws IOException {
         SampleConfiguration sampleConfiguration = getSampleConfigurationForAvailableProducts();
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( Jsoup.parse( sampleConfiguration.getContent()  ) );
@@ -66,7 +66,7 @@ public abstract class ShopServiceBaseTest  {
     }
 
     @Test
-    public void testUnavaliableProducts() throws IOException {
+    public void testUnavailableProducts() throws IOException {
 
         SampleConfiguration sampleConfiguration = getSampleConfigurationForUnAvailableProducts();
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn(Jsoup.parse( sampleConfiguration.getContent() ));

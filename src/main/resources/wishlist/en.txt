@@ -1,12 +1,3 @@
-Aromage Rosemary|Aromágico Alecrim
-Golden Ladybug|Joaninha Dourada
-Lonefire Blossom|Florescer do Fogo Solitário
-Tytannial, Princess of Camellias|Tytannial, Princesa das Camélias
-Aromaseraphy Angelica|Aromági-serafim Angélicao
-Missus Radiant|Missis Radiante
-
-
-
 angel 07|anjo 07
 Barrier Statue of the Heavens|Estátua Barreira dos Céus
 Alector, Sovereign of Birds|Alector, Soberano dos Pássaros
@@ -21,6 +12,7 @@ Denko Sekka
 Inspector Boarder|Inspetor Prancha
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
 Spirit Reaper|Ceifeiro de Espíritos
+Fossil Dina Pachycephalo
 Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
 raigeki
 pot of acquisitiveness|Pote da Aquisitividade
@@ -44,12 +36,10 @@ Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
 Beautunaful Princess|Princesa Atraentum
 Gishki Beast|Fera Gishki
 Gishki Abyss|Abismo Gishki
-
 Evigishki Mind Augus
 Evigishki Levianima
 Evigishki Gustkraken
 Evigishki Merrowgeist
-
 Gishki Photomirror|Foto-espelho Gishki
 Forbidden Arts of the Gishki|Artes Proibidas dos Gishki
 Surface|Superfície
@@ -58,12 +48,14 @@ Gishki Aquamirror|Gishki, Espelho D'Água
 
 
 Nekroz of brionac|Necroz de Brionac
+Nekroz of Catastor|Necroz de Catastor
 Nekroz of clausolas|Necroz de Clausolas
 Nekroz of gungnir|Necroz de Gungnir
+Nekroz of Sophia|Necroz de Sofia
 Nekroz of trishula|	Necroz de Trishula
 Nekroz of Unicore|Necroz de Unicore
 Nekroz of valkyrus|Necroz de Valkyrus
-
+Shooting Star Dragon|Dragão da Explosão Estelar
 Herald of the Arc Light|Arauto do Arco de Luz
 
 
@@ -72,5 +64,4 @@ Barrier Statue of the Abyss|Estátua Barreira do Abismo
 Grinder Golem
 Mystic Piper
 Spirit Reaper|Ceifeiro de Espíritos
-
 Akashic Magician|Mago Akáshico

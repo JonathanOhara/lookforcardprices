@@ -1,6 +1,8 @@
+Armageddon Knight|Cavaleiro do Armagedom
 Breaker the Magical Warrior|Breaker, o Guerreiro Mágico
 Denko Sekka
 Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
+Fossil Dyna Pachycephalo|Fossil Dina Pachycephalo
 Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
 Inspector Boarder|Inspetor Prancha
@@ -20,6 +22,7 @@ PSY-Framegear Gamma|PSÍ-Armação Equipamento Gama
 
 Called by the Grave
 Card of Demise|Despedida Final
+Magical Spring|Fonte Mágica
 monster reborn|Reviver Monstro
 My Body as a Shield|O Meu Corpo como Escudo
 pot of acquisitiveness|Pote da Aquisitividade
@@ -28,6 +31,7 @@ Scapegoat|Bode Expiatório
 Shared Ride|Carona
 
 Elder Entity N'tss|Entidade Anciã N'tss
+Sea Monster of Theseus|Monstro Marinho de Teseu
 
 Ally of Justice Catastor|Catastor, Aliado da Justiça
 Black Rose Dragon|Dragão da Rosa Negra
@@ -54,5 +58,6 @@ tornado dragon|Dragão Tornado
 Borreload Dragon|Dragão Callibregado
 Firewall Dragon|Dragão Firewall
 Proxy Dragon|Proxy Dragon
+PSY-Framelord Omega|PSÍ-Armação Senhor Omega
 Saryuja Skull Dread|Caveira Ameaçadora Saryuja
 topologic bomber dragon|Dragão Bomba Topológica

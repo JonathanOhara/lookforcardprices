@@ -1,17 +1,10 @@
-Armageddon Knight|Cavaleiro do Armagedom
-Breaker the Magical Warrior|Breaker, o Guerreiro Mágico
-Denko Sekka
 Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
 Fossil Dyna Pachycephalo|Fossil Dina Pachycephalo
 Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
 Inspector Boarder|Inspetor Prancha
-Neo-Spacian Grand Mole|Grande Toupeira Neoespacial
 PSY-Frame Driver|PSÍ-Armação Condutor
-Purple Poison Magician|Mago de Veneno Púrpura
 senju of the thousand hands|Senju das Mil Mãos
-Spirit Reaper|Ceifeiro de Espíritos
-Supreme King Dragon Darkwurm|Rei Supremo Dragão Wurmescuro
 Thunder King Rai-Oh|Rei do Trovão Rai-Oh
 
 Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
@@ -23,34 +16,24 @@ PSY-Framegear Gamma|PSÍ-Armação Equipamento Gama
 Called by the Grave
 Card of Demise|Despedida Final
 Magical Spring|Fonte Mágica
-monster reborn|Reviver Monstro
-My Body as a Shield|O Meu Corpo como Escudo
-pot of acquisitiveness|Pote da Aquisitividade
 raigeki
 Scapegoat|Bode Expiatório
 Shared Ride|Carona
 
 Elder Entity N'tss|Entidade Anciã N'tss
-Sea Monster of Theseus|Monstro Marinho de Teseu
 
-Ally of Justice Catastor|Catastor, Aliado da Justiça
 Black Rose Dragon|Dragão da Rosa Negra
 
-Anti-Spell Fragrance|Fragrância Anti-Magia
-Drowning Mirror Force|Força do Espelho do Afogamento
 evenly matched|Confronto Justo
 Lost Wind|Vento Perdido
 Heavy Storm Duster|Tempestade Pesada de Pó
 Infinite Impermanence
-Skill Drain|Drenar Habilidades
 Solemn Strike|Golpe Solene
 Storming mirror force|Força do Espelho Tempestuosa
 Switcheroroo|Reveseróiroo
-Trap Stun|Atordoar Armadilha
 Urgent Ritual Art|Arte Ritual Urgente
 Waking the Dragon
 
-diamond dire wolf|Lobo Voraz de Diamante
 gagaga cowboy|Cowboy Gagaga
 Number 41: Bagooska the Terribly Tired Tapir|Número 41: Bagooska, a Anta Terrivelmente Cansada
 tornado dragon|Dragão Tornado

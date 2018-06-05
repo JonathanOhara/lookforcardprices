@@ -18,7 +18,9 @@ public class Util {
 	
 	private static String projectPath = null;
 	private static String reportsPath = null;
-	
+
+	public static final String HTML_IMPORT_FOLDER = "imports";
+	public static final String LOGS_FOLDER = "logs";
 	static{
 		try {
 			String data, hora;
@@ -34,15 +36,25 @@ public class Util {
 			if( !reportFile.exists() ){
 				reportFile.mkdir();
 			}
-			
+
+			File reportImportFile = new File(reportFile.getCanonicalPath(), HTML_IMPORT_FOLDER);
+			if( !reportImportFile.exists() ){
+				reportImportFile.mkdir();
+			}
+
+			File logFile = new File(reportFile, LOGS_FOLDER);
+			if( !logFile.exists() ){
+				logFile.mkdir();
+			}
+
 			reportsPath = reportFile.getCanonicalPath();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void configureOutputToFileAndConsole(String logName) throws FileNotFoundException, IOException {
-		String logAddress = Util.getReportsPath() + "/" + logName + ".log";
+	public static void configureOutputToFileAndConsole(String logName) throws IOException {
+		String logAddress = Util.getReportsPath() + "/" + LOGS_FOLDER +  "/" + logName + ".log";
 		PrintStream fileStream = new MyPrintStream(new FileOutputStream( logAddress, true ), System.out);
 
 		System.setOut(fileStream);
@@ -52,7 +64,7 @@ public class Util {
 	public static List<String> read(File file) throws IOException {
 		BufferedReader buffRead = new BufferedReader(new FileReader(file));
 		String line = "";
-		List<String> stringList = new ArrayList<String>();
+		List<String> stringList = new ArrayList<>();
 		
 		while (true) {
 			if (line == null) break;

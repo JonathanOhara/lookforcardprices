@@ -122,6 +122,7 @@ public class TotalsReportService {
 	}
 
 	public void generateReportProductsByShop(String productName, List<Product> results) throws IOException, URISyntaxException {
+		System.out.println("Generating Report for: "+productName);
 		Util.configureOutputToFileAndConsole(productName);
 
 		totalsPerProductContent = new StringBuilder();
@@ -129,7 +130,7 @@ public class TotalsReportService {
 
 		generateHeaders();
 
-		Map<Shop, List<Product>> productsByShop = new HashMap<Shop, List<Product>>();
+		Map<Shop, List<Product>> productsByShop = new TreeMap<>(Comparator.comparing(Shop::getName));
 
 		for(Product product : results){
 			List<Product> products = Optional.ofNullable(productsByShop.get(product.getShopFounded())).orElse(new ArrayList<>());
@@ -151,7 +152,6 @@ public class TotalsReportService {
 			shop = entry.getKey();
 			products = entry.getValue();
 
-			System.out.println("Generating Report for: "+productName);
 			htmlReport.addReport( shop, products );
 		}
 

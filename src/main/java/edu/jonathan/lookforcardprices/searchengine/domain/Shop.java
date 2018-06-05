@@ -27,7 +27,6 @@ public class Shop {
 		this.mainUrl = mainUrl;
 	}
 
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

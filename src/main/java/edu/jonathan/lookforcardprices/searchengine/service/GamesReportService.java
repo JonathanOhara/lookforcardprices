@@ -27,9 +27,9 @@ public class GamesReportService {
 		htmlFinal.append("<!DOCTYPE html>\n");
 		htmlFinal.append("<html>\n");
 		htmlFinal.append("<head>\n");
-		htmlFinal.append("\t<script src='jquery.js'></script>\n");
-		htmlFinal.append("\t<script src='scripts.js'></script>\n");
-		htmlFinal.append("\t<link rel='stylesheet' type='text/css' href='css.css'>\n");
+		htmlFinal.append("\t<script src='./").append(Util.HTML_IMPORT_FOLDER).append("/jquery.js'></script>\n");
+		htmlFinal.append("\t<script src='./").append(Util.HTML_IMPORT_FOLDER).append("/scripts.js'></script>\n");
+		htmlFinal.append("\t<link rel='stylesheet' type='text/css' href='./").append(Util.HTML_IMPORT_FOLDER).append("/css.css'>\n");
 		htmlFinal.append("\t<title>").append(nameToSearch).append("</title>\n");
 		htmlFinal.append("</head>\n");
 		htmlFinal.append("<body>\n");
@@ -87,7 +87,7 @@ public class GamesReportService {
 
 			htmlReport.append("\t\t\t<tr>\n");
 			htmlReport.append("\t\t\t\t<td colspan=2>\n");
-			htmlReport.append("\t\t\t\t\tSem resultados\n");
+			htmlReport.append("\t\t\t\t\tNo results\n");
 			htmlReport.append("\t\t\t\t</td>\n");
 			htmlReport.append("\t\t\t</tr>\n");
 		}
@@ -112,6 +112,10 @@ public class GamesReportService {
 		
 		File dir = new File(Util.getReportsPath()); 
 		if (!dir.exists()) {
+			dir.mkdir();
+		}
+		dir = new File(dir, Util.HTML_IMPORT_FOLDER);
+		if (!dir.exists()){
 			dir.mkdir();
 		}
 		
@@ -307,7 +311,7 @@ public class GamesReportService {
 		htmlLog = new StringBuilder();
 		
 		System.out.println("");
-		htmlLog.append("<iframe src='./" ).append( productName ).append( ".log' style='width:100%; height:800px border: 0px; none;'>\n");
+		htmlLog.append("<iframe src='./logs/" ).append( productName ).append( ".log' style='width:100%; height:800px border: 0px; none;'>\n");
 		htmlLog.append("</iframe>\n");
 		
 	}

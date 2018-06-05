@@ -37,7 +37,6 @@ public abstract class SearchService {
 		long time = System.currentTimeMillis();
 
 		URL resultsPageURL = prepareResultsPageURL(shop, productName, maxResultsPerPage);
-		System.out.println("\tTime to Prepare URL: "+(System.currentTimeMillis() - time));
 
 		Document resultsPage = readResultsDocument(resultsPageURL);
 		System.out.println("\tTime to Reach URL: "+(System.currentTimeMillis() - time));

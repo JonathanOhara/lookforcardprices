@@ -35,6 +35,7 @@ public class SearchEngine {
         register(new Shop("Central Geek", "https://www.lojacentralgeek.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
         register(new Shop("Hot yugioh", "https://www.hotyugioh.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
         register(new Shop("Overrun", "https://www.overrun.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
+        register(new Shop("Loja Ilusões", "https://www.lojailusoes.com.br/"), CDI.current().select(LigaMagicShopService.class).get() );
         register(new Shop("CHQ", "https://www.chq.com.br/"), CDI.current().select(CHQShopService.class).get() );
         register(new Shop("MTG Cards", "https://www.mtgcards.com.br/"), CDI.current().select(MTGCardGamesShopService.class).get() );
         register(new Shop("Legion CG", "https://www.legioncg.com.br/"), CDI.current().select(LegionCGShopService.class).get() );

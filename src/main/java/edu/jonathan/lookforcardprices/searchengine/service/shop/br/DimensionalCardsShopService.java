@@ -6,7 +6,7 @@ import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilt
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 
-//https://www.dimensionalcards.com.br/search/?q=mirror
+//https://www.dimensionalcards.com.br/search/?q=mirror+force
 public class DimensionalCardsShopService extends SearchService {
 
 	private int resultsPerPage = 20;
@@ -35,7 +35,7 @@ public class DimensionalCardsShopService extends SearchService {
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.contains();
+		return ResultNameFilter.ignoreCaseContains();
 	}
 
 	@Override

@@ -2,7 +2,10 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,6 +13,20 @@ import java.nio.file.Paths;
 
 
 public class ColyseumShopServiceTest extends ShopServiceBaseTest {
+
+    @InjectMocks
+    ColyseumShopService searchService = new ColyseumShopService();
+
+    @Override
+    @Test
+    public void testUnavailableProducts() throws IOException {
+        testUnavailableProducts(true);
+    }
+
+    @Override
+    protected SearchService getSearchService(){
+        return searchService;
+    }
 
     @Override
     protected Shop getCurrentShop() {
@@ -43,7 +60,7 @@ public class ColyseumShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int listIndexToAsserts() {
-                return 8;
+                return 6;
             }
         };
     }

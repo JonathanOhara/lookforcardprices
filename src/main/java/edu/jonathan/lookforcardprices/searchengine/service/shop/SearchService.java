@@ -117,6 +117,10 @@ public abstract class SearchService {
 
 		Elements priceElements = productContainer.select( selectors.productPrice() );
 
+		if(priceElements.isEmpty()){
+			products.add( new Product(previewName, false, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, PRODUCT_PRICE_NOT_AVAILABLE ) );
+		}
+
 		for (Element priceElement : priceElements){
 			formattedPrice = priceElement.text().trim();
 

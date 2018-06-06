@@ -8,21 +8,21 @@ import java.net.URL;
 
 public class Product {
 	private String name;
+	private boolean available;
 	private String imageUrl;
 	private String url;
 	private URL searchedURL;
 	private String formattedPrice;
-	private boolean avaliable;
 
 	private Shop shopFounded;
 	private Node productContainer;
 	
 	public Product() {}
 
-	public Product(String name, boolean avaliable, Shop shopFounded, String imageUrl, String url, URL searchedURL, Node productContainer, String formattedPrice) {
+	public Product(String name, boolean available, Shop shopFounded, String imageUrl, String url, URL searchedURL, Node productContainer, String formattedPrice) {
 		super();
 		this.name = name;
-		this.avaliable = avaliable;
+		this.available = available;
 		this.shopFounded = shopFounded;
 		this.imageUrl = imageUrl;
 		this.url = url;
@@ -153,12 +153,12 @@ public class Product {
 		this.formattedPrice = formattedPrice;
 	}
 
-	public boolean isAvaliable() {
-		return avaliable;
+	public boolean isAvailable() {
+		return available;
 	}
 
-	public void setAvaliable(boolean avaliable) {
-		this.avaliable = avaliable;
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 
 	public Node getProductContainer() {
@@ -167,5 +167,18 @@ public class Product {
 
 	public void setProductContainer(Node productContainer) {
 		this.productContainer = productContainer;
+	}
+
+	@Override
+	public String toString() {
+		return "Product{" +
+				"name='" + name + '\'' +
+				", available=" + available +
+				", imageUrl='" + imageUrl + '\'' +
+				", url='" + url + '\'' +
+				", searchedURL=" + searchedURL +
+				", formattedPrice='" + formattedPrice + '\'' +
+				", shopFounded=" + shopFounded.getName() +
+				'}';
 	}
 }

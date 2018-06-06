@@ -1,32 +1,28 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
-import edu.jonathan.lookforcardprices.CDIExtension;
-import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
-import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
-import name.falgout.jeffrey.testing.junit.mockito.MockitoExtension;
-import org.jsoup.Jsoup;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.en.CoolAndStuffShopService;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 
-public class CHQShopServiceTest extends ShopServiceBaseTest {
+public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
 
     @InjectMocks
-    CHQShopService searchService = new CHQShopService();
+    CoolAndStuffShopService searchService = new CoolAndStuffShopService();
+
+    @Override
+    @Test
+    public void testUnavailableProducts() throws IOException {
+        testUnavailableProducts(true);
+    }
 
     @Override
     protected SearchService getSearchService(){
@@ -35,7 +31,7 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
 
     @Override
     protected Shop getCurrentShop() {
-        return new Shop("CHQ", "https://www.chq.com.br/");
+        return new Shop("Cool And Stuff", "https://www.coolstuffinc.com/");
     }
 
     @Override
@@ -43,7 +39,7 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/chq/01.html").getPath();
+                String filePath = getClass().getResource("/samples/br/coolandstuff/01.html").getPath();
                 String mockContent = null;
                 try {
                     mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
@@ -60,7 +56,7 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 48;
+                return 40;
             }
 
             @Override
@@ -75,7 +71,7 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/chq/01.html").getPath();
+                String filePath = getClass().getResource("/samples/br/coolandstuff/01.html").getPath();
                 String mockContent = null;
                 try {
                     mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
@@ -92,12 +88,12 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 48;
+                return 40;
             }
 
             @Override
             public int listIndexToAsserts() {
-                return 8;
+                return 3;
             }
         };
     }

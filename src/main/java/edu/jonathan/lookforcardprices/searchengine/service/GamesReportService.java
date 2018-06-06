@@ -76,9 +76,9 @@ public class GamesReportService {
 				htmlReport.append("\t\t\t\t\t</a>\n");
 				htmlReport.append("\t\t\t\t</td>\n");
 				htmlReport.append("\t\t\t\t<td style='width: 20%;'>\n");
-				if( !product.isAvaliable() )htmlReport.append("<strike>");
+				if( !product.isAvailable() )htmlReport.append("<strike>");
 				htmlReport.append(product.getFormattedPrice());
-				if( !product.isAvaliable() )htmlReport.append("</strike>");
+				if( !product.isAvailable() )htmlReport.append("</strike>");
 				htmlReport.append("\n");
 				htmlReport.append("\t\t\t\t</td>\n");
 				htmlReport.append("\t\t\t</tr>\n");

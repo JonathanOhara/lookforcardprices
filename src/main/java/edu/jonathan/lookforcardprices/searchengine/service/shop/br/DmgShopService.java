@@ -37,7 +37,7 @@ public class DmgShopService extends SearchService {
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.contains();
+		return ResultNameFilter.ignoreCaseContains();
 	}
 
 	@Override

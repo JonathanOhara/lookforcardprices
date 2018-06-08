@@ -13,7 +13,7 @@ public class PrRjShopService extends SearchService {
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-        return productContainer.select(".out-of-stock").size() == 0;
+        return productContainer.select(".actions > button").size() > 0;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class PrRjShopService extends SearchService {
 
 			@Override
 			public String productPrice() {
-				return ".price-box > p:last-child";
+				return ".price-box > span:last-child";
 			}
 		};
 	}

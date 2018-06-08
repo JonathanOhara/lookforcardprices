@@ -80,22 +80,22 @@ public abstract class ShopServiceBaseTest  {
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 
-        Product unavailableProductWithoutPrice = products.get(sampleConfiguration.listIndexToAsserts());
+        Product unavailableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        System.out.println("Testing unavailable Product: "+unavailableProductWithoutPrice);
+        System.out.println("Testing unavailable Product: "+unavailableProduct);
 
-        Assertions.assertFalse(unavailableProductWithoutPrice.getName().isEmpty());
-        Assertions.assertFalse(unavailableProductWithoutPrice.isAvailable());
+        Assertions.assertFalse(unavailableProduct.getName().isEmpty());
+        Assertions.assertFalse(unavailableProduct.isAvailable());
 
         if(priceAvailable){
-            Assertions.assertNotNull(unavailableProductWithoutPrice.getFormattedPrice().isEmpty());
-            Assertions.assertFalse(unavailableProductWithoutPrice.getFormattedPrice().isEmpty());
+            Assertions.assertNotNull(unavailableProduct.getFormattedPrice().isEmpty());
+            Assertions.assertFalse(unavailableProduct.getFormattedPrice().isEmpty());
         }else{
-            Assertions.assertEquals(unavailableProductWithoutPrice.getFormattedPrice(),SearchService.PRODUCT_PRICE_NOT_AVAILABLE);
+            Assertions.assertEquals(unavailableProduct.getFormattedPrice(),SearchService.PRODUCT_PRICE_NOT_AVAILABLE);
         }
 
-        Assertions.assertNotNull(unavailableProductWithoutPrice.getUrl());
-        Assertions.assertFalse(unavailableProductWithoutPrice.getUrl().isEmpty());
+        Assertions.assertNotNull(unavailableProduct.getUrl());
+        Assertions.assertFalse(unavailableProduct.getUrl().isEmpty());
     }
 
     protected abstract Shop getCurrentShop();

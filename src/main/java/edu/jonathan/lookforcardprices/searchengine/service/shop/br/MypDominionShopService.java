@@ -48,7 +48,7 @@ public class MypDominionShopService extends SearchService {
 
 			@Override
 			public String productName() {
-				return ".card-name div:eq(0)";
+				return ".card-name";
 			}
 
 			@Override

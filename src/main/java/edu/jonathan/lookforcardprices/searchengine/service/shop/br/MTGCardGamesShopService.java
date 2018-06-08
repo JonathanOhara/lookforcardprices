@@ -5,6 +5,10 @@ import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
+
+import javax.xml.soap.Text;
+import java.util.List;
 
 //http://www.mtgcards.com.br/index.php?route=product/search&search=covil%20das%20trevas
 public class MTGCardGamesShopService extends SearchService {
@@ -13,7 +17,7 @@ public class MTGCardGamesShopService extends SearchService {
 
     @Override
     protected boolean isProductAvailable(Element productContainer) {
-		return "0 unid".equals( productContainer.select(":nth-child(2) td:eq(1)").text() );
+		return productContainer.select(".cart > input").size() > 0;
 	}
 
     @Override
@@ -61,5 +65,17 @@ public class MTGCardGamesShopService extends SearchService {
 				return ".price";
 			}
 		};
+	}
+
+	@Override
+	protected String getPriceFrom(Element priceElement) {
+		List<TextNode> textNodes = priceElement.textNodes();
+
+		String price = "";
+		for (TextNode textNode : textNodes){
+			price += textNode.text().trim();
+		}
+
+		return price;
 	}
 }

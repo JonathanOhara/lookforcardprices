@@ -122,7 +122,7 @@ public abstract class SearchService {
 		}
 
 		for (Element priceElement : priceElements){
-			formattedPrice = priceElement.text().trim();
+			formattedPrice = getPriceFrom(priceElement);
 
 			formattedPrice = formattedPrice.isEmpty() ? PRODUCT_PRICE_NOT_AVAILABLE : formattedPrice;
 
@@ -130,6 +130,10 @@ public abstract class SearchService {
 
 			products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, formattedPrice ) );
 		}
+	}
+
+	protected String getPriceFrom(Element priceElement) {
+		return priceElement.text().trim();
 	}
 
 	protected String getItemUrl(Element productContainer) {

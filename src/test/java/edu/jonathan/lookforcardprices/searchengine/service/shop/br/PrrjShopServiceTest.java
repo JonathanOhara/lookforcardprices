@@ -4,7 +4,6 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
-import edu.jonathan.lookforcardprices.searchengine.service.shop.en.CoolAndStuffShopService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
@@ -13,10 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
-public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
+public class PrrjShopServiceTest extends ShopServiceBaseTest {
 
     @InjectMocks
-    CoolAndStuffShopService searchService = new CoolAndStuffShopService();
+    PrRjShopService searchService = new PrRjShopService();
 
     @Override
     @Test
@@ -31,7 +30,7 @@ public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
 
     @Override
     protected Shop getCurrentShop() {
-        return new Shop("Cool And Stuff", "https://www.coolstuffinc.com/");
+        return new Shop("PrRj", "https://www.prrjcards.com.br/");
     }
 
     @Override
@@ -39,7 +38,7 @@ public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/coolandstuff/01.html").getPath();
+                String filePath = getClass().getResource("/samples/br/prrj/01.html").getPath();
                 String mockContent = null;
                 try {
                     mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
@@ -51,17 +50,17 @@ public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public String getSearchedTerm() {
-                return "mirror force";
+                return "Monster reborn";
             }
 
             @Override
             public int expectedSize() {
-                return 40;
+                return 9;
             }
 
             @Override
             public int listIndexToAsserts() {
-                return 0;
+                return 3;
             }
         };
     }
@@ -71,7 +70,7 @@ public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/coolandstuff/01.html").getPath();
+                String filePath = getClass().getResource("/samples/br/prrj/01.html").getPath();
                 String mockContent = null;
                 try {
                     mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
@@ -83,17 +82,17 @@ public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public String getSearchedTerm() {
-                return "mirror force";
+                return "Monster reborn";
             }
 
             @Override
             public int expectedSize() {
-                return 40;
+                return 9;
             }
 
             @Override
             public int listIndexToAsserts() {
-                return 3;
+                return 0;
             }
         };
     }

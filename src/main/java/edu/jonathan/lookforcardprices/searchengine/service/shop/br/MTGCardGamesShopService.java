@@ -7,7 +7,6 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 
-import javax.xml.soap.Text;
 import java.util.List;
 
 //http://www.mtgcards.com.br/index.php?route=product/search&search=covil%20das%20trevas

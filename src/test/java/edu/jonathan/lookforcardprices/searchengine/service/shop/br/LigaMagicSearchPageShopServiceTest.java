@@ -6,12 +6,9 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfigurat
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
 import org.junit.Ignore;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 
 public class LigaMagicSearchPageShopServiceTest extends ShopServiceBaseTest {

@@ -32,7 +32,7 @@ public abstract class SearchService {
 		return run(shop, productName, false);
 	}
 
-	public List<Product> run(Shop shop, String productName, boolean maxResultsPerPage) throws IOException {
+	public List<Product> run(Shop shop, String productName, boolean maxResultsPerPage) {
 		System.out.println("Shop: "+shop.getName());
 		long time = System.currentTimeMillis();
 
@@ -51,17 +51,22 @@ public abstract class SearchService {
 		return products;
 	}
 
-	private URL prepareResultsPageURL(Shop shop, String productName, boolean maximumResultsPerPage) throws MalformedURLException {
+	private URL prepareResultsPageURL(Shop shop, String productName, boolean maximumResultsPerPage) {
 		if( maximumResultsPerPage ){
 			setMaxResultsPerPage();
 		}
 
-		URL resultsURL = new URL( replaceUrlWithEncodedProductName( getSearchUrlSample(shop.getMainUrl()), productName ) );
+        URL resultsURL = null;
+        try {
+            resultsURL = new URL( replaceUrlWithEncodedProductName( getSearchUrlSample(shop.getMainUrl()), productName ) );
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
-		return resultsURL;
+        return resultsURL;
 	}
 
-	private Document readResultsDocument(URL resultsPageURL) throws IOException {
+	private Document readResultsDocument(URL resultsPageURL) {
 		return urlReaderService.readUrlDocument( resultsPageURL.toString() );
 	}
 

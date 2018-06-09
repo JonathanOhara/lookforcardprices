@@ -5,13 +5,10 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
-import edu.jonathan.lookforcardprices.searchengine.service.shop.en.CoolAndStuffShopService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 
 public class CoolAndStuffShopServiceTest extends ShopServiceBaseTest {

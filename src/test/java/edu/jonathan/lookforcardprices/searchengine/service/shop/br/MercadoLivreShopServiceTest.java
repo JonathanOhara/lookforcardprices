@@ -9,8 +9,6 @@ import org.junit.Ignore;
 import org.mockito.InjectMocks;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 
 public class MercadoLivreShopServiceTest extends ShopServiceBaseTest {

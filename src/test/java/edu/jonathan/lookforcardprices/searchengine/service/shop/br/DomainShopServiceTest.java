@@ -7,10 +7,6 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
 import org.mockito.InjectMocks;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 
 public class DomainShopServiceTest extends ShopServiceBaseTest {
 

@@ -1,12 +1,9 @@
 package edu.jonathan.lookforcardprices.comom;
 
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.io.*;
-import java.net.*;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,12 +50,20 @@ public class Util {
 		}
 	}
 
-	public static void configureOutputToFileAndConsole(String logName) throws IOException {
-		String logAddress = Util.getReportsPath() + "/" + LOGS_FOLDER +  "/" + logName + ".log";
-		PrintStream fileStream = new MyPrintStream(new FileOutputStream( logAddress, true ), System.out);
+	public static void configureOutputToFileAndConsole(String logName) {
+		try {
+			String logAddress = Util.getReportsPath() + "/" + LOGS_FOLDER +  "/" + logName + ".log";
+			PrintStream fileStream = null;
 
-		System.setOut(fileStream);
-		System.setErr(fileStream);
+			fileStream = new MyPrintStream(new FileOutputStream( logAddress, true ), System.out);
+
+			System.setOut(fileStream);
+			System.setErr(fileStream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static List<String> read(File file) throws IOException {

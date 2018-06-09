@@ -11,7 +11,7 @@ import java.net.*;
 
 public class UrlReaderService {
 
-    public Document readUrlDocument(String url) throws IOException {
+    public Document readUrlDocument(String url) {
         System.out.println(url);
         Document doc = null;
         try{

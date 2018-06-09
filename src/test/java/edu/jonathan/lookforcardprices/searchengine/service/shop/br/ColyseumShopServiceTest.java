@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.Resources;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
@@ -38,14 +39,7 @@ public class ColyseumShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/colyseum/01.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/colyseum/01.html");
             }
 
             @Override
@@ -70,14 +64,7 @@ public class ColyseumShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/colyseum/01.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/colyseum/01.html");
             }
 
             @Override

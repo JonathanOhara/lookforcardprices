@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.Resources;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
@@ -41,14 +42,7 @@ public class LigaMagicSearchPageShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/ligamagic/toguro_search_page.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/ligamagic/toguro_search_page.html");
             }
 
             @Override
@@ -73,14 +67,7 @@ public class LigaMagicSearchPageShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/ligamagic/toguro_search_page.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/ligamagic/toguro_search_page.html");
             }
 
             @Override

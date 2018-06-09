@@ -1,6 +1,7 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.CDIExtension;
+import edu.jonathan.lookforcardprices.Resources;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
@@ -18,6 +19,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -43,14 +46,7 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/chq/01.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/chq/01.html");
             }
 
             @Override
@@ -75,14 +71,7 @@ public class CHQShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/chq/01.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/chq/01.html");
             }
 
             @Override

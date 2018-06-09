@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.Resources;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
@@ -37,14 +38,7 @@ public class MercadoLivreShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/mercadolivre/01.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/mercadolivre/01.html");
             }
 
             @Override
@@ -69,14 +63,7 @@ public class MercadoLivreShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                String filePath = getClass().getResource("/samples/br/domain/01.html").getPath();
-                String mockContent = null;
-                try {
-                    mockContent = new String(Files.readAllBytes(Paths.get( filePath ) ));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return mockContent;
+                return Resources.getContentFromResourceFile("/samples/br/mercadolivre/01.html");
             }
 
             @Override
@@ -86,12 +73,12 @@ public class MercadoLivreShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 36;
+                return 13;
             }
 
             @Override
             public int listIndexToAsserts() {
-                return 19;
+                return 12;
             }
         };
     }

@@ -21,7 +21,7 @@
     </appender>
 
     <root>
-        <level value="INFO" />
+        <level value="DEBUG" />
         <appender-ref ref="tofile"/>
         <appender-ref ref="stdout" />
     </root>

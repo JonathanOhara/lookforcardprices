@@ -20,7 +20,7 @@ public class UrlReaderService {
         try{
             doc = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36")
-                    .timeout(60000)
+                    .timeout(90000)
                     .method(Connection.Method.GET)
                     .validateTLSCertificates(false)
                     .execute()

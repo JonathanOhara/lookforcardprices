@@ -11,16 +11,17 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.en.TrollAndToadS
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.spi.CDI;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @ApplicationScoped
 public class SearchEngine {
 
-    private Map<Shop, SearchService> shopsService;
+    private Map<Shop, SearchService> shopsServiceMapping;
     private List<String> searchList;
 
     public SearchEngine() {
-        shopsService = new LinkedHashMap<>();
+        shopsServiceMapping = new LinkedHashMap<>();
         searchList = new ArrayList<>();
     }
 
@@ -53,7 +54,7 @@ public class SearchEngine {
     }
 
     public void register(Shop shop, SearchService shopImplementation){
-        shopsService.put(shop, shopImplementation);
+        shopsServiceMapping.put(shop, shopImplementation);
 
     }
 
@@ -62,37 +63,38 @@ public class SearchEngine {
     }
 
     public Map<String, List<Product>> run(boolean maxResultsPerPage) {
-        Map<String, List<Product>> productsByName = new HashMap<>(searchList.size());
-
-        Shop shop;
-        SearchService searchService;
+        Map<String, List<Product>> productsByName = new ConcurrentHashMap<>(searchList.size());
 
         for(String productName : searchList ) {
-            String productMainName = productName;
-            String otherName = null;
 
-            if( productName.contains("|")){
-                String[] productNames = productName.split("\\|");
-                productMainName = productNames[0];
-                otherName = productNames[1];
-            }
+            shopsServiceMapping.entrySet().parallelStream().forEach(entry -> {
+                Shop shop = entry.getKey();
+                SearchService searchService = entry.getValue();
 
-            Util.configureOutputToFileAndConsole(productMainName);
+                String productMainName = productName;
+                String otherName = null;
 
-            for (Map.Entry<Shop, SearchService> entry : shopsService.entrySet()) {
-                shop = entry.getKey();
-                searchService = entry.getValue();
+                if( productName.contains("|")){
+                    String[] productNames = productName.split("\\|");
+                    productMainName = productNames[0];
+                    otherName = productNames[1];
+                }
 
-                List<Product> productsFounded = Optional.ofNullable(productsByName.get(productMainName)).orElse(new ArrayList<>());
+                Util.configureOutputToFileAndConsole(productMainName);
+
+                List<Product> productsFounded = new ArrayList<>();
 
                 productsFounded.addAll( searchService.run(shop, productMainName, maxResultsPerPage) );
 
                 if(otherName != null && searchService.hasPortugueseOption())
                     productsFounded.addAll( searchService.run(shop, otherName, maxResultsPerPage) );
 
-                System.out.println("Adding: "+productMainName+ " shop: "+shop.getName());
-                productsByName.put( productMainName, productsFounded );
-            }
+                synchronized(this) {
+                    List<Product> productsAlreadyFound = Optional.ofNullable(productsByName.get(productMainName)).orElse(new ArrayList<>());
+                    productsFounded.addAll( productsAlreadyFound );
+                    productsByName.put( productMainName, productsFounded );
+                }
+            });
         }
 
         return productsByName;

@@ -3,11 +3,13 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 import edu.jonathan.lookforcardprices.comom.Keys;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
+import edu.jonathan.lookforcardprices.searchengine.domain.ProductPrice;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import org.apache.log4j.Logger;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -116,6 +118,7 @@ public abstract class SearchService {
 		String previewImageURL;
 		String individualUrl;
 		String formattedPrice;
+		Money price;
 		boolean available;
 		previewImageURL = Util.completeURL( shop.getMainUrl(), productContainer.select( selectors.productImageURL() ).attr("src") );
 
@@ -126,26 +129,35 @@ public abstract class SearchService {
 		Elements priceElements = productContainer.select( selectors.productPrice() );
 
 		if(priceElements.isEmpty()){
-			products.add( new Product(previewName, false, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, PRODUCT_PRICE_NOT_AVAILABLE ) );
+			products.add( new Product(previewName, false, shop, previewImageURL, individualUrl, resultsPageURL,productContainer ) );
 		}
 
 		for (Element priceElement : priceElements){
-			formattedPrice = getPriceFrom(priceElement);
+			formattedPrice = getFormattedPriceFrom(priceElement);
+			price = getPriceFrom(formattedPrice);
 
 			formattedPrice = formattedPrice.isEmpty() ? PRODUCT_PRICE_NOT_AVAILABLE : formattedPrice;
 
 			available = isProductAvailable( productContainer );
 
-			products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, formattedPrice ) );
+			ProductPrice productPrice = new ProductPrice(formattedPrice, price);
+
+			products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, productPrice ) );
 		}
 	}
 
-	protected String getPriceFrom(Element priceElement) {
+	protected String getFormattedPriceFrom(Element priceElement) {
 		return priceElement.text().trim();
 	}
 
+	protected abstract Money getPriceFrom(String formattedValue);
+
 	protected String getItemUrl(Element productContainer) {
 		return productContainer.select("a").first().attr("href");
+	}
+
+	protected String getCurrency(){
+		return "BRL";
 	}
 
 	public boolean hasPortugueseOption(){

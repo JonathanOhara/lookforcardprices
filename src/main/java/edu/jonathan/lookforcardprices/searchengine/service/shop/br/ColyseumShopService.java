@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 //https://www.colyseum.com/loja/index.php?route=product/search&search=Brionac&limit=100
@@ -11,7 +12,7 @@ public class ColyseumShopService extends SearchService {
 
 	private int resultsPerPage = 20;
 
-    @Override
+	@Override
     protected boolean isProductAvailable(Element productContainer) {
         return !"Fora de Estoque".equalsIgnoreCase(productContainer.select(".button-group").text().trim());
     }
@@ -62,4 +63,10 @@ public class ColyseumShopService extends SearchService {
 			}
 		};
 	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
+	}
+
 }

@@ -6,6 +6,7 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -91,6 +92,16 @@ public class TrollAndToadShopService extends SearchService {
 				return ".price_text";
 			}
 		};
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
+	}
+
+	@Override
+	protected String getCurrency() {
+		return "USD";
 	}
 
 	@Override

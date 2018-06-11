@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Keys;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
@@ -49,7 +50,7 @@ public class TotalsReportService {
 					totalsPerProductContent.append( "\"" ).append( shop.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( product.getFormattedPrice() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
+							append( "\"" ).append( product.getProductPrice().map( productPrice -> productPrice.getFormattedPrice() ).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( z.format( product.getFloatValue() ) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getUrl() ).append( "\"\n" );
 				}

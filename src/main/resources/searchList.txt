@@ -16,7 +16,6 @@ tornado dragon|Dragão Tornado
 Number 41: Bagooska the Terribly Tired Tapir|Número 41: Bagooska, a Anta Terrivelmente Cansada
 
 
-
 Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
 Beautunaful Princess|Princesa Atraentum
 Gishki Photomirror|Foto-espelho Gishki
@@ -24,12 +23,10 @@ Surface|Superfície
 Gishki Aquamirror|Gishki, Espelho D'Água
 
 
-
 Nekroz of brionac|Necroz de Brionac
 Nekroz of trishula|Necroz de Trishula
 Nekroz of valkyrus|Necroz de Valkyrus
 Shooting Star Dragon|Dragão da Explosão Estelar
-
 
 
 Barrier Statue of the Abyss|Estátua Barreira do Abismo

@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 //http://www.enigmadomilenio.com.br/loja/search?search_query=nekroz&orderby=position&orderway=desc&search_query=nekroz&submit_search=&n=90
@@ -61,5 +62,10 @@ public class EnigmaDoMilenioShopService extends SearchService {
 				return ".product-price";
 			}
 		};
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
 	}
 }

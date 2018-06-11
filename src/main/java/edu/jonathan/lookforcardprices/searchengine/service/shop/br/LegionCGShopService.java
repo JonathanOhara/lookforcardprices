@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 //https://www.legioncg.com.br/?view=ecom%2Fitens&page=1&id=40666&comdesconto=&fOrder=1&btFiltrar=Filtrar&fShow=160&busca=mirror+force
@@ -61,5 +62,10 @@ public class LegionCGShopService extends SearchService {
 				return ".pPrecoP";
 			}
 		};
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
 	}
 }

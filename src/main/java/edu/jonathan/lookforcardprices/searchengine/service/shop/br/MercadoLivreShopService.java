@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 //https://lista.mercadolivre.com.br/invoked-raidjin
@@ -66,5 +67,10 @@ public class MercadoLivreShopService extends SearchService {
 				return ".item__price";
 			}
 		};
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
 	}
 }

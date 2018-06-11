@@ -2,7 +2,9 @@ package edu.jonathan.lookforcardprices.searchengine.service;
 
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
+import edu.jonathan.lookforcardprices.searchengine.domain.ProductPrice;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -67,7 +69,7 @@ public class GamesReportService {
 			htmlReport.append("\t\t<tbody>");
 
 			for( Product product: products){
-				htmlReport.append("\t\t\t<tr>\n");
+				htmlReport.append("\t\t\t<tr ").append(" class='").append(product.isAvailable() ? "available" : "unavailable").append("' >\n");
 				htmlReport.append("\t\t\t\t<td style='width: 80%;'>\n");
 				htmlReport.append("\t\t\t\t\t<a href='");
 				htmlReport.append(product.getUrl());
@@ -77,7 +79,7 @@ public class GamesReportService {
 				htmlReport.append("\t\t\t\t</td>\n");
 				htmlReport.append("\t\t\t\t<td style='width: 20%;'>\n");
 				if( !product.isAvailable() )htmlReport.append("<strike>");
-				htmlReport.append(product.getFormattedPrice());
+				htmlReport.append( product.getProductPrice().map(ProductPrice::getFormattedPrice).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) );
 				if( !product.isAvailable() )htmlReport.append("</strike>");
 				htmlReport.append("\n");
 				htmlReport.append("\t\t\t\t</td>\n");
@@ -166,6 +168,7 @@ public class GamesReportService {
 	private void insertBottomJavascript() {
 		htmlFinal.append("<script>\n");
 		htmlFinal.append("startTabs();\n");
+		htmlFinal.append("hideUnavailbleProducts();\n");
 		htmlFinal.append("</script>\n");
 		
 	}

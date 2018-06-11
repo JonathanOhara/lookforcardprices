@@ -6,6 +6,7 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -106,9 +107,9 @@ public class LigaMagicShopService extends SearchService {
 	}
 
 	@Override
-	protected String getPriceFrom( Element priceElement ){
+	protected String getFormattedPriceFrom(Element priceElement ){
 		if(resultMode == ResultMode.PRODUCT_PAGE){
-			return super.getPriceFrom(priceElement);
+			return super.getFormattedPriceFrom(priceElement);
 		}else if(resultMode == ResultMode.SEARCH_PAGE){
 			return PRODUCT_PRICE_NOT_AVAILABLE;
 		}
@@ -223,5 +224,10 @@ public class LigaMagicShopService extends SearchService {
 	private enum ResultMode{
 		SEARCH_PAGE,
 		PRODUCT_PAGE
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
 	}
 }

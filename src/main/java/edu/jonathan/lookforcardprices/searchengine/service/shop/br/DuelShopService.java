@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 //https://www.duelshop.com.br/procurar?controller=search&orderby=position&orderway=desc&search_query=Mirror+Force
@@ -64,5 +65,10 @@ public class DuelShopService extends SearchService {
 				return ".right-block .content_price .price";
 			}
 		};
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
 	}
 }

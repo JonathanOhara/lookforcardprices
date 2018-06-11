@@ -2,6 +2,7 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop;
 
 import edu.jonathan.lookforcardprices.CDIExtension;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
+import edu.jonathan.lookforcardprices.searchengine.domain.ProductPrice;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import name.falgout.jeffrey.testing.junit.mockito.MockitoExtension;
@@ -56,16 +57,19 @@ public abstract class ShopServiceBaseTest  {
 
         Product availableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        logger.trace("Testing Available Product: "+availableProduct);
+        logger.info("Testing Available Product: "+availableProduct);
+        logger.info("Price: "+availableProduct.getProductPrice());
 
         Assertions.assertFalse(availableProduct.getName().isEmpty());
         Assertions.assertTrue(availableProduct.isAvailable());
 
-        Assertions.assertNotNull(availableProduct.getFormattedPrice().isEmpty());
-        Assertions.assertFalse(availableProduct.getFormattedPrice().isEmpty());
-
         Assertions.assertNotNull(availableProduct.getUrl());
         Assertions.assertFalse(availableProduct.getUrl().isEmpty());
+
+        ProductPrice productPrice = availableProduct.getProductPrice().get();
+
+        Assertions.assertNotNull(productPrice.getFormattedPrice());
+        Assertions.assertFalse(productPrice.getFormattedPrice().isEmpty());
     }
 
     @Test
@@ -84,20 +88,23 @@ public abstract class ShopServiceBaseTest  {
 
         Product unavailableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        logger.trace("Testing unavailable Product: "+unavailableProduct);
+        logger.info("Testing unavailable Product: "+unavailableProduct);
+        logger.info("Price: "+unavailableProduct.getProductPrice());
 
         Assertions.assertFalse(unavailableProduct.getName().isEmpty());
         Assertions.assertFalse(unavailableProduct.isAvailable());
 
-        if(priceAvailable){
-            Assertions.assertNotNull(unavailableProduct.getFormattedPrice().isEmpty());
-            Assertions.assertFalse(unavailableProduct.getFormattedPrice().isEmpty());
-        }else{
-            Assertions.assertEquals(unavailableProduct.getFormattedPrice(),SearchService.PRODUCT_PRICE_NOT_AVAILABLE);
-        }
-
         Assertions.assertNotNull(unavailableProduct.getUrl());
         Assertions.assertFalse(unavailableProduct.getUrl().isEmpty());
+
+        ProductPrice productPrice = unavailableProduct.getProductPrice().get();
+
+        if(priceAvailable){
+            Assertions.assertNotNull(productPrice.getFormattedPrice());
+            Assertions.assertFalse(productPrice.getFormattedPrice().isEmpty());
+        }else{
+            Assertions.assertEquals(productPrice.getFormattedPrice(),SearchService.PRODUCT_PRICE_NOT_AVAILABLE);
+        }
     }
 
     protected abstract Shop getCurrentShop();

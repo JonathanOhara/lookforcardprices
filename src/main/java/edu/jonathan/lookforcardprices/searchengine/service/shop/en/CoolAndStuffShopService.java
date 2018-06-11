@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 import java.util.Optional;
@@ -66,6 +67,16 @@ public class CoolAndStuffShopService extends SearchService {
 				return ".pPrice span";
 			}
 		};
+	}
+
+	@Override
+	protected Money getPriceFrom(String formattedValue) {
+		return null;
+	}
+
+	@Override
+	protected String getCurrency() {
+		return "USD";
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class CHQShopService extends SearchService {
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.ignoreCaseContains();
 	}
 
 	@Override

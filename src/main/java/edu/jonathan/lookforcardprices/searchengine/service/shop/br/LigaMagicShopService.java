@@ -94,12 +94,12 @@ public class LigaMagicShopService extends SearchService {
 				previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 			}
 
-			System.out.println("\t\tPreview name: "+previewName);
+			logger.info("\t\tPreview name: "+previewName);
 
 			if( resultNameFilter.isValid(previewName, productName) ){
 				getProductList(selectors, shop, resultsPageURL, products, previewName, productContainer);
 			}else{
-				System.out.println("\t\tRemoved by name filter...");
+				logger.info("\t\tRemoved by name filter...");
 			}
 		}
 
@@ -133,7 +133,7 @@ public class LigaMagicShopService extends SearchService {
 			}
 		}
 
-		System.out.println("PRICE: "+price);
+		logger.info("PRICE: "+price);
 		return price.toString();
 	}
 

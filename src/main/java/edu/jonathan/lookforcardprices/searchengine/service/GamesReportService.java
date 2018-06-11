@@ -309,8 +309,7 @@ public class GamesReportService {
 
 	public void addLogTab(String productName) {
 		htmlLog = new StringBuilder();
-		
-		System.out.println("");
+
 		htmlLog.append("<iframe src='./logs/" ).append( productName ).append( ".log' style='width:100%; height:800px border: 0px; none;'>\n");
 		htmlLog.append("</iframe>\n");
 		

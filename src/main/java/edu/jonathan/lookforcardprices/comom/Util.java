@@ -1,6 +1,7 @@
 package edu.jonathan.lookforcardprices.comom;
 
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.net.URLEncoder;
@@ -18,6 +19,9 @@ public class Util {
 
 	public static final String HTML_IMPORT_FOLDER = "imports";
 	public static final String LOGS_FOLDER = "logs";
+
+	protected static final Logger logger = Logger.getLogger(Util.class);
+
 	static{
 		try {
 			String data, hora;
@@ -46,7 +50,7 @@ public class Util {
 
 			reportsPath = reportFile.getCanonicalPath();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e);
 		}
 	}
 
@@ -60,9 +64,9 @@ public class Util {
 			System.setOut(fileStream);
 			System.setErr(fileStream);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e);
 		}
 	}
 
@@ -132,8 +136,7 @@ public class Util {
     		//if directory not exists, create it
     		if(!dest.exists()){
     		   dest.mkdir();
-    		   System.out.println("Directory copied from " 
-                              + src + "  to " + dest);
+    		   logger.info("Directory copied from " + src + "  to " + dest);
     		}
  
     		//list all the directory contents
@@ -163,7 +166,7 @@ public class Util {
  
     	    in.close();
     	    out.close();
-    	    System.out.println("File copied from " + src + " to " + dest);
+    	    logger.info("File copied from " + src + " to " + dest);
     	}
     }
 

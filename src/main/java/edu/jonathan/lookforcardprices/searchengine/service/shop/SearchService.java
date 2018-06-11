@@ -7,6 +7,7 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
+import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -25,6 +26,8 @@ public abstract class SearchService {
 	@Inject
 	protected UrlReaderService urlReaderService;
 
+	protected static final Logger logger = Logger.getLogger(SearchService.class);
+
 	public static final String URL_SEARCH_SAMPLE = Keys.SEARCH_TEXT_TO_REPLACE;
 	public static final String PRODUCT_PRICE_NOT_AVAILABLE = "Unable to get price";
 
@@ -33,21 +36,21 @@ public abstract class SearchService {
 	}
 
 	public List<Product> run(Shop shop, String productName, boolean maxResultsPerPage) {
-		System.out.println("Shop: "+shop.getName());
+		logger.info("Shop: "+shop.getName());
 		long time = System.currentTimeMillis();
 
 		URL resultsPageURL = prepareResultsPageURL(shop, productName, maxResultsPerPage);
 
 		Document resultsPage = readResultsDocument(resultsPageURL);
-		System.out.println("\tTime to Reach URL: "+(System.currentTimeMillis() - time));
+		logger.info("\tTime to Reach URL: "+(System.currentTimeMillis() - time));
 
-//		System.out.println(resultsPage);
+		logger.info(resultsPage);
 		afterResultListener(resultsPage);
 
 		List<Product> products = readProductsAt(resultsPage, shop, productName, resultsPageURL);
-		System.out.println("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
+		logger.info("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
 
-		System.out.println("\t\tProducts size: "+products.size());
+		logger.info("\t\tProducts size: "+products.size());
 		return products;
 	}
 
@@ -56,14 +59,14 @@ public abstract class SearchService {
 			setMaxResultsPerPage();
 		}
 
-        URL resultsURL = null;
-        try {
-            resultsURL = new URL( replaceUrlWithEncodedProductName( getSearchUrlSample(shop.getMainUrl()), productName ) );
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+		URL resultsURL = null;
+		try {
+			resultsURL = new URL( replaceUrlWithEncodedProductName( getSearchUrlSample(shop.getMainUrl()), productName ) );
+		} catch (MalformedURLException e) {
+			logger.error(e);
+		}
 
-        return resultsURL;
+		return resultsURL;
 	}
 
 	private Document readResultsDocument(URL resultsPageURL) {
@@ -74,7 +77,7 @@ public abstract class SearchService {
 		ResultPageSelectors selectors = getResultPageSelectors();
 
 		Elements els = resultsPage.select( selectors.singleProduct() );
-		System.out.println("\t\tResults Elements: "+els.size());
+		logger.info("\t\tResults Elements: "+els.size());
 
 		els = cleanTitleResults(els);
 
@@ -97,12 +100,12 @@ public abstract class SearchService {
 
 			previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 
-			System.out.println("\t\tPreview name: "+previewName);
+			logger.info("\t\tPreview name: "+previewName);
 
 			if( resultNameFilter.isValid(previewName, productName) ){
 				getProductList(selectors, shop, resultsPageURL, products, previewName, productContainer);
 			}else{
-				System.out.println("\t\tRemoved by name filter...");
+				logger.info("\t\tRemoved by name filter...");
 			}
 		}
 

@@ -10,7 +10,6 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.en.TrollAndToadS
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.spi.CDI;
-import java.io.IOException;
 import java.util.*;
 
 
@@ -91,6 +90,7 @@ public class SearchEngine {
                 if(otherName != null && searchService.hasPortugueseOption())
                     productsFounded.addAll( searchService.run(shop, otherName, maxResultsPerPage) );
 
+                System.out.println("Adding: "+productMainName+ " shop: "+shop.getName());
                 productsByName.put( productMainName, productsFounded );
             }
         }

@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,20 +12,22 @@ import java.net.*;
 
 public class UrlReaderService {
 
+    protected static final Logger logger = Logger.getLogger(UrlReaderService.class);
+
     public Document readUrlDocument(String url) {
-        System.out.println(url);
+        logger.info("Connecting to: "+url);
         Document doc = null;
         try{
             doc = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36")
-                    .timeout(30000)
+                    .timeout(60000)
                     .method(Connection.Method.GET)
                     .validateTLSCertificates(false)
                     .execute()
                     .parse();
         }catch(Exception e){
-            e.printStackTrace();
-            System.out.println(e.getCause() + "\nTry to connect by another way..");
+            logger.error(e);
+            logger.info(e.getCause() + "\nTry to connect by another way..");
             doc = parseDocument( readUrl(url, null) );
         }
         return doc;
@@ -36,7 +39,7 @@ public class UrlReaderService {
             document = Jsoup.parse(html);
 
         }catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return document;
     }
@@ -54,13 +57,13 @@ public class UrlReaderService {
                 in.close();
             }
         }catch (MalformedURLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
 
         if( builder.toString().contains("") ){
-            System.out.println("Possivelmente Ocorreu Erro ao read a pagina");
+            logger.info("Possivelmente Ocorreu Erro ao read a pagina");
         }
 
         return builder.toString();
@@ -83,18 +86,18 @@ public class UrlReaderService {
 
                 break;
             }catch( ConnectException e){
-                System.out.println("ConnectException - Tentando novamente["+i+"]: "+url);
+                logger.info("ConnectException - Tentando novamente["+i+"]: "+url);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e2) {
-                    e2.printStackTrace();
+                    logger.error(e2);
                 }
             }catch( UnknownHostException e){
-                System.out.println("UnknownHostException - Tentando novamente["+i+"]: "+url);
+                logger.info("UnknownHostException - Tentando novamente["+i+"]: "+url);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e2) {
-                    e2.printStackTrace();
+                    logger.error(e2);
                 }
             }
 

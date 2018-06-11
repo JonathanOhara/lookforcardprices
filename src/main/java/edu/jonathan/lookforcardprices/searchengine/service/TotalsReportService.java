@@ -4,6 +4,7 @@ import edu.jonathan.lookforcardprices.comom.Keys;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,6 +22,8 @@ public class TotalsReportService {
 
 	private StringBuilder totalsPerProductContent = null;
 	private StringBuilder totalsPerShopContent = null;
+
+	protected static final Logger logger = Logger.getLogger(TotalsReportService.class);
 
 	public TotalsReportService() {}
 
@@ -122,7 +125,7 @@ public class TotalsReportService {
 	}
 
 	public void generateReportProductsByShop(String productName, List<Product> results) throws IOException, URISyntaxException {
-		System.out.println("Generating Report for: "+productName);
+		logger.info("Generating Report for: "+productName);
 		Util.configureOutputToFileAndConsole(productName);
 
 		totalsPerProductContent = new StringBuilder();

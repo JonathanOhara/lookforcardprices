@@ -5,6 +5,7 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import name.falgout.jeffrey.testing.junit.mockito.MockitoExtension;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -28,6 +29,8 @@ public abstract class ShopServiceBaseTest  {
     @Mock
     UrlReaderService urlReaderService;
 
+    protected static final Logger logger = Logger.getLogger(ShopServiceBaseTest.class);
+
     Shop currentShop;
 
     @BeforeAll
@@ -37,7 +40,6 @@ public abstract class ShopServiceBaseTest  {
 
     @BeforeEach
     void init() {
-        System.out.println("@BeforeEach - executes before each test method in this class");
         currentShop = getCurrentShop();
         searchService = getSearchService();
     }
@@ -54,7 +56,7 @@ public abstract class ShopServiceBaseTest  {
 
         Product availableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        System.out.println("Testing Available Product: "+availableProduct);
+        logger.info("Testing Available Product: "+availableProduct);
 
         Assertions.assertFalse(availableProduct.getName().isEmpty());
         Assertions.assertTrue(availableProduct.isAvailable());
@@ -82,7 +84,7 @@ public abstract class ShopServiceBaseTest  {
 
         Product unavailableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        System.out.println("Testing unavailable Product: "+unavailableProduct);
+        logger.info("Testing unavailable Product: "+unavailableProduct);
 
         Assertions.assertFalse(unavailableProduct.getName().isEmpty());
         Assertions.assertFalse(unavailableProduct.isAvailable());

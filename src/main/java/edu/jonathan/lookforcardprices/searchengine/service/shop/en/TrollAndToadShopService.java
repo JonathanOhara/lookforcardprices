@@ -40,7 +40,7 @@ public class TrollAndToadShopService extends SearchService {
         for( Element productContainer : els ){
             previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 
-            System.out.println("\t\tPreview name: "+previewName);
+            logger.info("\t\tPreview name: "+previewName);
 
             if( resultNameFilter.isValid(previewName, productName) ){
 
@@ -48,7 +48,7 @@ public class TrollAndToadShopService extends SearchService {
                     getProductList(selectors, shop, resultsPageURL, products, previewName, productRow);
                 }
             }else{
-                System.out.println("\t\tRemoved by name filter...");
+				logger.info("\t\tRemoved by name filter...");
             }
         }
 

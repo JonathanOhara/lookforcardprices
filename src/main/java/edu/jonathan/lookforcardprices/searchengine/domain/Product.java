@@ -98,44 +98,6 @@ public class Product {
 		
 		return returnValue;
 	}
-	/*
-	public static void main(String[] args) {
-		Product product = new Product();
-		
-		product.setFormattedPrice("$19.99");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("$19.99*");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("por R$ 79,90");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("R$ 99,90 (33% de desconto)");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("R$ 219,90");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("R$ 219.90");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("219,9");
-		System.out.println( product.getFloatValue() );
-
-		product.setFormattedPrice("188.9");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("1.000,01");
-		System.out.println( product.getFloatValue() );
-		
-		product.setFormattedPrice("1,000.01");
-		System.out.println( product.getFloatValue() );
-
-		product.setFormattedPrice("Indispon�vel");
-		System.out.println( product.getFloatValue() );
-	}
-	*/
 
 	public URL getSearchedURL() {
 		return searchedURL;

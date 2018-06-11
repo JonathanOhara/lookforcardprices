@@ -15,7 +15,7 @@ public class UrlReaderService {
     protected static final Logger logger = Logger.getLogger(UrlReaderService.class);
 
     public Document readUrlDocument(String url) {
-        logger.info("Connecting to: "+url);
+        logger.debug("Connecting to: "+url);
         Document doc = null;
         try{
             doc = Jsoup.connect(url)
@@ -26,8 +26,9 @@ public class UrlReaderService {
                     .execute()
                     .parse();
         }catch(Exception e){
+            logger.error("Connecting in url: "+url);
             logger.error(e);
-            logger.info(e.getCause() + "\nTry to connect by another way..");
+            logger.trace(e.getCause() + "\nTry to connect by another way..");
             doc = parseDocument( readUrl(url, null) );
         }
         return doc;
@@ -63,7 +64,7 @@ public class UrlReaderService {
         }
 
         if( builder.toString().contains("") ){
-            logger.info("Possivelmente Ocorreu Erro ao read a pagina");
+            logger.trace("Error Reading the page");
         }
 
         return builder.toString();
@@ -86,14 +87,14 @@ public class UrlReaderService {
 
                 break;
             }catch( ConnectException e){
-                logger.info("ConnectException - Tentando novamente["+i+"]: "+url);
+                logger.trace("ConnectException - Try number["+i+"]: "+url);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e2) {
                     logger.error(e2);
                 }
             }catch( UnknownHostException e){
-                logger.info("UnknownHostException - Tentando novamente["+i+"]: "+url);
+                logger.trace("UnknownHostException - Try number["+i+"]: "+url);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e2) {

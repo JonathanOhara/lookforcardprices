@@ -17,6 +17,7 @@ Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
 raigeki
 pot of acquisitiveness|Pote da Aquisitividade
 Scapegoat|Bode Expiatório
+Twin Twisters|Tornados Gêmeos
 Infinite Impermanence
 Urgent Ritual Art|Arte Ritual Urgente
 evenly matched|Confronto Justo
@@ -52,7 +53,7 @@ Nekroz of Catastor|Necroz de Catastor
 Nekroz of clausolas|Necroz de Clausolas
 Nekroz of gungnir|Necroz de Gungnir
 Nekroz of Sophia|Necroz de Sofia
-Nekroz of trishula|	Necroz de Trishula
+Nekroz of trishula|Necroz de Trishula
 Nekroz of Unicore|Necroz de Unicore
 Nekroz of valkyrus|Necroz de Valkyrus
 Shooting Star Dragon|Dragão da Explosão Estelar

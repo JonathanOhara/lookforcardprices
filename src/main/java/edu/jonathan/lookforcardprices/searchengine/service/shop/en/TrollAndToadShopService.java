@@ -40,15 +40,13 @@ public class TrollAndToadShopService extends SearchService {
         for( Element productContainer : els ){
             previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 
-            logger.info("\t\tPreview name: "+previewName);
-
             if( resultNameFilter.isValid(previewName, productName) ){
-
+				logger.debug("\tAccepted by name filter: "+previewName);
                 for( Element productRow : productContainer.select(".search_result_conditions tr") ) {
                     getProductList(selectors, shop, resultsPageURL, products, previewName, productRow);
                 }
             }else{
-				logger.info("\t\tRemoved by name filter...");
+				logger.debug("\tRejected by name filter: "+previewName);
             }
         }
 

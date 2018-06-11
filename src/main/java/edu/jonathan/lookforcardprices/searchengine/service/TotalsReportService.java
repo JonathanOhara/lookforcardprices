@@ -125,7 +125,7 @@ public class TotalsReportService {
 	}
 
 	public void generateReportProductsByShop(String productName, List<Product> results) throws IOException, URISyntaxException {
-		logger.info("Generating Report for: "+productName);
+		logger.trace("Generating Report for: "+productName);
 		Util.configureOutputToFileAndConsole(productName);
 
 		totalsPerProductContent = new StringBuilder();

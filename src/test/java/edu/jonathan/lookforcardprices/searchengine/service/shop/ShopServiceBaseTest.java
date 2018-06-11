@@ -56,7 +56,7 @@ public abstract class ShopServiceBaseTest  {
 
         Product availableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        logger.info("Testing Available Product: "+availableProduct);
+        logger.trace("Testing Available Product: "+availableProduct);
 
         Assertions.assertFalse(availableProduct.getName().isEmpty());
         Assertions.assertTrue(availableProduct.isAvailable());
@@ -84,7 +84,7 @@ public abstract class ShopServiceBaseTest  {
 
         Product unavailableProduct = products.get(sampleConfiguration.listIndexToAsserts());
 
-        logger.info("Testing unavailable Product: "+unavailableProduct);
+        logger.trace("Testing unavailable Product: "+unavailableProduct);
 
         Assertions.assertFalse(unavailableProduct.getName().isEmpty());
         Assertions.assertFalse(unavailableProduct.isAvailable());

@@ -11,7 +11,7 @@ import org.jsoup.nodes.Element;
 public class MercadoLivreShopService extends SearchService {
 
 	private int resultsPerPage = 12;
-	private boolean searchInYuGiOh = true;
+	private boolean searchInYuGiOh = false;
 
 	@Override
 	protected boolean isProductAvailable(Element productContainer) {

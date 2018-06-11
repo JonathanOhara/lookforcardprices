@@ -16,7 +16,6 @@ import java.util.Map;
 
 public class Main {
 	public static void main(String[] args) throws IOException, URISyntaxException {
-		Util.configureOutputToFileAndConsole("main");
 		SeContainerInitializer cdiInitializer = SeContainerInitializer.newInstance();
 		try (SeContainer container = cdiInitializer.initialize()) {
 

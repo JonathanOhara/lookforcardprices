@@ -1,12 +1,12 @@
 package edu.jonathan.lookforcardprices.searchengine.service;
 
-import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.br.*;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.en.CoolAndStuffShopService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.en.TrollAndToadShopService;
+import org.apache.log4j.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.spi.CDI;
@@ -19,6 +19,8 @@ public class SearchEngine {
 
     private Map<Shop, SearchService> shopsServiceMapping;
     private List<String> searchList;
+
+    protected static final Logger logger = Logger.getLogger(SearchEngine.class);
 
     public SearchEngine() {
         shopsServiceMapping = new LinkedHashMap<>();
@@ -67,6 +69,8 @@ public class SearchEngine {
 
         for(String productName : searchList ) {
 
+            logger.info("Product: "+productName);
+
             shopsServiceMapping.entrySet().parallelStream().forEach(entry -> {
                 Shop shop = entry.getKey();
                 SearchService searchService = entry.getValue();
@@ -79,8 +83,6 @@ public class SearchEngine {
                     productMainName = productNames[0];
                     otherName = productNames[1];
                 }
-
-                Util.configureOutputToFileAndConsole(productMainName);
 
                 List<Product> productsFounded = new ArrayList<>();
 

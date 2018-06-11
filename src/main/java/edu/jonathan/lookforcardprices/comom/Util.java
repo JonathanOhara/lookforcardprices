@@ -1,7 +1,9 @@
 package edu.jonathan.lookforcardprices.comom;
 
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
+import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 
 import java.io.*;
 import java.net.URLEncoder;
@@ -52,6 +54,19 @@ public class Util {
 		} catch (IOException e) {
 			logger.error(e);
 		}
+	}
+
+	public static void configureOutputToFileAndConsole(Logger logger, String fileName) {
+		FileAppender appender = null;
+		PatternLayout patternLayout = new PatternLayout();
+		patternLayout.setConversionPattern("[%d{HH:mm:ss,SSS}]: %m%n");
+
+		try {
+			appender = new FileAppender(patternLayout,"./log/" + fileName + ".log",false);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		logger.addAppender(appender);
 	}
 
 	public static void configureOutputToFileAndConsole(String logName) {
@@ -136,7 +151,7 @@ public class Util {
     		//if directory not exists, create it
     		if(!dest.exists()){
     		   dest.mkdir();
-    		   logger.info("Directory copied from " + src + "  to " + dest);
+    		   logger.debug("Directory copied from " + src + "  to " + dest);
     		}
  
     		//list all the directory contents
@@ -166,7 +181,7 @@ public class Util {
  
     	    in.close();
     	    out.close();
-    	    logger.info("File copied from " + src + " to " + dest);
+    	    logger.debug("File copied from " + src + " to " + dest);
     	}
     }
 

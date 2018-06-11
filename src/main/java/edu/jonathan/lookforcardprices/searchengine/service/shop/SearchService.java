@@ -36,21 +36,22 @@ public abstract class SearchService {
 	}
 
 	public List<Product> run(Shop shop, String productName, boolean maxResultsPerPage) {
-		logger.info("Shop: "+shop.getName());
+		Util.configureOutputToFileAndConsole( logger, shop.getName() + "/" + productName);
+
+		logger.debug("Shop: "+shop.getName());
 		long time = System.currentTimeMillis();
 
 		URL resultsPageURL = prepareResultsPageURL(shop, productName, maxResultsPerPage);
 
 		Document resultsPage = readResultsDocument(resultsPageURL);
-		logger.info("\tTime to Reach URL: "+(System.currentTimeMillis() - time));
+		logger.trace("\tTime to Reach URL: "+(System.currentTimeMillis() - time));
 
-		logger.info(resultsPage);
 		afterResultListener(resultsPage);
 
 		List<Product> products = readProductsAt(resultsPage, shop, productName, resultsPageURL);
-		logger.info("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
+		logger.trace("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
 
-		logger.info("\t\tProducts size: "+products.size());
+		logger.debug("\tProducts size: "+products.size());
 		return products;
 	}
 
@@ -77,7 +78,7 @@ public abstract class SearchService {
 		ResultPageSelectors selectors = getResultPageSelectors();
 
 		Elements els = resultsPage.select( selectors.singleProduct() );
-		logger.info("\t\tResults Elements: "+els.size());
+		logger.trace("\tResults Elements: "+els.size());
 
 		els = cleanTitleResults(els);
 
@@ -100,12 +101,11 @@ public abstract class SearchService {
 
 			previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 
-			logger.info("\t\tPreview name: "+previewName);
-
 			if( resultNameFilter.isValid(previewName, productName) ){
+				logger.debug("\tAccepted by name filter: "+previewName);
 				getProductList(selectors, shop, resultsPageURL, products, previewName, productContainer);
 			}else{
-				logger.info("\t\tRemoved by name filter...");
+				logger.debug("\tRejected by name filter: "+previewName);
 			}
 		}
 

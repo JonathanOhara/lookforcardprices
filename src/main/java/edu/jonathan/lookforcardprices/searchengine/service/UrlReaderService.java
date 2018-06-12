@@ -26,10 +26,13 @@ public class UrlReaderService {
                     .execute()
                     .parse();
         }catch(Exception e){
-            logger.error("Connecting in url: "+url);
+            logger.error("Connecting via JSOUP in url: "+url);
             logger.error(e);
             logger.trace(e.getCause() + "\nTry to connect by another way..");
             doc = parseDocument( readUrl(url, null) );
+            if(doc != null ){
+                logger.warn("Connecting successful with dirty way");
+            }
         }
         return doc;
     }

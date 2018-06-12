@@ -21,7 +21,6 @@ public class GamesReportService {
 	private StringBuilder htmlReport;
 	private StringBuilder htmlSeekers;
 	private StringBuilder htmlMeta;
-	private StringBuilder htmlLog;
 
 	public GamesReportService(String nameToSearch) {
 		htmlFinal = new StringBuilder();
@@ -43,7 +42,6 @@ public class GamesReportService {
 		htmlFinal.append("\t\t\t<li><a href='#tab1'>Result</a></li>\n");
 		htmlFinal.append("\t\t\t\t<li><a href='#tab2'>Search Engines</a></li>\n");
 		htmlFinal.append("\t\t\t<li><a href='#tab3'>Meta Data</a></li>\n");
-		htmlFinal.append("\t\t\t<li><a href='#tab4'>Log</a></li>\n");
 		htmlFinal.append("\t\t</ul>\n");
 		htmlFinal.append("\t\t<div class='clr'></div>\n");
 		htmlFinal.append("\t\t<section class='block'>\n");	
@@ -104,7 +102,6 @@ public class GamesReportService {
 		insertReportsInHtml();
 		insertSeekersInHtml();
 		insertMetaInHtml();
-		insertLogInHtml();
 		insertBottomJavascript();
 		
 		htmlFinal.append("\t\t</section>\n");
@@ -155,13 +152,6 @@ public class GamesReportService {
 		htmlFinal.append("<article id='tab3'>\n");
 		htmlFinal.append("<br>\n");
 		htmlFinal.append( htmlMeta.toString() );
-		htmlFinal.append("</article>\n");
-	}
-	
-	private void insertLogInHtml() {
-		htmlFinal.append("<article id='tab4'>\n");
-		htmlFinal.append("<br>\n");
-		htmlFinal.append( htmlLog.toString() );
 		htmlFinal.append("</article>\n");
 	}
 
@@ -310,13 +300,4 @@ public class GamesReportService {
 		htmlMeta.append("<br>\n");
 	}
 
-	public void addLogTab(String productName) {
-		htmlLog = new StringBuilder();
-
-		htmlLog.append("<iframe src='./logs/" ).append( productName ).append( ".log' style='width:100%; height:800px border: 0px; none;'>\n");
-		htmlLog.append("</iframe>\n");
-		
-	}
-	
-	
 }

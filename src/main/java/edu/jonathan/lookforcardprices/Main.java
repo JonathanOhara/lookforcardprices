@@ -15,6 +15,16 @@ import java.util.Map;
 
 
 public class Main {
+
+	/**
+	 * TODO: dont let the product duplicate(check url)
+	 * TODO: Thymeleaf instead builder with html
+	 * TODO: web pages with all available products
+	 * TODO: Cool n Stuff add card state
+	 *
+	 * IDEA: card state
+	 */
+
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		SeContainerInitializer cdiInitializer = SeContainerInitializer.newInstance();
 		try (SeContainer container = cdiInitializer.initialize()) {

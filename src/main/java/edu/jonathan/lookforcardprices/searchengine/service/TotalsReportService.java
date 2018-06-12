@@ -32,8 +32,8 @@ public class TotalsReportService {
 		totalsPerProductContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
 				append("\"Name Searched\"").append(Keys.CSV_SEPARATOR).
 				append("\"Name Found\"").append(Keys.CSV_SEPARATOR).
-				append("\"Price\"").append(Keys.CSV_SEPARATOR).
-				append("\"Price Float\"").append(Keys.CSV_SEPARATOR).
+				append("\"Formatted Price\"").append(Keys.CSV_SEPARATOR).
+				append("\"Price Converted to BRL\"").append(Keys.CSV_SEPARATOR).
 				append("\"URL\"\n");
 		
 		totalsPerShopContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
@@ -47,11 +47,12 @@ public class TotalsReportService {
 
 			if( entry.getValue() != null ){
 				for( Product product : entry.getValue() ){
+					if(!product.isAvailable()) continue;
 					totalsPerProductContent.append( "\"" ).append( shop.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getProductPrice().map( productPrice -> productPrice.getFormattedPrice() ).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( z.format( product.getFloatValue() ) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
+							append( "\"" ).append( z.format( product.getPriceInReal() ) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getUrl() ).append( "\"\n" );
 				}
 			}else{
@@ -162,8 +163,6 @@ public class TotalsReportService {
 		htmlReport.addOtherSeekers(productName);
 
 		htmlReport.addMetaData(productName, 0, data, hora); // TODO Review this
-
-		htmlReport.addLogTab( productName );
 
 		htmlReport.closeAndWriteFile(productName);
 

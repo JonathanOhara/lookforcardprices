@@ -8,7 +8,6 @@ import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import name.falgout.jeffrey.testing.junit.mockito.MockitoExtension;
 import org.apache.log4j.Logger;
 import org.javamoney.moneta.Money;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

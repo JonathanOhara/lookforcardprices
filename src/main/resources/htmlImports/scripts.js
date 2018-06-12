@@ -17,4 +17,12 @@ function startTabs(){
 
 function hideUnavailbleProducts(){
     $(".unavailable").hide();
+
+    $("#tab1 > table").each(function(){
+        var table = $(this);
+
+        if( table.find("tbody > tr").filter(".available").length == 0 ){
+            table.hide();
+        }
+    });
 }

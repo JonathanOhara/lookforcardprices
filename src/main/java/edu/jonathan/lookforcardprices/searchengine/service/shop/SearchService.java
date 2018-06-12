@@ -1,6 +1,7 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop;
 
 import edu.jonathan.lookforcardprices.comom.Keys;
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.ProductPrice;
@@ -158,7 +159,7 @@ public abstract class SearchService {
 	}
 
 	public String getCurrency(){
-		return "BRL";
+		return MoneyUtil.REAL.getCurrencyCode();
 	}
 
 	public boolean hasPortugueseOption(){

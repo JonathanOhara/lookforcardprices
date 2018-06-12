@@ -1,14 +1,11 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
-import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
-
-import java.util.regex.Matcher;
 
 //https://lista.mercadolivre.com.br/invoked-raidjin
 //https://lista.mercadolivre.com.br/brinquedos-hobbies/cards-card-games/card-game/yu-gi-oh/reviver-monstro#D[A:reviver-monstro,OC:MLB6901]

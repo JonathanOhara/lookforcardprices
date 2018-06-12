@@ -112,7 +112,7 @@ public class TrollAndToadShopService extends SearchService {
 
 	@Override
 	public String getCurrency() {
-		return "USD";
+		return MoneyUtil.DOLLAR.getCurrencyCode();
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package edu.jonathan.lookforcardprices.searchengine.domain;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import org.jsoup.nodes.Node;
 
+import javax.money.CurrencyUnit;
 import java.net.URL;
 import java.util.Optional;
 
@@ -36,7 +38,6 @@ public class Product {
 		this.productPrice = Optional.ofNullable(productPrice);
 	}
 
-
 	public String getName() {
 		return name;
 	}
@@ -62,46 +63,6 @@ public class Product {
 
 	public void setShopFounded(Shop shopFounded) {
 		this.shopFounded = shopFounded;
-	}
-
-	public float getFloatValue(){
-		float returnValue = 0;
-//		float valueModificator = 1;
-//		try{
-//			String value = getFormattedPrice();
-//
-//			if( value.startsWith("$") ){ //Nintendo eShop
-//				value = value.replace("$", "").trim();
-//				value = value.replace("*", "").trim();
-//
-//				valueModificator = Keys.DOLAR_VALUE;
-//			}
-//
-//			value = value.replace("por R$", "").trim();
-//			value = value.replace("R$", "").trim();
-//
-//			if( value.contains(".") ){
-//				if( value.indexOf(".") == value.length() - 2 || value.indexOf(".") == value.length() - 3 ){
-//
-//				}else{
-//					value = value.replace(".", "").trim();
-//				}
-//			}
-//
-//			if( value.contains(",") ){
-//				if( value.indexOf(",") == value.length() - 2 || value.indexOf(",") == value.length() - 3 ){
-//					value = value.replace(",", ".").trim();
-//				}else{
-//					value = value.replace(",", "").trim();
-//				}
-//			}
-//
-//			returnValue = Float.parseFloat( value ) * valueModificator;
-//		}catch(Exception e){
-//			returnValue = 9999.99f;
-//		}
-		
-		return returnValue;
 	}
 
 	public URL getSearchedURL() {
@@ -147,5 +108,16 @@ public class Product {
 				", productPrice=" + productPrice +
 				", shopFounded=" + shopFounded +
 				'}';
+	}
+
+	public double getPriceInReal() {
+		return productPrice.map(price -> {
+				if (price.getAmount().getCurrency().equals(MoneyUtil.REAL)) {
+					return price.getAmount().getNumber().doubleValue();
+				} else {
+					return MoneyUtil.dollarToReal(price.getAmount()).getNumber().doubleValue();
+				}
+			}
+		).orElse(0.0);
 	}
 }

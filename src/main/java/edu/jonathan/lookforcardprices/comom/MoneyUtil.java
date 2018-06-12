@@ -6,15 +6,16 @@ import org.javamoney.moneta.convert.ExchangeRateType;
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
 import javax.money.MonetaryAmount;
-import javax.money.convert.*;
+import javax.money.convert.CurrencyConversion;
+import javax.money.convert.ExchangeRateProvider;
+import javax.money.convert.MonetaryConversions;
 import java.util.regex.Pattern;
 
 
 public class MoneyUtil {
 
-	private static final CurrencyUnit REAL = Monetary.getCurrency("BRL");
-	private static final CurrencyUnit EURO = Monetary.getCurrency("EUR");
-	private static final CurrencyUnit DOLLAR = Monetary.getCurrency("USD");
+	public static final CurrencyUnit REAL = Monetary.getCurrency("BRL");
+    public static final CurrencyUnit DOLLAR = Monetary.getCurrency("USD");
 
 	public static Pattern MONEY_PATTERN = Pattern.compile("([+-]?[0-9|^.|^,]+)[\\.|,]([0-9]+)$");
 
@@ -22,20 +23,11 @@ public class MoneyUtil {
 
 	static{
 		provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.IMF);
-		/*
-		Matcher matcher = pattern.matcher("15.20");
-
-		matcher.matches();
-		System.out.println("0: " + matcher.group(0));
-		System.out.println("1: " + matcher.group(1));
-		System.out.println("2: " + matcher.group(2));
-		*/
 	}
 
-	public static MonetaryAmount dollarToReal(double value){
+	public static MonetaryAmount dollarToReal(Money value){
 		CurrencyConversion currencyConversion = provider.getCurrencyConversion(REAL);
-		MonetaryAmount realAmount = Money.of(value, DOLLAR);
+		MonetaryAmount realAmount = Money.of(value.getNumber().doubleValue(), DOLLAR);
 		return currencyConversion.apply(realAmount);
 	}
-
 }

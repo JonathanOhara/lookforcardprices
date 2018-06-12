@@ -87,7 +87,7 @@ public class CoolAndStuffShopService extends SearchService {
 
 	@Override
 	public String getCurrency() {
-		return "USD";
+		return MoneyUtil.DOLLAR.getCurrencyCode();
 	}
 
 	@Override

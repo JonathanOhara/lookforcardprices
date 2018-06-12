@@ -118,7 +118,6 @@ public abstract class SearchService {
 		String previewImageURL;
 		String individualUrl;
 		String formattedPrice;
-		Money price;
 		boolean available;
 		previewImageURL = Util.completeURL( shop.getMainUrl(), productContainer.select( selectors.productImageURL() ).attr("src") );
 
@@ -133,14 +132,16 @@ public abstract class SearchService {
 		}
 
 		for (Element priceElement : priceElements){
+			Money price = null;
+			available = isProductAvailable(productContainer);
+
 			formattedPrice = getFormattedPriceFrom(priceElement);
-			price = getPriceFrom(formattedPrice);
 
-			formattedPrice = formattedPrice.isEmpty() ? PRODUCT_PRICE_NOT_AVAILABLE : formattedPrice;
+			if( !formattedPrice.isEmpty() && !formattedPrice.equals(PRODUCT_PRICE_NOT_AVAILABLE) ){
+				price = getPriceFrom(formattedPrice);
+			}
 
-			available = isProductAvailable( productContainer );
-
-			ProductPrice productPrice = new ProductPrice(formattedPrice, price);
+			ProductPrice productPrice = price == null || price.getNumber().doubleValueExact() == 0.0 ? null : new ProductPrice(formattedPrice, price);
 
 			products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, productPrice ) );
 		}
@@ -156,7 +157,7 @@ public abstract class SearchService {
 		return productContainer.select("a").first().attr("href");
 	}
 
-	protected String getCurrency(){
+	public String getCurrency(){
 		return "BRL";
 	}
 

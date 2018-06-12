@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.en;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
@@ -8,6 +9,7 @@ import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
 
 import java.util.Optional;
+import java.util.regex.Matcher;
 
 //https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=mirror+force
 public class CoolAndStuffShopService extends SearchService {
@@ -71,11 +73,20 @@ public class CoolAndStuffShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		return null;
+
+		if( formattedValue.isEmpty() ) return null;
+
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(1).trim());
+
+		matcher.matches();
+
+		Money amount = Money.of(Double.parseDouble(matcher.group(1) + "." + matcher.group(2)), getCurrency());
+
+		return amount;
 	}
 
 	@Override
-	protected String getCurrency() {
+	public String getCurrency() {
 		return "USD";
 	}
 

@@ -68,10 +68,7 @@ public class CHQShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-
-		if( formattedValue.isEmpty() ) return null;
-
-		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(3));
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
 
 		matcher.matches();
 

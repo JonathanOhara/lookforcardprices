@@ -42,12 +42,12 @@ public class LegionCGShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public String getSearchedTerm() {
-                return "mirror force";
+                return "Trickstar Candina";
             }
 
             @Override
             public int expectedSize() {
-                return 8;
+                return 2;
             }
 
             @Override
@@ -62,22 +62,22 @@ public class LegionCGShopServiceTest extends ShopServiceBaseTest {
         return new SampleConfiguration() {
             @Override
             public String getContent() {
-                return Resources.getContentFromResourceFile("/samples/br/legioncg/01.html");
+                return Resources.getContentFromResourceFile("/samples/br/legioncg/02.html");
             }
 
             @Override
             public String getSearchedTerm() {
-                return "mirror force";
+                return "Mirror force";
             }
 
             @Override
             public int expectedSize() {
-                return 8;
+                return 34;
             }
 
             @Override
             public int listIndexToAsserts() {
-                return 1;
+                return 0;
             }
         };
     }

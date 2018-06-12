@@ -1,11 +1,14 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
+
+import java.util.regex.Matcher;
 
 //http://www.domaingames.com.br/Ajax_Funcoes.asp?IsNovoCfg=true&ID_Categoria=&busca=Dark%20Renewal&Pagina=1&OrganizarPor=&ResultadoPorPagina=&Funcao=BuscaAvancada
 public class DomainShopService extends SearchService {
@@ -70,6 +73,12 @@ public class DomainShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		return null;
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
+
+		matcher.matches();
+
+		Money amount = Money.of(Double.parseDouble(matcher.group(1) + "." + matcher.group(2)), getCurrency());
+
+		return amount;
 	}
 }

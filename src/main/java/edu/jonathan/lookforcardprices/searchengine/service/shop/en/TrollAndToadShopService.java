@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.en;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
 
 //https://www.trollandtoad.com/products/search.php?search_category=&search_words=mirror&searchmode=basic
 public class TrollAndToadShopService extends SearchService {
@@ -96,11 +98,20 @@ public class TrollAndToadShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		return null;
+
+		if( formattedValue.isEmpty() ) return null;
+
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(1).trim());
+
+		matcher.matches();
+
+		Money amount = Money.of(Double.parseDouble(matcher.group(1) + "." + matcher.group(2)), getCurrency());
+
+		return amount;
 	}
 
 	@Override
-	protected String getCurrency() {
+	public String getCurrency() {
 		return "USD";
 	}
 

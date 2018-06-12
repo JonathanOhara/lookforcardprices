@@ -7,7 +7,9 @@ import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.UrlReaderService;
 import name.falgout.jeffrey.testing.junit.mockito.MockitoExtension;
 import org.apache.log4j.Logger;
+import org.javamoney.moneta.Money;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,19 +22,20 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith({MockitoExtension.class, CDIExtension.class})
 @RunWith(JUnitPlatform.class)
 public abstract class ShopServiceBaseTest  {
 
-    SearchService searchService = null;
+    protected SearchService searchService = null;
 
     @Mock
-    UrlReaderService urlReaderService;
+    protected UrlReaderService urlReaderService;
 
     protected static final Logger logger = Logger.getLogger(ShopServiceBaseTest.class);
 
-    Shop currentShop;
+    protected Shop currentShop;
 
     @BeforeAll
     static void setup() {
@@ -49,7 +52,10 @@ public abstract class ShopServiceBaseTest  {
     public void testAvailableProducts() throws IOException {
         SampleConfiguration sampleConfiguration = getSampleConfigurationForAvailableProducts();
 
-        Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( Jsoup.parse( sampleConfiguration.getContent()  ) );
+        Document mockedDocument = new Document(searchService.getSearchUrlSample(currentShop.getMainUrl()));
+        mockedDocument.append( sampleConfiguration.getContent() );
+
+        Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
         List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
 
@@ -68,8 +74,11 @@ public abstract class ShopServiceBaseTest  {
 
         ProductPrice productPrice = availableProduct.getProductPrice().get();
 
+        logger.info("Product Price: "+productPrice);
+
         Assertions.assertNotNull(productPrice.getFormattedPrice());
         Assertions.assertFalse(productPrice.getFormattedPrice().isEmpty());
+        Assertions.assertTrue(productPrice.getAmount().isGreaterThan(Money.of(0, searchService.getCurrency())));
     }
 
     @Test
@@ -80,7 +89,10 @@ public abstract class ShopServiceBaseTest  {
     protected void testUnavailableProducts(boolean priceAvailable) throws IOException {
         SampleConfiguration sampleConfiguration = getSampleConfigurationForUnAvailableProducts();
 
-        Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn(Jsoup.parse( sampleConfiguration.getContent() ));
+        Document mockedDocument = new Document(searchService.getSearchUrlSample(currentShop.getMainUrl()));
+        mockedDocument.append( sampleConfiguration.getContent() );
+
+        Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
         List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
 
@@ -97,13 +109,15 @@ public abstract class ShopServiceBaseTest  {
         Assertions.assertNotNull(unavailableProduct.getUrl());
         Assertions.assertFalse(unavailableProduct.getUrl().isEmpty());
 
-        ProductPrice productPrice = unavailableProduct.getProductPrice().get();
+        Optional<ProductPrice> productPrice = unavailableProduct.getProductPrice();
 
         if(priceAvailable){
-            Assertions.assertNotNull(productPrice.getFormattedPrice());
-            Assertions.assertFalse(productPrice.getFormattedPrice().isEmpty());
+            logger.info("Product Price: "+productPrice.get());
+            Assertions.assertNotNull(productPrice.get().getFormattedPrice());
+            Assertions.assertFalse(productPrice.get().getFormattedPrice().isEmpty());
+            Assertions.assertTrue(productPrice.get().getAmount().isGreaterThan(Money.of(0, searchService.getCurrency())));
         }else{
-            Assertions.assertEquals(productPrice.getFormattedPrice(),SearchService.PRODUCT_PRICE_NOT_AVAILABLE);
+            Assertions.assertEquals(productPrice,Optional.empty());
         }
     }
 

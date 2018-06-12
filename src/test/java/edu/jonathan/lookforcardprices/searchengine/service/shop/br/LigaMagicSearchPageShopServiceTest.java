@@ -1,27 +1,79 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
 import edu.jonathan.lookforcardprices.Resources;
+import edu.jonathan.lookforcardprices.searchengine.domain.Product;
+import edu.jonathan.lookforcardprices.searchengine.domain.ProductPrice;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SampleConfiguration;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.ShopServiceBaseTest;
+import org.javamoney.moneta.Money;
+import org.jsoup.nodes.Document;
 import org.junit.Ignore;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 
 public class LigaMagicSearchPageShopServiceTest extends ShopServiceBaseTest {
 
     @InjectMocks
-    LigaMagicShopService searchService = new LigaMagicShopService();
+    protected LigaMagicShopService searchService = new LigaMagicShopService();
 
 
-    //This test is ignored once the quantity is encrypted
-    @Override
-    @Ignore
+    @Test
+    public void testAvailableProducts() throws IOException {
+        SampleConfiguration sampleConfiguration = getSampleConfigurationForAvailableProducts();
+
+        Document mockedDocument = new Document(searchService.getSearchUrlSample(currentShop.getMainUrl()));
+        mockedDocument.append( sampleConfiguration.getContent() );
+
+        Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
+
+        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
+
+        Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
+
+        Product availableProduct = products.get(sampleConfiguration.listIndexToAsserts());
+
+        logger.info("Testing Available Product: "+availableProduct);
+        logger.info("Price: "+availableProduct.getProductPrice());
+
+        Assertions.assertNotNull(availableProduct.getUrl());
+        Assertions.assertFalse(availableProduct.getUrl().isEmpty());
+    }
+
+    @Test
     public void testUnavailableProducts() throws IOException {
+        testUnavailableProducts(false);
+    }
 
+    protected void testUnavailableProducts(boolean priceAvailable) throws IOException {
+        SampleConfiguration sampleConfiguration = getSampleConfigurationForUnAvailableProducts();
+
+        Document mockedDocument = new Document(searchService.getSearchUrlSample(currentShop.getMainUrl()));
+        mockedDocument.append( sampleConfiguration.getContent() );
+
+        Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
+
+        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
+
+        Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
+
+        Product unavailableProduct = products.get(sampleConfiguration.listIndexToAsserts());
+
+        logger.info("Testing unavailable Product: "+unavailableProduct);
+        logger.info("Price: "+unavailableProduct.getProductPrice());
+
+        Assertions.assertFalse(unavailableProduct.getName().isEmpty());
+
+        Assertions.assertNotNull(unavailableProduct.getUrl());
+        Assertions.assertFalse(unavailableProduct.getUrl().isEmpty());
     }
 
     @Override

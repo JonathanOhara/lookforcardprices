@@ -1,11 +1,14 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
+
+import java.util.regex.Matcher;
 
 //https://www.prrjcards.com.br/catalogsearch/result/index/?limit=36&q=monster+reborn
 public class PrRjShopService extends SearchService {
@@ -66,6 +69,12 @@ public class PrRjShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		return null;
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
+
+		matcher.matches();
+
+		Money amount = Money.of(Double.parseDouble(matcher.group(1) + "." + matcher.group(2)), getCurrency());
+
+		return amount;
 	}
 }

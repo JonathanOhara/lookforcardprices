@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
@@ -9,6 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 
 import java.util.List;
+import java.util.regex.Matcher;
 
 //http://www.mtgcards.com.br/index.php?route=product/search&search=covil%20das%20trevas
 public class MTGCardGamesShopService extends SearchService {
@@ -81,6 +83,12 @@ public class MTGCardGamesShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		return null;
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
+
+		matcher.matches();
+
+		Money amount = Money.of(Double.parseDouble(matcher.group(1) + "." + matcher.group(2)), getCurrency());
+
+		return amount;
 	}
 }

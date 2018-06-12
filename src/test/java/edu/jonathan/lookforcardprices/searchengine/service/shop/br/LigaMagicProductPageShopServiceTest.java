@@ -19,7 +19,7 @@ public class LigaMagicProductPageShopServiceTest extends ShopServiceBaseTest {
     @Override
     @Test
     public void testUnavailableProducts() throws IOException {
-        testUnavailableProducts(true);
+        testUnavailableProducts(false);
     }
 
     @Override

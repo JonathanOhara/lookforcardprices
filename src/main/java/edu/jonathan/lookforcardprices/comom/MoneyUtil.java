@@ -6,9 +6,7 @@ import org.javamoney.moneta.convert.ExchangeRateType;
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
 import javax.money.MonetaryAmount;
-import javax.money.convert.CurrencyConversion;
-import javax.money.convert.ExchangeRateProvider;
-import javax.money.convert.MonetaryConversions;
+import javax.money.convert.*;
 import java.util.regex.Pattern;
 
 
@@ -23,8 +21,7 @@ public class MoneyUtil {
 	private static ExchangeRateProvider provider = null;
 
 	static{
-		provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.ECB);
-
+		provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.IMF);
 		/*
 		Matcher matcher = pattern.matcher("15.20");
 
@@ -40,4 +37,5 @@ public class MoneyUtil {
 		MonetaryAmount realAmount = Money.of(value, DOLLAR);
 		return currencyConversion.apply(realAmount);
 	}
+
 }

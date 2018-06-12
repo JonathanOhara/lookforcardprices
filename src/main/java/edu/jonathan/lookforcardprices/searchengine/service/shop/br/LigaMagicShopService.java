@@ -1,5 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service.shop.br;
 
+import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
@@ -13,6 +14,7 @@ import org.jsoup.select.Elements;
 
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Matcher;
 
 //Result Page:
 //https://www.lojadotoguro.com.br/?view=ecom%2Fitens&id=71080&searchExactMatch=&busca=Mirror+Force
@@ -25,7 +27,7 @@ public class LigaMagicShopService extends SearchService {
 	private int resultsPerPage = 12;
 
 	private Map<String, String> classNameCharacter = new HashMap<>();
-	private ResultMode resultMode = ResultMode.SEARCH_PAGE;
+	protected ResultMode resultMode = ResultMode.SEARCH_PAGE;
 
 	@Override
 	protected boolean isProductAvailable(Element productContainer) {
@@ -50,7 +52,7 @@ public class LigaMagicShopService extends SearchService {
 	protected String getItemUrl(Element productContainer) {
 		switch (resultMode){
 			case PRODUCT_PAGE:
-				return productContainer.ownerDocument().select("head > meta:nth-child(13)").attr("content");
+				return productContainer.ownerDocument().location();
 			case SEARCH_PAGE:
 			default:
 				return super.getItemUrl(productContainer);
@@ -90,7 +92,7 @@ public class LigaMagicShopService extends SearchService {
 		for( Element productContainer : els ){
 			if( resultMode == ResultMode.PRODUCT_PAGE ){
 				String pageTitle = productContainer.ownerDocument().title();
-				previewName = pageTitle.substring(0, pageTitle.indexOf("|")  - 1);
+				previewName = pageTitle.substring(0, getTitleSeparator(pageTitle) - 1);
 			}else if ( resultMode == ResultMode.SEARCH_PAGE ){
 				previewName = Optional.ofNullable(selectors.productName()).map(s -> productContainer.select(s).text()).orElse(productName);
 			}
@@ -104,6 +106,10 @@ public class LigaMagicShopService extends SearchService {
 		}
 
 		return products;
+	}
+
+	protected int getTitleSeparator(String pageTitle) {
+		return pageTitle.indexOf("|");
 	}
 
 	@Override
@@ -221,13 +227,19 @@ public class LigaMagicShopService extends SearchService {
 		classNameCharacter.put("qBdZg", "9");
 	}
 
-	private enum ResultMode{
+	protected enum ResultMode{
 		SEARCH_PAGE,
 		PRODUCT_PAGE
 	}
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		return null;
+		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
+
+		matcher.matches();
+
+		Money amount = Money.of(Double.parseDouble(matcher.group(1) + "." + matcher.group(2)), getCurrency());
+
+		return amount;
 	}
 }

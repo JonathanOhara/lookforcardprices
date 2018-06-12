@@ -33,3 +33,8 @@ Barrier Statue of the Abyss|Estátua Barreira do Abismo
 Grinder Golem
 Mystic Piper
 Spirit Reaper|Ceifeiro de Espíritos
+Invocation|Invokação
+Invoked Mechaba|Mechaba, o Invokado
+Leviair the Sea Dragon|	Leviar, o Dragão Marinho
+Super Quantal Mech Beast Grampulse|Besta Mech Super Quantal Pulso Orca
+The Phantom Knights of Break Sword|Os Cavaleiros Fantasmas da Espada Quebrada

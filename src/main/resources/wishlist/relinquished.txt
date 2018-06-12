@@ -10,7 +10,15 @@ Spirit Reaper|Ceifeiro de Espíritos
 Interrupted Kaiju Slumber|Sono Kaiju Interrompido
 Invocation|Invokação
 Pot of Avarice|Pote da Avarice
+Secret Village of the Spellcasters|Vila Secreta dos Magos
 
 Dark Renewal|Renovação Negra
+Summon Limit|Limitar Invocação
+
+Invoked Mechaba|Mechaba, o Invokado
+
+Leviair the Sea Dragon|	Leviar, o Dragão Marinho
+Super Quantal Mech Beast Grampulse|Besta Mech Super Quantal Pulso Orca
+The Phantom Knights of Break Sword|Os Cavaleiros Fantasmas da Espada Quebrada
 
 Akashic Magician|Mago Akáshico

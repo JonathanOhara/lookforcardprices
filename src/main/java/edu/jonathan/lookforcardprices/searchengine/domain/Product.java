@@ -3,7 +3,6 @@ package edu.jonathan.lookforcardprices.searchengine.domain;
 import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import org.jsoup.nodes.Node;
 
-import javax.money.CurrencyUnit;
 import java.net.URL;
 import java.util.Optional;
 

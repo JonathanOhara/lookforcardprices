@@ -13,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
@@ -41,7 +40,7 @@ public class TotalsReportService {
 	}
 	
 	public void generateContent(Map<Shop, List<Product>> productsByShop, String nameToSearch){
-		NumberFormat z = NumberFormat.getCurrencyInstance();
+//		NumberFormat z = NumberFormat.getCurrencyInstance();
 		for(Entry<Shop, List<Product>> entry: productsByShop.entrySet()){
 			Shop shop = entry.getKey();
 
@@ -52,7 +51,7 @@ public class TotalsReportService {
 							append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getProductPrice().map( productPrice -> productPrice.getFormattedPrice() ).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( z.format( product.getPriceInReal() ) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
+							append( "\"" ).append( product.getPriceInReal() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getUrl() ).append( "\"\n" );
 				}
 			}else{
@@ -60,7 +59,7 @@ public class TotalsReportService {
 					append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 					append( "\"" ).append( "-" ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 					append( "\"" ).append( "-" ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-					append( "\"" ).append( z.format( 9999.99f ) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
+					append( "\"" ).append( 9999.99f ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 					append( "\"" ).append( shop.getMainUrl() ).append( "\"\n" );
 			}
 		}

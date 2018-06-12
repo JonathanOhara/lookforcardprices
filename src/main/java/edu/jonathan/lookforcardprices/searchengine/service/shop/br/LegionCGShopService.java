@@ -13,7 +13,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 
 //https://www.legioncg.com.br/?view=ecom%2Fitens&id=40666&searchExactMatch=true&busca=mirror+force

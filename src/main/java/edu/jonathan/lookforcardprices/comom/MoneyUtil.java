@@ -21,11 +21,11 @@ public class MoneyUtil {
 
 	private static ExchangeRateProvider provider = null;
 
-	static{
-		provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.ECB);
-	}
-
 	public static MonetaryAmount dollarToReal(Money value){
+		if(provider == null){
+			provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.ECB);
+		}
+
 		CurrencyConversion currencyConversion = provider.getCurrencyConversion(REAL);
 		MonetaryAmount realAmount = Money.of(value.getNumber().doubleValue(), DOLLAR);
 		return currencyConversion.apply(realAmount);

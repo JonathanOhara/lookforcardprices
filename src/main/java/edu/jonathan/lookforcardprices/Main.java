@@ -23,7 +23,12 @@ public class Main {
 	 * TODO: card state
 	 */
 
+	static {
+		System.setProperty("http.agent", "Chrome");
+	}
+
 	public static void main(String[] args) throws IOException, URISyntaxException {
+		
 		SeContainerInitializer cdiInitializer = SeContainerInitializer.newInstance();
 		try (SeContainer container = cdiInitializer.initialize()) {
 

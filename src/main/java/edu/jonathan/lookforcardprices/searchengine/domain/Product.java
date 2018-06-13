@@ -1,9 +1,12 @@
 package edu.jonathan.lookforcardprices.searchengine.domain;
 
 import edu.jonathan.lookforcardprices.comom.MoneyUtil;
+import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Node;
 
 import java.net.URL;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Optional;
 
 
@@ -119,4 +122,9 @@ public class Product {
 			}
 		).orElse(0.0);
 	}
+
+	public String getPriceInRealFormatted() {
+		return NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format( Money.of(getPriceInReal(), MoneyUtil.REAL).getNumber() );
+	}
+
 }

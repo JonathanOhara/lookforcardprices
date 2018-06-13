@@ -2,12 +2,18 @@ package edu.jonathan.lookforcardprices.searchengine.service.shop.en;
 
 import edu.jonathan.lookforcardprices.comom.MoneyUtil;
 import edu.jonathan.lookforcardprices.comom.Util;
+import edu.jonathan.lookforcardprices.searchengine.domain.Product;
+import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
 import edu.jonathan.lookforcardprices.searchengine.service.ResultPageSelectors;
 import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilter;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 
@@ -42,8 +48,42 @@ public class CoolAndStuffShopService extends SearchService {
 	}
 
 	@Override
+	protected List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
+		List<Product> products = new ArrayList<>(els.size());
+
+		String previewName;
+
+		for( Element productByCollection : els ){
+
+			for( Element productState: productByCollection.select(".userTable > tbody > tr" )){
+				previewName = Optional.ofNullable(selectors.productName()).map(s -> productByCollection.select(s).text()).orElse(productName);
+
+				previewName += " (" + productState.select(".pCondition").text() + ")";
+
+				if( resultNameFilter.isValid(previewName, productName) ){
+					logger.debug("\tAccepted by name filter: "+previewName);
+					getProductList(selectors, shop, resultsPageURL, products, previewName, productState);
+				}else{
+					logger.debug("\tRejected by name filter: "+previewName);
+				}
+			}
+		}
+
+		return products;
+	}
+
+	@Override
+	protected String getItemUrl(Element productState) {
+		Element userTable = productState.parent().parent();
+		Element tdProducts = userTable.parent();
+		Element productMainContainer = tdProducts.parent();
+
+		return productMainContainer.select("a").first().attr("href");
+	}
+
+	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.noFilter();
+		return ResultNameFilter.ignoreCaseContains();
 	}
 
 	@Override

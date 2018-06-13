@@ -51,7 +51,7 @@ public class TotalsReportService {
 							append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getProductPrice().map( productPrice -> productPrice.getFormattedPrice() ).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( product.getPriceInReal() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
+							append( "\"" ).append( product.getPriceInRealFormatted() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
 							append( "\"" ).append( product.getUrl() ).append( "\"\n" );
 				}
 			}else{
@@ -91,7 +91,7 @@ public class TotalsReportService {
 
 	private void generateGamesTotalFile(File dir) throws IOException {
 		String csvDir;
-		csvDir = dir.getAbsoluteFile() + "/Games_Total.csv";
+		csvDir = dir.getAbsoluteFile() + "/Products_Total.csv";
 		
 		File file = new File( csvDir );
 		if (!file.exists()) {

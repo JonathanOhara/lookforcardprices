@@ -10,10 +10,9 @@ raigeki
 Urgent Ritual Art|Arte Ritual Urgente
 evenly matched|Confronto Justo
 Skill Drain|Drenar Habilidades
-Anti-Spell Fragrance|Fragrância Anti-Magia
 Lost Wind|Vento Perdido
 tornado dragon|Dragão Tornado
-Number 41: Bagooska the Terribly Tired Tapir|Número 41: Bagooska, a Anta Terrivelmente Cansada
+Number 41 Bagooska the Terribly Tired Tapir|Número 41 Bagooska, a Anta Terrivelmente Cansada
 
 
 Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
@@ -37,6 +36,6 @@ Invocation|Invokação
 Secret Village of the Spellcasters|Vila Secreta dos Magos
 Summon Limit|Limitar Invocação
 Invoked Mechaba|Mechaba, o Invokado
-Leviair the Sea Dragon|	Leviar, o Dragão Marinho
+Leviair the Sea Dragon|Leviar, o Dragão Marinho
 Super Quantal Mech Beast Grampulse|Besta Mech Super Quantal Pulso Orca
 The Phantom Knights of Break Sword|Os Cavaleiros Fantasmas da Espada Quebrada

@@ -12,7 +12,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 
 //https://www.trollandtoad.com/products/search.php?search_category=&search_words=mirror&searchmode=basic
@@ -33,8 +35,8 @@ public class TrollAndToadShopService extends SearchService {
 	}
 
     @Override
-    protected Set<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
-		Set<Product> products = new LinkedHashSet<>();
+    protected List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
+		List<Product> products = new ArrayList<>();
 
         String previewName;
 

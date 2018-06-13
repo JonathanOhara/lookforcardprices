@@ -75,13 +75,13 @@ public class GamesReportService {
 				htmlReport.append(product.getName());
 				htmlReport.append("\t\t\t\t\t</a>\n");
 				htmlReport.append("\t\t\t\t</td>\n");
-				htmlReport.append("\t\t\t\t<td style='width: 15%;'>\n");
+				htmlReport.append("\t\t\t\t<td style='width: 15%; text-align: right;'>\n");
 				if( !product.isAvailable() )htmlReport.append("<strike>");
 				htmlReport.append( product.getProductPrice().map(ProductPrice::getFormattedPrice).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) );
 				if( !product.isAvailable() )htmlReport.append("</strike>");
 				htmlReport.append("\n");
 				htmlReport.append("\t\t\t\t</td>\n");
-				htmlReport.append("\t\t\t\t<td style='width: 15%;'>\n");
+				htmlReport.append("\t\t\t\t<td style='width: 15%; text-align: right;'>\n");
 				if( !product.isAvailable() )htmlReport.append("<strike>");
 				htmlReport.append( product.getPriceInRealFormatted() );
 				if( !product.isAvailable() )htmlReport.append("</strike>");

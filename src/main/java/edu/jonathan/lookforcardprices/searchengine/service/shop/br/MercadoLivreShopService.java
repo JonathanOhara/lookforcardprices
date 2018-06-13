@@ -73,7 +73,7 @@ public class MercadoLivreShopService extends SearchService {
 	protected Money getPriceFrom(String formattedValue) {
 		String[] parts = formattedValue.split(" ");
 
-		String realPart = parts[1];
+		String realPart = parts[1].replaceAll("\\.", "");
 		String centsPart  = parts.length > 2 ? parts[2] : "00";
 
 		Money amount = Money.of(Double.parseDouble(realPart + "." + centsPart), getCurrency());

@@ -62,7 +62,7 @@ public class Util {
 		patternLayout.setConversionPattern("[%d{HH:mm:ss,SSS}]: %m%n");
 
 		try {
-			appender = new FileAppender(patternLayout,"./log/" + fileName + ".log",false);
+			appender = new FileAppender(patternLayout,"./log/" + fileName.replaceAll(",","") + ".log",false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -71,7 +71,7 @@ public class Util {
 
 	public static void configureOutputToFileAndConsole(String logName) {
 		try {
-			String logAddress = Util.getReportsPath() + "/" + LOGS_FOLDER +  "/" + logName + ".log";
+			String logAddress = Util.getReportsPath() + "/" + LOGS_FOLDER +  "/" + logName.replaceAll(",","") + ".log";
 			PrintStream fileStream = null;
 
 			fileStream = new MyPrintStream(new FileOutputStream( logAddress, true ), System.out);

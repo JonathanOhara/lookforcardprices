@@ -84,8 +84,8 @@ public class LigaMagicShopService extends SearchService {
 	}
 
 	@Override
-	protected Set<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
-		Set<Product> products = new LinkedHashSet<>();
+	protected List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
+		List<Product> products = new ArrayList<>();
 
 		String previewName = null;
 

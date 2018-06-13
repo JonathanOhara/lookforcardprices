@@ -57,7 +57,7 @@ public abstract class ShopServiceBaseTest  {
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
-        List<Product> products = new ArrayList<>(searchService.run(currentShop, sampleConfiguration.getSearchedTerm()));
+        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 
@@ -94,7 +94,7 @@ public abstract class ShopServiceBaseTest  {
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
-        List<Product> products = new ArrayList<>(searchService.run(currentShop, sampleConfiguration.getSearchedTerm()));
+        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 

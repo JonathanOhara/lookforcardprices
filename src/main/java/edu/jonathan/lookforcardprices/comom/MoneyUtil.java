@@ -22,7 +22,7 @@ public class MoneyUtil {
 	private static ExchangeRateProvider provider = null;
 
 	static{
-		provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.IMF);
+		provider = MonetaryConversions.getExchangeRateProvider(ExchangeRateType.ECB);
 	}
 
 	public static MonetaryAmount dollarToReal(Money value){

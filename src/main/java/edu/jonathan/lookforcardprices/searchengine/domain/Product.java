@@ -7,6 +7,7 @@ import org.jsoup.nodes.Node;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -21,7 +22,7 @@ public class Product {
 
 	private Shop shopFounded;
 	private Node productContainer;
-	
+
 	public Product() {}
 
 	public Product(String name, boolean available, Shop shopFounded, String imageUrl, String url, URL searchedURL, Node productContainer) {
@@ -121,6 +122,20 @@ public class Product {
 				}
 			}
 		).orElse(0.0);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Product product = (Product) o;
+		return Objects.equals(url, product.url) &&
+				Objects.equals(productPrice.map(productPrice1 -> productPrice1.getFormattedPrice()).orElse(""), product.productPrice.map(productPrice2 -> productPrice2.getFormattedPrice()).orElse(""));
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.	hash(url);
 	}
 
 	public String getPriceInRealFormatted() {

@@ -56,7 +56,7 @@ public class GamesReportService {
 
 			htmlReport.append("\t\t<thead>\n");
 			htmlReport.append("\t\t\t<tr>\n");
-			htmlReport.append("\t\t\t<th colspan=2>\n");
+			htmlReport.append("\t\t\t<th colspan=3>\n");
 			htmlReport.append("\t\t\t\t<a href='").append( products.get(0).getSearchedURL() ).append("'>\n");
 			htmlReport.append("\t\t\t\t\tStore: ").append(shop.getName()).append("\n");
 			htmlReport.append("\t\t\t\t</a>\n");
@@ -68,16 +68,22 @@ public class GamesReportService {
 
 			for( Product product: products){
 				htmlReport.append("\t\t\t<tr ").append(" class='").append(product.isAvailable() ? "available" : "unavailable").append("' >\n");
-				htmlReport.append("\t\t\t\t<td style='width: 80%;'>\n");
+				htmlReport.append("\t\t\t\t<td style='width: 70%;'>\n");
 				htmlReport.append("\t\t\t\t\t<a href='");
 				htmlReport.append(product.getUrl());
 				htmlReport.append("'>\n");
 				htmlReport.append(product.getName());
 				htmlReport.append("\t\t\t\t\t</a>\n");
 				htmlReport.append("\t\t\t\t</td>\n");
-				htmlReport.append("\t\t\t\t<td style='width: 20%;'>\n");
+				htmlReport.append("\t\t\t\t<td style='width: 15%;'>\n");
 				if( !product.isAvailable() )htmlReport.append("<strike>");
 				htmlReport.append( product.getProductPrice().map(ProductPrice::getFormattedPrice).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) );
+				if( !product.isAvailable() )htmlReport.append("</strike>");
+				htmlReport.append("\n");
+				htmlReport.append("\t\t\t\t</td>\n");
+				htmlReport.append("\t\t\t\t<td style='width: 15%;'>\n");
+				if( !product.isAvailable() )htmlReport.append("<strike>");
+				htmlReport.append( product.getPriceInRealFormatted() );
 				if( !product.isAvailable() )htmlReport.append("</strike>");
 				htmlReport.append("\n");
 				htmlReport.append("\t\t\t\t</td>\n");

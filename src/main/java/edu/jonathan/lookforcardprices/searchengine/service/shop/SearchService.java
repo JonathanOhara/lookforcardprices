@@ -19,9 +19,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 public abstract class SearchService {
@@ -34,11 +32,11 @@ public abstract class SearchService {
 	public static final String URL_SEARCH_SAMPLE = Keys.SEARCH_TEXT_TO_REPLACE;
 	public static final String PRODUCT_PRICE_NOT_AVAILABLE = "Unable to get price";
 
-	public List<Product> run(Shop shop, String productName) throws IOException {
+	public Set<Product> run(Shop shop, String productName) throws IOException {
 		return run(shop, productName, false);
 	}
 
-	public List<Product> run(Shop shop, String productName, boolean maxResultsPerPage) {
+	public Set<Product> run(Shop shop, String productName, boolean maxResultsPerPage) {
 		Util.configureOutputToFileAndConsole( logger, shop.getName() + "/" + productName);
 
 		logger.debug("Shop: "+shop.getName());
@@ -51,7 +49,7 @@ public abstract class SearchService {
 
 		afterResultListener(resultsPage);
 
-		List<Product> products = readProductsAt(resultsPage, shop, productName, resultsPageURL);
+		Set<Product> products = readProductsAt(resultsPage, shop, productName, resultsPageURL);
 		logger.trace("\tTime to read all page products info: "+(System.currentTimeMillis() - time));
 
 		logger.debug("\tProducts size: "+products.size());
@@ -77,7 +75,7 @@ public abstract class SearchService {
 		return urlReaderService.readUrlDocument( resultsPageURL.toString() );
 	}
 
-	protected List<Product> readProductsAt(Document resultsPage, Shop shop, String productName, URL resultsPageURL){
+	protected Set<Product> readProductsAt(Document resultsPage, Shop shop, String productName, URL resultsPageURL){
 		ResultPageSelectors selectors = getResultPageSelectors();
 
 		Elements els = resultsPage.select( selectors.singleProduct() );
@@ -95,8 +93,8 @@ public abstract class SearchService {
 		return els;
 	}
 
-	protected List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
-		List<Product> products = new ArrayList<>(els.size());
+	protected Set<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
+		Set<Product> products = new LinkedHashSet<>();
 
 		String previewName;
 
@@ -106,7 +104,7 @@ public abstract class SearchService {
 
 			if( resultNameFilter.isValid(previewName, productName) ){
 				logger.debug("\tAccepted by name filter: "+previewName);
-				getProductList(selectors, shop, resultsPageURL, products, previewName, productContainer);
+				products.addAll( getProductList(selectors, shop, resultsPageURL, previewName, productContainer) );
 			}else{
 				logger.debug("\tRejected by name filter: "+previewName);
 			}
@@ -115,7 +113,8 @@ public abstract class SearchService {
 		return products;
 	}
 
-	protected void getProductList(ResultPageSelectors selectors, Shop shop, URL resultsPageURL, List<Product> products, String previewName, Element productContainer) {
+	protected List<Product> getProductList(ResultPageSelectors selectors, Shop shop, URL resultsPageURL, String previewName, Element productContainer) {
+		List<Product> products = new ArrayList<>();
 		String previewImageURL;
 		String individualUrl;
 		String formattedPrice;
@@ -146,6 +145,8 @@ public abstract class SearchService {
 
 			products.add( new Product(previewName, available, shop, previewImageURL, individualUrl, resultsPageURL,productContainer, productPrice ) );
 		}
+
+		return products;
 	}
 
 	protected String getFormattedPriceFrom(Element priceElement) {

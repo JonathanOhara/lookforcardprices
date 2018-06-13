@@ -64,8 +64,8 @@ public class SearchEngine {
         this.searchList = new ArrayList<>(searchList);
     }
 
-    public Map<String, List<Product>> run(boolean maxResultsPerPage) {
-        Map<String, List<Product>> productsByName = new ConcurrentHashMap<>(searchList.size());
+    public Map<String, Set<Product>> run(boolean maxResultsPerPage) {
+        Map<String, Set<Product>> productsByName = new ConcurrentHashMap<>(searchList.size());
 
         for(String productName : searchList ) {
 
@@ -84,7 +84,7 @@ public class SearchEngine {
                     otherName = productNames[1];
                 }
 
-                List<Product> productsFounded = new ArrayList<>();
+                Set<Product> productsFounded = new LinkedHashSet<>();
 
                 productsFounded.addAll( searchService.run(shop, productMainName, maxResultsPerPage) );
 
@@ -92,7 +92,7 @@ public class SearchEngine {
                     productsFounded.addAll( searchService.run(shop, otherName, maxResultsPerPage) );
 
                 synchronized(this) {
-                    List<Product> productsAlreadyFound = Optional.ofNullable(productsByName.get(productMainName)).orElse(new ArrayList<>());
+                    Set<Product> productsAlreadyFound = Optional.ofNullable(productsByName.get(productMainName)).orElse(new LinkedHashSet<>());
                     productsFounded.addAll( productsAlreadyFound );
                     productsByName.put( productMainName, productsFounded );
                 }

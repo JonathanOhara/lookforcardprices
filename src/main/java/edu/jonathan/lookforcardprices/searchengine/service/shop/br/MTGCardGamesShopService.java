@@ -70,6 +70,14 @@ public class MTGCardGamesShopService extends SearchService {
 	}
 
 	@Override
+	protected String getItemUrl(Element productContainer) {
+		String completeUrl = productContainer.select("a").first().attr("href");
+
+		String urlWithoutSearchTerm = completeUrl.substring(0, completeUrl.indexOf("&search="));
+		return urlWithoutSearchTerm;
+	}
+
+	@Override
 	protected String getFormattedPriceFrom(Element priceElement) {
 		List<TextNode> textNodes = priceElement.textNodes();
 

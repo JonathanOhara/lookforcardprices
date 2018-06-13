@@ -12,17 +12,15 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 public class Main {
 
 	/**
-	 * TODO: dont let the product duplicate(check url)
 	 * TODO: Thymeleaf instead builder with html
-	 * TODO: web pages with all available products
-	 * TODO: Cool n Stuff add card state
-	 *
-	 * IDEA: card state
+	 * TODO: web pages with all available products per shop
+	 * TODO: card state
 	 */
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
@@ -30,7 +28,7 @@ public class Main {
 		try (SeContainer container = cdiInitializer.initialize()) {
 
 			SearchController searchController = container.select(SearchController.class).get();
-			Map<String, List<Product>> results = searchController.run(createSearchListFromFile("/src/main/resources/searchList.txt"));
+			Map<String, Set<Product>> results = searchController.run(createSearchListFromFile("/src/main/resources/searchList.txt"));
 
 			ReportController reportController = container.select(ReportController.class).get();
 			reportController.generateAllReports(results);

@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,7 +32,7 @@ public class LigaMagicSearchPageShopServiceTest extends ShopServiceBaseTest {
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
-        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
+        List<Product> products = new ArrayList<>(searchService.run(currentShop, sampleConfiguration.getSearchedTerm()));
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 
@@ -57,7 +58,7 @@ public class LigaMagicSearchPageShopServiceTest extends ShopServiceBaseTest {
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
-        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
+        List<Product> products = new ArrayList<>(searchService.run(currentShop, sampleConfiguration.getSearchedTerm()));
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 

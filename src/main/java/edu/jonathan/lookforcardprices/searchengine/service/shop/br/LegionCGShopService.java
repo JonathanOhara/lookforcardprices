@@ -13,9 +13,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Matcher;
 
 //https://www.legioncg.com.br/?view=ecom%2Fitens&id=40666&searchExactMatch=true&busca=mirror+force
@@ -80,8 +78,8 @@ public class LegionCGShopService extends SearchService {
 	}
 
 	@Override
-	protected List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
-		List<Product> products = new ArrayList<>(els.size());
+	protected Set<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
+		Set<Product> products = new LinkedHashSet<>();
 
 		String previewName = null;
 
@@ -95,7 +93,7 @@ public class LegionCGShopService extends SearchService {
 
 			if( resultNameFilter.isValid(previewName, productName) ){
 				logger.debug("\tAccepted by name filter: "+previewName);
-				getProductList(selectors, shop, resultsPageURL, products, previewName, productContainer);
+				products.addAll( getProductList(selectors, shop, resultsPageURL, previewName, productContainer) );
 			}else{
 				logger.debug("\tRejected by name filter: "+previewName);
 			}

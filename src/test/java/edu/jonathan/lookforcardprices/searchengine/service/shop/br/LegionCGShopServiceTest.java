@@ -72,7 +72,7 @@ public class LegionCGShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 34;
+                return 7;
             }
 
             @Override

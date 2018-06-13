@@ -84,8 +84,8 @@ public class LigaMagicShopService extends SearchService {
 	}
 
 	@Override
-	protected List<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
-		List<Product> products = new ArrayList<>(els.size());
+	protected Set<Product> readProductsData(Elements els, ResultPageSelectors selectors, Shop shop, String productName, URL resultsPageURL, ResultNameFilter resultNameFilter) {
+		Set<Product> products = new LinkedHashSet<>();
 
 		String previewName = null;
 
@@ -99,7 +99,7 @@ public class LigaMagicShopService extends SearchService {
 
 			if( resultNameFilter.isValid(previewName, productName) ){
 				logger.debug("\tAccepted by name filter: "+previewName);
-				getProductList(selectors, shop, resultsPageURL, products, previewName, productContainer);
+				products.addAll( getProductList(selectors, shop, resultsPageURL, previewName, productContainer) );
 			}else{
 				logger.debug("\tRejected by name filter: "+previewName);
 			}

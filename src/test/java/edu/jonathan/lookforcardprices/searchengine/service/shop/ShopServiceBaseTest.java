@@ -20,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +57,7 @@ public abstract class ShopServiceBaseTest  {
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
-        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
+        List<Product> products = new ArrayList<>(searchService.run(currentShop, sampleConfiguration.getSearchedTerm()));
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 
@@ -93,7 +94,7 @@ public abstract class ShopServiceBaseTest  {
 
         Mockito.when( urlReaderService.readUrlDocument( Mockito.anyString() ) ).thenReturn( mockedDocument );
 
-        List<Product> products = searchService.run(currentShop, sampleConfiguration.getSearchedTerm());
+        List<Product> products = new ArrayList<>(searchService.run(currentShop, sampleConfiguration.getSearchedTerm()));
 
         Assertions.assertEquals(sampleConfiguration.expectedSize(), products.size());
 

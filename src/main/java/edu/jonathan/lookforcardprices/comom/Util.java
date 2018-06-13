@@ -19,7 +19,10 @@ public class Util {
 	private static String projectPath = null;
 	private static String reportsPath = null;
 
+	public static boolean CREATE_HTML_IMPORTS_FOLDER = true;
 	public static final String HTML_IMPORT_FOLDER = "imports";
+
+	public static boolean CREATE_LOGS_FOLDER = false;
 	public static final String LOGS_FOLDER = "logs";
 
 	protected static final Logger logger = Logger.getLogger(Util.class);
@@ -40,14 +43,18 @@ public class Util {
 				reportFile.mkdir();
 			}
 
-			File reportImportFile = new File(reportFile.getCanonicalPath(), HTML_IMPORT_FOLDER);
-			if( !reportImportFile.exists() ){
-				reportImportFile.mkdir();
+			if( CREATE_HTML_IMPORTS_FOLDER ) {
+				File reportImportFile = new File(reportFile.getCanonicalPath(), HTML_IMPORT_FOLDER);
+				if (!reportImportFile.exists()) {
+					reportImportFile.mkdir();
+				}
 			}
 
-			File logFile = new File(reportFile, LOGS_FOLDER);
-			if( !logFile.exists() ){
-				logFile.mkdir();
+			if( CREATE_LOGS_FOLDER ) {
+				File logFile = new File(reportFile, LOGS_FOLDER);
+				if (!logFile.exists()) {
+					logFile.mkdir();
+				}
 			}
 
 			reportsPath = reportFile.getCanonicalPath();

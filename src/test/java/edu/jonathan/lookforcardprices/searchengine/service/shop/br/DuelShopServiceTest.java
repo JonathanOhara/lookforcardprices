@@ -47,7 +47,7 @@ public class DuelShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 35;
+                return 34;
             }
 
             @Override
@@ -72,7 +72,7 @@ public class DuelShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 35;
+                return 34;
             }
 
             @Override

@@ -47,7 +47,7 @@ public class EnigmaDoMilenioShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 86;
+                return 52;
             }
 
             @Override
@@ -72,7 +72,7 @@ public class EnigmaDoMilenioShopServiceTest extends ShopServiceBaseTest {
 
             @Override
             public int expectedSize() {
-                return 86;
+                return 52;
             }
 
             @Override

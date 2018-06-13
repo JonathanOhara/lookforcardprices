@@ -11,4 +11,8 @@ public interface ResultNameFilter {
 	static ResultNameFilter ignoreCaseContains(){
 		return (productName, searchedName) -> productName.toLowerCase().contains( searchedName.toLowerCase() );
 	}
+
+	static ResultNameFilter ignoreCaseContainsAndIngoreJPCards(){
+		return (productName, searchedName) -> productName.toLowerCase().contains( searchedName.toLowerCase() )&& !productName.contains("JP");
+	}
 }

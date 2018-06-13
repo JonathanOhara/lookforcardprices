@@ -39,7 +39,7 @@ public class EnigmaDoMilenioShopService extends SearchService {
 
 	@Override
 	protected ResultNameFilter getResultNameFilter() {
-		return ResultNameFilter.ignoreCaseContains();
+		return ResultNameFilter.ignoreCaseContainsAndIngoreJPCards();
 	}
 
 	@Override

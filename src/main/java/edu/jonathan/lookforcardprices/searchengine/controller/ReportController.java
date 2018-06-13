@@ -16,6 +16,7 @@ public class ReportController {
     @Inject private TotalsReportService totalsReport;
 
     public void generateAllReports(Map<String, Set<Product>> results) throws IOException, URISyntaxException {
+        totalsReport.generateHeaders();
         for (Map.Entry<String, Set<Product>> result: results.entrySet()) {
             totalsReport.generateReportProductsByShop(result.getKey(), new ArrayList<>(result.getValue()));
         }

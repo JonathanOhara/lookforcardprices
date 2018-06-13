@@ -1,6 +1,6 @@
 package edu.jonathan.lookforcardprices.searchengine.service;
 
-import edu.jonathan.lookforcardprices.comom.Keys;
+import edu.jonathan.lookforcardprices.comom.CSVFileBuilder;
 import edu.jonathan.lookforcardprices.comom.Util;
 import edu.jonathan.lookforcardprices.searchengine.domain.Product;
 import edu.jonathan.lookforcardprices.searchengine.domain.Shop;
@@ -20,55 +20,67 @@ import java.util.Map.Entry;
 
 public class TotalsReportService {
 
-	private StringBuilder totalsPerProductContent = null;
-	private StringBuilder totalsPerShopContent = null;
+	private CSVFileBuilder totalsPerProductContent = null;
+	private CSVFileBuilder totalsPerShopContent = null;
 
 	protected static final Logger logger = Logger.getLogger(TotalsReportService.class);
 
-	public TotalsReportService() {}
+	public TotalsReportService() {
+		totalsPerProductContent = CSVFileBuilder.createCSVFile();
+		totalsPerShopContent = CSVFileBuilder.createCSVFile();
+	}
 
 	public void generateHeaders(){
-		totalsPerProductContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
-				append("\"Name Searched\"").append(Keys.CSV_SEPARATOR).
-				append("\"Name Found\"").append(Keys.CSV_SEPARATOR).
-				append("\"Formatted Price\"").append(Keys.CSV_SEPARATOR).
-				append("\"Price Converted to BRL\"").append(Keys.CSV_SEPARATOR).
-				append("\"URL\"\n");
+		totalsPerProductContent.createLine().
+				append("Shop").
+				append("Name Searched").
+				append("Name Found").
+				append("Formatted Price").
+				append("Price Converted to BRL").
+				append("URL").
+				buildLine();
 		
-		totalsPerShopContent.append("\"Shop\"").append(Keys.CSV_SEPARATOR).
-					  append("\"Quantity\"\n");
+		totalsPerShopContent.createLine().
+				append("Shop").
+				append("Quantity").
+				buildLine();
 	}
 	
-	public void generateContent(Map<Shop, List<Product>> productsByShop, String nameToSearch){
-//		NumberFormat z = NumberFormat.getCurrencyInstance();
+	public void generateTotalsPerProductContent(Map<Shop, List<Product>> productsByShop, String nameToSearch){
 		for(Entry<Shop, List<Product>> entry: productsByShop.entrySet()){
 			Shop shop = entry.getKey();
 
 			if( entry.getValue() != null ){
 				for( Product product : entry.getValue() ){
 					if(!product.isAvailable()) continue;
-					totalsPerProductContent.append( "\"" ).append( shop.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( product.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( product.getProductPrice().map( productPrice -> productPrice.getFormattedPrice() ).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( product.getPriceInRealFormatted() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-							append( "\"" ).append( product.getUrl() ).append( "\"\n" );
+					totalsPerProductContent.createLine().
+							append( shop.getName() ).
+							append( nameToSearch ).
+							append( product.getName() ).
+							append( product.getProductPrice().map( productPrice -> productPrice.getFormattedPrice() ).orElse(SearchService.PRODUCT_PRICE_NOT_AVAILABLE) ).
+							append( product.getPriceInRealFormatted() ).
+							append( product.getUrl() ).
+							buildLine();
 				}
 			}else{
-				totalsPerProductContent.append( "\"" ).append( shop.getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-					append( "\"" ).append( nameToSearch ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-					append( "\"" ).append( "-" ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-					append( "\"" ).append( "-" ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-					append( "\"" ).append( 9999.99f ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-					append( "\"" ).append( shop.getMainUrl() ).append( "\"\n" );
+				totalsPerProductContent.createLine().
+						append( shop.getName() ).
+						append( nameToSearch ).
+						append( "-" ).
+						append( "-" ).
+						append( 9999.99f ).
+						append( shop.getMainUrl() ).
+						buildLine();
 			}
 		}
 	}
 	
-	private void computeShopsTotals(Map<Shop, List<Product>> productsByShop) {
+	private void generateTotalsPerShopContent(Map<Shop, List<Product>> productsByShop) {
 		for( Entry<Shop, List<Product>> entry : productsByShop.entrySet() ){
-			totalsPerShopContent.append( "\"" ).append( entry.getKey().getName() ).append( "\"" ).append(Keys.CSV_SEPARATOR).
-						  append( "\"" ).append( entry.getValue().size() ).append( "\"\n" );
+			totalsPerShopContent.createLine().
+					append( entry.getKey().getName() ).
+					append( entry.getValue().size() ).
+					buildLine();
 		}
 		
 	}
@@ -101,7 +113,7 @@ public class TotalsReportService {
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		
-		bw.write(totalsPerProductContent.toString());
+		bw.write(totalsPerProductContent.build());
 		
 		bw.flush();
 		bw.close();
@@ -119,7 +131,7 @@ public class TotalsReportService {
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		
-		bw.write(totalsPerShopContent.toString());
+		bw.write(totalsPerShopContent.build());
 		
 		bw.flush();
 		bw.close();
@@ -127,12 +139,6 @@ public class TotalsReportService {
 
 	public void generateReportProductsByShop(String productName, List<Product> results) throws IOException, URISyntaxException {
 		logger.trace("Generating Report for: "+productName);
-		Util.configureOutputToFileAndConsole(productName);
-
-		totalsPerProductContent = new StringBuilder();
-		totalsPerShopContent = new StringBuilder();
-
-		generateHeaders();
 
 		Map<Shop, List<Product>> productsByShop = new TreeMap<>(Comparator.comparing(Shop::getName));
 
@@ -165,10 +171,17 @@ public class TotalsReportService {
 
 		htmlReport.closeAndWriteFile(productName);
 
-		generateContent(productsByShop, productName);
-		computeShopsTotals(productsByShop);
+		generateTotalsPerProductContent(productsByShop, productName);
+		generateTotalsPerShopContent(productsByShop);
 
 		closeAndWriteFile();
 	}
 
+	public CSVFileBuilder getTotalsPerProductContent() {
+		return totalsPerProductContent;
+	}
+
+	public CSVFileBuilder getTotalsPerShopContent() {
+		return totalsPerShopContent;
+	}
 }

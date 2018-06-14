@@ -3,13 +3,11 @@ Eater of Millions|Comedor de Milhões
 Grinder Golem
 Jizukiru, the Star Destroying Kaiju|Jizukiru, o Kaiju Destruidor de Estrelas
 Mystic Piper
-Predaplant Ophrys Scorpio|Predaplanta Escorpião Ophrys
 Shaddoll Dragon|Dragão Sombraneco
 Spirit Reaper|Ceifeiro de Espíritos
 
 Interrupted Kaiju Slumber|Sono Kaiju Interrompido
 Invocation|Invokação
-Pot of Avarice|Pote da Avarice
 Secret Village of the Spellcasters|Vila Secreta dos Magos
 
 Dark Renewal|Renovação Negra
@@ -22,3 +20,4 @@ Super Quantal Mech Beast Grampulse|Besta Mech Super Quantal Pulso Orca
 The Phantom Knights of Break Sword|Os Cavaleiros Fantasmas da Espada Quebrada
 
 Akashic Magician|Mago Akáshico
+Summon Sorceress

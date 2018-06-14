@@ -115,32 +115,23 @@ public class LigaMagicShopService extends SearchService {
 	@Override
 	protected String getFormattedPriceFrom(Element priceElement ){
 		if(resultMode == ResultMode.PRODUCT_PAGE){
-			return super.getFormattedPriceFrom(priceElement);
+
+			Elements promotionalPrice = getPromotionalPrice(priceElement);
+
+			if( promotionalPrice.size() == 0 ){
+				return priceElement.text().trim();
+			}else{
+				return promotionalPrice.get(0).text().trim();
+			}
 		}else if(resultMode == ResultMode.SEARCH_PAGE){
 			return PRODUCT_PRICE_NOT_AVAILABLE;
 		}
 
-		if(priceElement.children().size() == 0){
-			return PRODUCT_PRICE_NOT_AVAILABLE;
-		}
+		return null;
+	}
 
-		StringBuilder price = new StringBuilder();
-
-		for(Element priceChar: priceElement.children()){
-			Set<String> classes = priceChar.classNames();
-
-			if(classes.size() == 0) {
-				price.append(",");
-			}
-			for(String className: classes){
-				if( classNameCharacter.containsKey(className) ){
-					price.append(classNameCharacter.get(className));
-				}
-			}
-		}
-
-		logger.debug("PRICE: "+price);
-		return price.toString();
+	private Elements getPromotionalPrice(Element priceElement) {
+		return priceElement.select("font");
 	}
 
 	@Override

@@ -117,8 +117,12 @@ public class Product {
 		return productPrice.map(price -> {
 				if (price.getAmount().getCurrency().equals(MoneyUtil.REAL)) {
 					return price.getAmount().getNumber().doubleValue();
-				} else {
+				} else if (price.getAmount().getCurrency().equals(MoneyUtil.DOLLAR)) {
 					return MoneyUtil.dollarToReal(price.getAmount()).getNumber().doubleValue();
+				} else if (price.getAmount().getCurrency().equals(MoneyUtil.EURO)) {
+					return MoneyUtil.euroToReal(price.getAmount()).getNumber().doubleValue();
+				}else{
+					throw new RuntimeException("Cannot get currency unit");
 				}
 			}
 		).orElse(0.0);

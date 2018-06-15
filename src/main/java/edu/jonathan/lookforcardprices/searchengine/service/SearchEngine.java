@@ -6,6 +6,7 @@ import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.br.*;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.en.CoolAndStuffShopService;
 import edu.jonathan.lookforcardprices.searchengine.service.shop.en.TrollAndToadShopService;
+import edu.jonathan.lookforcardprices.searchengine.service.shop.eu.CardMarketShopService;
 import org.apache.log4j.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -52,6 +53,10 @@ public class SearchEngine {
     public void registerUSAShops(){
         register(new Shop("Cool And Stuff", "https://www.coolstuffinc.com/"), CDI.current().select(CoolAndStuffShopService.class).get() );
         register(new Shop("Troll and Toad", "https://www.trollandtoad.com/"), CDI.current().select(TrollAndToadShopService.class).get() );
+    }
+
+    public void registerEUShops() {
+        register(new Shop("Card Market", "https://www.cardmarket.com/"), CDI.current().select(CardMarketShopService.class).get() );
     }
 
     public void register(Shop shop, SearchService shopImplementation){
@@ -103,6 +108,7 @@ public class SearchEngine {
 
     public void registerAllShops() {
         registerUSAShops();
+        registerEUShops();
         registerBrazilianShops();
     }
 }

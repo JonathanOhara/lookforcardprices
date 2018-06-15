@@ -121,7 +121,7 @@ public abstract class SearchService {
 		String individualUrl;
 		String formattedPrice;
 		boolean available;
-		previewImageURL = Util.completeURL( shop.getMainUrl(), productContainer.select( selectors.productImageURL() ).attr("src") );
+		previewImageURL = getImageUrl(selectors, shop, productContainer);
 
 		individualUrl = getItemUrl(productContainer);
 
@@ -149,6 +149,10 @@ public abstract class SearchService {
 		}
 
 		return products;
+	}
+
+	protected String getImageUrl(ResultPageSelectors selectors, Shop shop, Element productContainer) {
+		return Util.completeURL( shop.getMainUrl(), productContainer.select( selectors.productImageURL() ).attr("src") );
 	}
 
 	protected String getFormattedPriceFrom(Element priceElement) {

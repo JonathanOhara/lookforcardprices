@@ -9,6 +9,9 @@ Spirit Reaper|Ceifeiro de Espíritos
 Interrupted Kaiju Slumber|Sono Kaiju Interrompido
 Invocation|Invokação
 Secret Village of the Spellcasters|Vila Secreta dos Magos
+Ultra Polymerization|Ultra Polimerização
+Super Polymerization|Super Polimerização
+Fusion Substitute|Substituir Fusão
 
 Dark Renewal|Renovação Negra
 Summon Limit|Limitar Invocação
@@ -19,5 +22,6 @@ Leviair the Sea Dragon|	Leviar, o Dragão Marinho
 Super Quantal Mech Beast Grampulse|Besta Mech Super Quantal Pulso Orca
 The Phantom Knights of Break Sword|Os Cavaleiros Fantasmas da Espada Quebrada
 
+Linkuriboh
 Akashic Magician|Mago Akáshico
 Summon Sorceress

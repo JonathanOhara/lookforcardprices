@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java/edu/jonathan/lookforcardprices/searchengine/service/GamesReportService.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/java/edu/jonathan/lookforcardprices/searchengine/service/shop/br/SoloSagradoShopService.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/src/main/java/edu/jonathan/lookforcardprices/searchengine/service/shop/eu/CardMarketShopService.java" charset="ISO-8859-1" />
   </component>
 </project>

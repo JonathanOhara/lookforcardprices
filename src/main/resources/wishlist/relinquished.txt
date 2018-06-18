@@ -6,12 +6,13 @@ Mystic Piper
 Shaddoll Dragon|Dragão Sombraneco
 Spirit Reaper|Ceifeiro de Espíritos
 
+Fusion Substitute|Substituir Fusão
 Interrupted Kaiju Slumber|Sono Kaiju Interrompido
 Invocation|Invokação
 Secret Village of the Spellcasters|Vila Secreta dos Magos
-Ultra Polymerization|Ultra Polimerização
 Super Polymerization|Super Polimerização
-Fusion Substitute|Substituir Fusão
+Ultra Polymerization|Ultra Polimerização
+
 
 Dark Renewal|Renovação Negra
 Summon Limit|Limitar Invocação

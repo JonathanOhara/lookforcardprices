@@ -1,7 +1,11 @@
 Ariel, Priestess of the Nekroz|Ariel, a Sacerdotisa de Necroz
+Artifact Lancea|Artefato Lança do Destino
 Dance princess of the nekroz|Princesa da Dança de Necroz
 Great sorcerer of the nekroz|Grande Feiticeiro de Necroz
 SHURIT, STRATEGIST OF THE NEKROZ|SHURIT, STRATEGIST OF THE NEKROZ
+Tsukuyomi
+
+PSY-Framegear Epsilon|PSÍ-Armação Equipamento Epsilon
 
 Nekroz of brionac|Necroz de Brionac
 Nekroz of Catastor|Necroz de Catastor
@@ -24,5 +28,10 @@ Shooting Star Dragon|Dragão da Explosão Estelar
 star eater|Comedor de Estrelas
 
 Bahamut Shark|Tubarão Bahamut
+Daigusto Emeral
+Evilswarm Exciton Knight|Hordeum Maligno Cavaleiro Exciton
 Inzektor Exa-Beetle
+Lavalval Chain|Corrente Lavalval
+Performage Trapeze Magician|Camaramágico Mago Trapezista
+Rhapsody in Berserk|Rapsódia Enfurecido
 Toadally Awesome|Rãalmente Demais

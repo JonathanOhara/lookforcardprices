@@ -5,7 +5,6 @@ Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
 Inspector Boarder|Inspetor Prancha
 PSY-Frame Driver|PSÍ-Armação Condutor
-senju of the thousand hands|Senju das Mil Mãos
 Thunder King Rai-Oh|Rei do Trovão Rai-Oh
 
 Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
@@ -19,9 +18,7 @@ Called by the Grave
 Card of Demise|Despedida Final
 Magical Spring|Fonte Mágica
 My Body as a Shield|O Meu Corpo como Escudo
-raigeki
 Scapegoat|Bode Expiatório
-Shared Ride|Carona
 Twin Twisters|Tornados Gêmeos
 
 Elder Entity N'tss|Entidade Anciã N'tss
@@ -35,10 +32,8 @@ Infinite Impermanence
 Solemn Strike|Golpe Solene
 Storming mirror force|Força do Espelho Tempestuosa
 Switcheroroo|Reveseróiroo
-Urgent Ritual Art|Arte Ritual Urgente
 Waking the Dragon
 
-gagaga cowboy|Cowboy Gagaga
 Bagooska the Terribly Tired Tapir|Bagooska, a Anta Terrivelmente Cansada
 tornado dragon|Dragão Tornado
 
@@ -46,6 +41,5 @@ Borreload Dragon|Dragão Callibregado
 Triple Burst Dragon|Dragão das Três Explosões
 Firewall Dragon|Dragão Firewall
 Proxy Dragon|Proxy Dragon
-PSY-Framelord Omega|PSÍ-Armação Senhor Omega
 Saryuja Skull Dread|Caveira Ameaçadora Saryuja
 topologic bomber dragon|Dragão Bomba Topológica

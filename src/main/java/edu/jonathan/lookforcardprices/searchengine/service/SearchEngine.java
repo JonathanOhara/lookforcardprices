@@ -52,11 +52,11 @@ public class SearchEngine {
 
     public void registerUSAShops(){
         register(new Shop("Cool And Stuff", "https://www.coolstuffinc.com/"), CDI.current().select(CoolAndStuffShopService.class).get() );
-//        register(new Shop("Troll and Toad", "https://www.trollandtoad.com/"), CDI.current().select(TrollAndToadShopService.class).get() );
+        register(new Shop("Troll and Toad", "https://www.trollandtoad.com/"), CDI.current().select(TrollAndToadShopService.class).get() );
     }
 
     public void registerEUShops() {
-//        register(new Shop("Card Market", "https://www.cardmarket.com/"), CDI.current().select(CardMarketShopService.class).get() );
+        register(new Shop("Card Market", "https://www.cardmarket.com/"), CDI.current().select(CardMarketShopService.class).get() );
     }
 
     public void register(Shop shop, SearchService shopImplementation){

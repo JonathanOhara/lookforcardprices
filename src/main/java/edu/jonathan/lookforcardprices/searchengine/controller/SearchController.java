@@ -14,7 +14,7 @@ public class SearchController {
     @Inject private SearchEngine searchEngine;
 
     public Map<String, Set<Product>> run(List<String> searchList) throws IOException {
-        searchEngine.registerAllShops();
+        searchEngine.registerBrazilianShops();
         searchEngine.registerProducts(searchList);
 
         return searchEngine.run(false);

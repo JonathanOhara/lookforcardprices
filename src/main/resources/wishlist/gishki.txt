@@ -1,22 +1,16 @@
 Atlantean Dragoons|Soldados de Cavalaria Atlante
-Beautunaful Princess|Princesa Atraentum
 Deep Sea Diva|Diva do Mar Profundo
-Gishki Abyss|Abismo Gishki
 Gishki Beast|Fera Gishki
 Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
 
-Evigishki Gustkraken
 Evigishki Levianima
 Evigishki Merrowgeist
-Evigishki Mind Augus
 Evigishki Soul Ogre|Evigishki Alma Ogre
 Gishki Zielgigas
 
 Forbidden Arts of the Gishki|Artes Proibidas dos Gishki
-Gishki Aquamirror|Gishki, Espelho D'Água
 Gishki Photomirror|Foto-espelho Gishki
 moray of greed|Moréia da Ganância
-Salvage|Salvamento
 Surface|Superfície
 
 Aquamirror Cycle|Ciclo Aqua-espelhado

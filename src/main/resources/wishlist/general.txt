@@ -7,15 +7,7 @@ Inspector Boarder|Inspetor Prancha
 PSY-Frame Driver|PSÍ-Armação Condutor
 Thunder King Rai-Oh|Rei do Trovão Rai-Oh
 
-Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
-D.D. Crow|D.D. Corvo
-Droll & Lock Bird|Droll & Pássaro Fechadura
-Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
-Ghost Ogre & Snow Rabbit|Ogro Fantasma & Coelho da Neve
-Ghost Reaper & Winter Cherries|Ceifador Fantasma & Cerejas de Inverno
-
 Called by the Grave
-Card of Demise|Despedida Final
 Magical Spring|Fonte Mágica
 My Body as a Shield|O Meu Corpo como Escudo
 Scapegoat|Bode Expiatório
@@ -25,11 +17,8 @@ Elder Entity N'tss|Entidade Anciã N'tss
 
 Black Rose Dragon|Dragão da Rosa Negra
 
-evenly matched|Confronto Justo
 Lost Wind|Vento Perdido
 Heavy Storm Duster|Tempestade Pesada de Pó
-Infinite Impermanence
-Solemn Strike|Golpe Solene
 Storming mirror force|Força do Espelho Tempestuosa
 Switcheroroo|Reveseróiroo
 Waking the Dragon
@@ -37,9 +26,5 @@ Waking the Dragon
 Bagooska the Terribly Tired Tapir|Bagooska, a Anta Terrivelmente Cansada
 tornado dragon|Dragão Tornado
 
-Borreload Dragon|Dragão Callibregado
 Triple Burst Dragon|Dragão das Três Explosões
-Firewall Dragon|Dragão Firewall
 Proxy Dragon|Proxy Dragon
-Saryuja Skull Dread|Caveira Ameaçadora Saryuja
-topologic bomber dragon|Dragão Bomba Topológica

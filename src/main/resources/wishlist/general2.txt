@@ -11,6 +11,8 @@ monster reborn|Reviver Monstro
 pot of acquisitiveness|Pote da Aquisitividade
 Pot of Avarice|Pote da Avarice
 
+
+
 Black Rose Dragon|Dragão da Rosa Negra
 
 Anti-Spell Fragrance|Fragrância Anti-Magia
@@ -21,3 +23,5 @@ Trap Stun|Atordoar Armadilha
 Daigusto Emeral
 Evilswarm Exciton Knight|Hordeum Maligno Cavaleiro Exciton
 Lavalval Chain|Corrente Lavalval
+
+Akashic Magician|Mago Akáshico

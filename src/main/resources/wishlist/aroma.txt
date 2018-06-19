@@ -9,7 +9,6 @@ Crane Crane|Garça Guindaste
 Copy Plant|Planta Copiadora
 Debris Dragon|Dragão do Escombro
 Gigaplant|Gigaplanta
-Glow-Up Bulb|Bulbo Brilhante
 Griggle
 Golden Ladybug|Joaninha Dourada
 Juragedo

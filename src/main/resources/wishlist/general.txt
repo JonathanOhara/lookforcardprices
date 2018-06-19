@@ -4,8 +4,14 @@ Fossil Dyna Pachycephalo|Fossil Dina Pachycephalo
 Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
 Gorz the Emissary of Darkness|Gorz, o Emissário da Escuridão
 Inspector Boarder|Inspetor Prancha
+Performage Hat Tricker|Camaramágico Engana Chapéu
 PSY-Frame Driver|PSÍ-Armação Condutor
 Thunder King Rai-Oh|Rei do Trovão Rai-Oh
+Glow-Up Bulb|Bulbo Brilhante
+
+Effect Veiler|Ocultador de Efeitos
+Ghost Ogre & Snow Rabbit|Ogro Fantasma & Coelho da Neve
+Ghost Reaper & Winter Cherries|Ceifador Fantasma & Cerejas de Inverno
 
 Called by the Grave
 Magical Spring|Fonte Mágica
@@ -15,6 +21,7 @@ Twin Twisters|Tornados Gêmeos
 
 Elder Entity N'tss|Entidade Anciã N'tss
 
+Tatsunoko
 Black Rose Dragon|Dragão da Rosa Negra
 
 Lost Wind|Vento Perdido
@@ -26,5 +33,8 @@ Waking the Dragon
 Bagooska the Terribly Tired Tapir|Bagooska, a Anta Terrivelmente Cansada
 tornado dragon|Dragão Tornado
 
+Binary Sorceress|Feiticeira Binária
+Ib the World Chalice Priestess|Ib, a Sacerdotisa do Cálice Mundial
+Tri-Gate Wizard|Mago Tri-Portal
 Triple Burst Dragon|Dragão das Três Explosões
 Proxy Dragon|Proxy Dragon

@@ -73,8 +73,6 @@ public class SearchEngine {
 
         for(String productName : searchList ) {
 
-            logger.info("Product: "+productName);
-
             shopsServiceMapping.entrySet().parallelStream().forEach(entry -> {
                 Shop shop = entry.getKey();
                 SearchService searchService = entry.getValue();
@@ -90,10 +88,13 @@ public class SearchEngine {
 
                 Set<Product> productsFounded = new LinkedHashSet<>();
 
+                logger.info("Product (main): "+productMainName);
                 productsFounded.addAll( searchService.run(shop, productMainName, maxResultsPerPage) );
 
-                if(otherName != null && searchService.hasPortugueseOption())
-                    productsFounded.addAll( searchService.run(shop, otherName, maxResultsPerPage) );
+                if(otherName != null && searchService.hasPortugueseOption()) {
+                    logger.info("Product (alternative): "+otherName);
+                    productsFounded.addAll(searchService.run(shop, otherName, maxResultsPerPage));
+                }
 
                 synchronized(this) {
                     Set<Product> productsAlreadyFound = Optional.ofNullable(productsByName.get(productMainName)).orElse(new LinkedHashSet<>());

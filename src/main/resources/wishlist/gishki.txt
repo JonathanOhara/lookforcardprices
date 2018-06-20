@@ -15,4 +15,4 @@ Surface|Superfície
 Aquamirror Cycle|Ciclo Aqua-espelhado
 Aquamirror Illusion|Ilusão Espelhoágua
 Aquamirror Meditation|Meditação Espelho-Aqua
-Poseidon Wave|Onda de Poseidon
+Aquamirror Meditation|Meditação Espelho-Aqua

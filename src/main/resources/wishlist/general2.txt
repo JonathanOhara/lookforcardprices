@@ -1,13 +1,19 @@
 Armageddon Knight|Cavaleiro do Armagedom
+Banisher of the Radiance|Banidor da Luz
+Barrier Statue of the Heavens|Estátua Barreira dos Céus
 Breaker the Magical Warrior|Breaker, o Guerreiro Mágico
 Neo-Spacian Grand Mole|Grande Toupeira Neoespacial
 Purple Poison Magician|Mago de Veneno Púrpura
+Windwitch - Ice Bell|Ventobruxa - Sino de Gelo
+Windwitch - Glass Bell|Ventobruxa - Sino de Vidro
+Windwitch - Snow Bell|Ventobruxa - Sino de Neve
 
 Spirit Reaper|Ceifeiro de Espíritos
 Supreme King Dragon Darkwurm|Rei Supremo Dragão Wurmescuro
 
 monster reborn|Reviver Monstro
 Pot of Avarice|Pote da Avarice
+Twin Twisters|Tornados Gêmeos
 
 Black Rose Dragon|Dragão da Rosa Negra
 
@@ -18,6 +24,7 @@ Trap Stun|Atordoar Armadilha
 
 Daigusto Emeral
 Evilswarm Exciton Knight|Hordeum Maligno Cavaleiro Exciton
+Hope Harbinger Dragon Titanic Galaxy|Dragão Titã da Galáxia Arauto da Esperança
 Lavalval Chain|Corrente Lavalval
 
 Akashic Magician|Mago Akáshico

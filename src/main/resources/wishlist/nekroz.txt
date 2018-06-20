@@ -1,8 +1,5 @@
 Artifact Lancea|Artefato Lança do Destino
 Tsukuyomi
-Windwitch - Ice Bell|Ventobruxa - Sino de Gelo
-Windwitch - Glass Bell|Ventobruxa - Sino de Vidro
-Windwitch - Snow Bell|Ventobruxa - Sino de Neve
 
 Nekroz cycle|Ciclo Necroz
 
@@ -21,7 +18,6 @@ Windwitch - Winter Bell|Ventobruxa - Sino do Inverno
 
 Bahamut Shark|Tubarão Bahamut
 Phantom Fortress Enterblathnir|Fortaleza Fantasma Enterblathnir
-Hope Harbinger Dragon Titanic Galaxy|Dragão Titã da Galáxia Arauto da Esperança
 Toadally Awesome|Rãalmente Demais
 True King of All Calamities|Verdadeiro Rei de Todas as Calamidades
 

@@ -1,4 +1,3 @@
-Banisher of the Radiance|Banidor da Luz
 Denko Sekka
 Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
 Fossil Dyna Pachycephalo|Fossil Dina Pachycephalo
@@ -20,7 +19,6 @@ My Body as a Shield|O Meu Corpo como Escudo
 One Day of Peace|Um Dia de Paz
 pot of acquisitiveness|Pote da Aquisitividade
 Scapegoat|Bode Expiatório
-Twin Twisters|Tornados Gêmeos
 
 Lost Wind|Vento Perdido
 Heavy Storm Duster|Tempestade Pesada de Pó

@@ -73,26 +73,25 @@ public class SearchEngine {
 
         for(String productName : searchList ) {
 
+            String[] productNames = productName.split("\\|");
+
+            String productMainName = productNames[0];
+            String otherName = productNames.length > 1 ? productNames[1] : null;
+
+            logger.info("Product (main): "+productMainName);
+
+            if(otherName != null)
+                logger.info("Product (other): "+otherName);
+
             shopsServiceMapping.entrySet().parallelStream().forEach(entry -> {
                 Shop shop = entry.getKey();
                 SearchService searchService = entry.getValue();
 
-                String productMainName = productName;
-                String otherName = null;
-
-                if( productName.contains("|")){
-                    String[] productNames = productName.split("\\|");
-                    productMainName = productNames[0];
-                    otherName = productNames[1];
-                }
-
                 Set<Product> productsFounded = new LinkedHashSet<>();
 
-                logger.info("Product (main): "+productMainName);
                 productsFounded.addAll( searchService.run(shop, productMainName, maxResultsPerPage) );
 
                 if(otherName != null && searchService.hasPortugueseOption()) {
-                    logger.info("Product (alternative): "+otherName);
                     productsFounded.addAll(searchService.run(shop, otherName, maxResultsPerPage));
                 }
 
@@ -105,6 +104,13 @@ public class SearchEngine {
         }
 
         return productsByName;
+    }
+
+    public static void main(String[] args) {
+        String test = "olaola";
+
+        String[] ar = test.split("\\|");
+        System.out.println(ar[0]);
     }
 
     public void registerAllShops() {

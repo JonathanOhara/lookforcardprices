@@ -15,10 +15,9 @@ monster reborn|Reviver Monstro
 Pot of Avarice|Pote da Avarice
 Twin Twisters|Tornados Gêmeos
 
-Black Rose Dragon|Dragão da Rosa Negra
-
 Anti-Spell Fragrance|Fragrância Anti-Magia
 Skill Drain|Drenar Habilidades
+Summon Limit|Limitar Invocação
 Switcheroroo|Reveseróiroo
 Trap Stun|Atordoar Armadilha
 

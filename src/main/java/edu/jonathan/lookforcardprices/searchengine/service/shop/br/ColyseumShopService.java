@@ -7,6 +7,7 @@ import edu.jonathan.lookforcardprices.searchengine.service.filter.ResultNameFilt
 import edu.jonathan.lookforcardprices.searchengine.service.shop.SearchService;
 import org.javamoney.moneta.Money;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.regex.Matcher;
 
@@ -65,6 +66,16 @@ public class ColyseumShopService extends SearchService {
 				return ".price";
 			}
 		};
+	}
+
+	@Override
+	protected String getFormattedPriceFrom(Element priceElement) {
+
+		Elements promoPrice = priceElement.select(".price-new");
+		if( promoPrice.size() > 0 ){
+			return promoPrice.text().trim();
+		}
+		return priceElement.text().trim();
 	}
 
 	@Override

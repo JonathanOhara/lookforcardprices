@@ -1,29 +1,6 @@
 Alector, Sovereign of Birds|Alector, Soberano dos Pássaros
 
-
-Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
-
-Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
-Droll & Lock Bird|Droll & Pássaro Fechadura
-Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
-
-Card of Demise|Despedida Final
-Invocation|Invokação
-
-evenly matched|Confronto Justo
-Infinite Impermanence
-
-Invoked Mechaba|Mechaba, o Invokado
-
-Borreload Dragon|Dragão Callibregado
-Firewall Dragon|Dragão Firewall
-Saryuja Skull Dread|Caveira Ameaçadora Saryuja
-topologic bomber dragon|Dragão Bomba Topológica
-tornado dragon|Dragão Tornado
-
-
 Denko Sekka
-Destrudo the Lost Dragon's Frisson|Destrudo, o Frisson do Dragão Perdido
 Gameciel, the Sea Turtle Kaiju|Gameciel, o Kaiju Tartaruga Marinha
 Inspector Boarder|Inspetor Prancha
 
@@ -38,15 +15,17 @@ Raidraptor - Ultimate Falcon|Ataqueraptor - Falcão Definitivo
 
 Tri-Gate Wizard|Mago Tri-Portal
 
-
-Atlantean Dragoons|Soldados de Cavalaria Atlante
+Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
 Gishki Beast|Fera Gishki
 
 Gishki Zielgigas
 
 Aquamirror Meditation|Meditação Espelho-Aqua
-Aquamirror Meditation|Meditação Espelho-Aqua
 
+Atomic Scrap Dragon
+Beelze of the Diabolic Dragons|Belze dos Dragões Diabólicos
+Herald of the Arc Light|Arauto do Arco de Luz
+Trishula, Dragon of the Ice Barrier|Trishula, o Dragão da Barreira de Gelo
 
 Blue-Eyes Ultimate Dragon|Dragão Supremo de Olhos Azuis
 
@@ -55,12 +34,10 @@ Beelze of the Diabolic Dragons|Belze dos Dragões Diabólicos
 Herald of the Arc Light|Arauto do Arco de Luz
 Trishula, Dragon of the Ice Barrier|Trishula, o Dragão da Barreira de Gelo
 
-
 Eater of Millions|Comedor de Milhões
 Mystic Piper
 
 Fusion Substitute|Substituir Fusão
 Super Polymerization|Super Polimerização
 
-Linkuriboh
 Summon Sorceress

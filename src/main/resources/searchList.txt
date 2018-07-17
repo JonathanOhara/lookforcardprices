@@ -11,7 +11,6 @@ Scapegoat|Bode Expiatório
 Lost Wind|Vento Perdido
 
 Minerva, the Exalted Lightsworn|Minerva, a Luminosa Exaltada
-Raidraptor - Ultimate Falcon|Ataqueraptor - Falcão Definitivo
 
 Tri-Gate Wizard|Mago Tri-Portal
 
@@ -22,18 +21,6 @@ Gishki Zielgigas
 
 Aquamirror Meditation|Meditação Espelho-Aqua
 
-Atomic Scrap Dragon
-Beelze of the Diabolic Dragons|Belze dos Dragões Diabólicos
-Herald of the Arc Light|Arauto do Arco de Luz
-Trishula, Dragon of the Ice Barrier|Trishula, o Dragão da Barreira de Gelo
-
-Blue-Eyes Ultimate Dragon|Dragão Supremo de Olhos Azuis
-
-Atomic Scrap Dragon
-Beelze of the Diabolic Dragons|Belze dos Dragões Diabólicos
-Herald of the Arc Light|Arauto do Arco de Luz
-Trishula, Dragon of the Ice Barrier|Trishula, o Dragão da Barreira de Gelo
-
 Eater of Millions|Comedor de Milhões
 Mystic Piper
 
@@ -41,3 +28,23 @@ Fusion Substitute|Substituir Fusão
 Super Polymerization|Super Polimerização
 
 Summon Sorceress
+
+Atlantean Dragoons|Soldados de Cavalaria Atlante
+
+Ash Blossom & Joyous Spring|Florescer de Cinzas & Primavera Feliz
+Droll & Lock Bird|Droll & Pássaro Fechadura
+Ghost Belle & Haunted Mansion|Fantasma Belle & Mansão Assombrada
+
+Card of Demise|Despedida Final
+Invocation|Invokação
+
+evenly matched|Confronto Justo
+Infinite Impermanence
+
+Invoked Mechaba|Mechaba, o Invokado
+
+Borreload Dragon|Dragão Callibregado
+Firewall Dragon|Dragão Firewall
+Saryuja Skull Dread|Caveira Ameaçadora Saryuja
+topologic bomber dragon|Dragão Bomba Topológica
+tornado dragon|Dragão Tornado

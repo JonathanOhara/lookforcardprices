@@ -69,7 +69,6 @@ public class PrRjShopService extends SearchService {
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
-		System.out.println(formattedValue.substring(2).trim());
 		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
 
 		matcher.matches();

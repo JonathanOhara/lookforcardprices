@@ -1,3 +1,4 @@
+Alector, Sovereign of Birds|Alector, Soberano dos Pássaros
 Armageddon Knight|Cavaleiro do Armagedom
 Banisher of the Radiance|Banidor da Luz
 Barrier Statue of the Heavens|Estátua Barreira dos Céus
@@ -17,7 +18,6 @@ Twin Twisters|Tornados Gêmeos
 Anti-Spell Fragrance|Fragrância Anti-Magia
 Skill Drain|Drenar Habilidades
 Summon Limit|Limitar Invocação
-Switcheroroo|Reveseróiroo
 Trap Stun|Atordoar Armadilha
 
 Daigusto Emeral

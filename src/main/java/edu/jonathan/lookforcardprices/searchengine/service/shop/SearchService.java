@@ -108,7 +108,7 @@ public abstract class SearchService {
 				logger.debug("\tAccepted by name filter: "+previewName);
 				products.addAll( getProductList(selectors, shop, resultsPageURL, previewName, productContainer) );
 			}else{
-				logger.debug("\tRejected by name filter: "+previewName);
+				logger.debug("\tRejected by name filter: "+previewName+" instead of: "+productName);
 			}
 		}
 

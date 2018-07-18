@@ -62,13 +62,14 @@ public class PrRjShopService extends SearchService {
 
 			@Override
 			public String productPrice() {
-				return ".price-box > span:last-child";
+				return ".price-box .price:last-child";
 			}
 		};
 	}
 
 	@Override
 	protected Money getPriceFrom(String formattedValue) {
+		System.out.println(formattedValue.substring(2).trim());
 		Matcher matcher = MoneyUtil.MONEY_PATTERN.matcher(formattedValue.substring(2).trim());
 
 		matcher.matches();

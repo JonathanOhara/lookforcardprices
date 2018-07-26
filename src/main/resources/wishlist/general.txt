@@ -6,10 +6,6 @@ Foolish Burial|Enterro Tolo
 monster reborn|Reviver Monstro
 Twin Twisters|Tornados Gêmeos
 
-
 Reckless Greed|Ganância Descuidada
-Solemn Warning|Aviso Solene
 
 Minerva, the Exalted Lightsworn|Minerva, a Luminosa Exaltada
-
-Decode Talker|Decodificar Transmissor

@@ -8,10 +8,6 @@ Pot of Duality|Pote da Dualidade
 Solemn Judgment|Julgamento Solene
 Solemn Strike|Golpe Solene
 
-Archlord Kristya
-Hanewata
-Honest|Honesto
-
 Denko Sekka
 
 Ghost Reaper & Winter Cherries|Ceifador Fantasma & Cerejas de Inverno
@@ -20,13 +16,9 @@ Foolish Burial|Enterro Tolo
 monster reborn|Reviver Monstro
 Twin Twisters|Tornados Gêmeos
 
-
 Reckless Greed|Ganância Descuidada
-Solemn Warning|Aviso Solene
 
 Minerva, the Exalted Lightsworn|Minerva, a Luminosa Exaltada
-
-Decode Talker|Decodificar Transmissor
 
 Moulinglacia the Elemental Lord|Moulinglacia, o Senhor Elemental
 Gishki Beast|Fera Gishki
